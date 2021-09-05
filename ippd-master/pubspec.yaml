@@ -1,0 +1,68 @@
+name: ippd
+description: A new Flutter project.
+
+publish_to: 'none' 
+version: 1.0.0+1
+
+environment:
+  sdk: ">=2.12.0 <3.0.0"
+
+dependencies:
+  animated_splash_screen: ^1.1.0
+  cloud_firestore: ^2.5.1
+  cupertino_icons: ^1.0.2
+  cupertino_radio_choice: ^1.0.1+1
+  firebase_auth: ^3.1.0
+  firebase_core: ^1.6.0
+
+  
+  flutter:
+    sdk: flutter
+  flutter_svg: ^0.22.0
+  font_awesome_flutter:
+  get: ^4.3.8
+  google_fonts: ^2.1.0
+  google_nav_bar: ^5.0.5
+  line_icons: ^2.0.1
+  page_transition: ^2.0.1-nullsafety.0
+  pinput: ^1.2.0
+  rflutter_alert: ^2.0.4
+  syncfusion_flutter_sliders: ^19.2.59
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+
+flutter:
+  uses-material-design: true
+
+  assets:
+    - assets/img/nurse.png
+    - assets/img/ippd.png
+    - assets/img/ippd2.png
+    - assets/img/bmi.png
+    - assets/img/body.png
+    - assets/img/background.png
+    - assets/img/drugstore.png
+    - assets/img/gender.png
+    - assets/img/weight.png
+    - assets/img/height.png
+    - assets/img/no-smoking.png
+    - assets/img/heart-disease.png
+    - assets/img/check-up.png
+    - assets/img/night.png
+    - assets/img/water.png
+
+
+  fonts:
+    - family: WorkSansSemiBold
+      fonts:
+        - asset: assets/fonts/Work_Sans/WorkSans-SemiBold.ttf
+
+    - family: WorkSansBold
+      fonts:
+        - asset: assets/fonts/Work_Sans/WorkSans-Bold.ttf
+
+    - family: WorkSansMedium
+      fonts:
+        - asset: assets/fonts/Work_Sans/WorkSans-Medium.ttf
