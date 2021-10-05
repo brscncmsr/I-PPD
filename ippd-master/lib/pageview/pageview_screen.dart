@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:ippd/home/home.dart';
 import 'package:page_transition/page_transition.dart';
 import 'slider.dart';
@@ -17,17 +18,69 @@ class _PageviewingState extends State<Pageviewing> {
         title: "Kim Geliştirdi?",
         description:
             "IPP-D sizi sağlık durumu ve hastalık riskleri hakkında bilgilendirmek amacıyla BAP.ÖOP.004 nolu proje kodu ile geliştirilmiştir ve Hasan Kalyoncu Üniversitesi tarafından desteklenmektedir.",
-        image: "assets/1.svg"),
+        image: ""),
     SliderPage(
         title: "Neden geliştirildi?",
         description:
             " IPP-D uygulaması risk altında bulunduğunuz hastalıkları önlemek, mevcut sağlık düzeyinizi korumak ve geliştirmek amacıyla oluşturulan yapay zeka destekli bir uygulamadır.",
-        image: "assets/2.svg"),
+        image: ""),
     SliderPage(
         title: "Önemli Hatırlatma",
         description:
             " IPP-D uygulamasının doğru sonuçları verebilmesi için istenilen bilgileri, anket formlarını ve gerekli bütün bilgileri doğru girmeniz önem arz etmektedir..",
-        image: "assets/3.svg"),
+        image: ""),
+    Column(
+      mainAxisAlignment:MainAxisAlignment.center,
+      children:
+      [
+        Container(
+          width:250,
+          child:
+          Text(
+            "Giriş Yapabilmeniz için telefon numaranızı girmelisiniz ve ardından gelen sms ile numaranızı doğruladığınızda giriş yapabilirsiniz."
+          ,style:GoogleFonts.amaticSc(
+                height: 1.5,
+                fontWeight: FontWeight.normal,
+                fontSize: 18,
+                letterSpacing: 0.5,
+          )
+              ),
+        ),
+        SizedBox(height:50),
+        Container(
+          width:250,
+          child: TextField(
+            autocorrect: true,
+            
+                                      //controller: emailController,
+                                      keyboardType: TextInputType.number,
+                                      cursorColor: Colors.amber,
+                                      decoration: InputDecoration(
+                                        focusedBorder: OutlineInputBorder(
+                                          borderSide: BorderSide(
+                                            color: Colors.blue,
+                                            width: 2,
+                                          ),
+                                          borderRadius: BorderRadius.all(Radius.circular(5)),
+                                        ),
+                                        enabledBorder: OutlineInputBorder(
+                  borderSide: BorderSide(color: Colors.blue, width: 2),
+                ),
+                                        suffixIcon: Icon(Icons.phone_rounded),
+                                         
+                                        //labelStyle: TextStyle(color: Colors.amber),
+                                        labelText: 'Telefon',
+                                        hintText: 'Telefon numaranızı girin...',
+                                        hintStyle: TextStyle(
+                                          color: Colors.blue,
+                                        ),
+                                        
+                                      ),
+                                    ),
+        ),
+        SizedBox(height: 140,)
+      ],
+    )
   ];
 
   _onchanged(int index) {

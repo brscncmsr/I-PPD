@@ -1,7 +1,7 @@
 //import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:ippd/home/home.dart';
+
 import 'package:animated_splash_screen/animated_splash_screen.dart';
 import 'package:ippd/pageview/pageview_screen.dart';
 import 'package:page_transition/page_transition.dart';

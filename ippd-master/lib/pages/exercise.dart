@@ -1,19 +1,26 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:ippd/pages/water.dart';
 
 class Exercise extends StatefulWidget {
   Exercise({Key? key}) : super(key: key);
+  String _rsttext = "rsttex";
+  void exercise(
+      {double BmI = 0, double Bmh = 0, double water = 0, String sleep = ""}) {
+    if (BmI != 0) {
+      _rsttext = "a";
+    }
+    ExerciseState().State();
+  }
 
   @override
-  _ExerciseState createState() => _ExerciseState();
+  ExerciseState createState() => ExerciseState();
 }
 
-class _ExerciseState extends State<Exercise> {
+class ExerciseState extends State<Exercise> {
   Future<Null> refresh() async {
     await Future.delayed(Duration(seconds: 2));
   }
-
-  
 
   @override
   Widget build(BuildContext context) {
@@ -23,48 +30,36 @@ class _ExerciseState extends State<Exercise> {
           //brightness: Brightness.dark,
           ),
       home: Scaffold(
-              body: Container(
-                  decoration: BoxDecoration(
-          image:  DecorationImage(
-              image: AssetImage('assets/img/background.png'),
-              repeat: ImageRepeat.repeat,
-              colorFilter:
-                  ColorFilter.mode(Colors.white60, BlendMode.color),
-              fit: BoxFit.cover)),
-          
+        body: Container(
+          decoration: BoxDecoration(
+              image: DecorationImage(
+                  image: AssetImage('assets/img/background.png'),
+                  repeat: ImageRepeat.repeat,
+                  colorFilter:
+                      ColorFilter.mode(Colors.white60, BlendMode.color),
+                  fit: BoxFit.cover)),
           child: SingleChildScrollView(
             child: Column(
               children: <Widget>[
                 Container(
-                  
                   height: 950,
                   margin: EdgeInsets.all(10),
-                  padding:EdgeInsets.only(
-                    top:10
-                  ),
+                  padding: EdgeInsets.only(top: 10),
                   child: Card(
                     shape: RoundedRectangleBorder(
-                      side: BorderSide(width: 3, color: Colors.red.shade200),
+                      side: BorderSide(width: 3, color: Colors.blue.shade200),
                       borderRadius: BorderRadius.all(Radius.circular(15)),
                     ),
-                    child: ListView(
-               children: [
-                 Card(
-                    shape: RoundedRectangleBorder(
-                      side: BorderSide(width: 3, color: Colors.red.shade200),
-                      borderRadius: BorderRadius.all(Radius.circular(15)),
-                    ),
-                   child: ListTile(
-                     contentPadding: EdgeInsets.all(10),
-                     title: Text("Egzersiz Planım"),
-                    subtitle: Text("Egzersiz ile ilgili"),
-                     leading: Icon(Icons.add),  //başına ikon
-                     trailing: Icon(Icons.arrow_forward_ios_rounded),  //sonuna ikon
-                   ),
-                 ),
-                 
-               ],
-             ),
+                    child: ListView(children: [
+                      ListTile(
+                        contentPadding: EdgeInsets.all(10),
+                        title: Text(Exercise()._rsttext),
+                        subtitle: Text("Günde .. kez"),
+                        //leading: resim olabilir burda küçük  Icon(Icons.add),
+                        trailing:
+                            Icon(Icons.arrow_forward_ios_rounded), //sonuna ikon
+                      ),
+                    ]),
                   ),
                 ),
                 SizedBox(
@@ -75,6 +70,11 @@ class _ExerciseState extends State<Exercise> {
           ),
         ),
       ),
-      );
+    );
+  }
+
+  void State(
+      {double BmI = 0, double Bmh = 0, double water = 0, String sleep = ""}) {
+    setState(() {});
   }
 }

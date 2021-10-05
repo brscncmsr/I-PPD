@@ -22,8 +22,11 @@ dependencies:
   font_awesome_flutter:
   get: ^4.3.8
   google_fonts: ^2.1.0
+  google_maps_flutter: ^2.0.8
   google_nav_bar: ^5.0.5
+  group_button: ^3.1.0
   line_icons: ^2.0.1
+  location: ^4.3.0
   page_transition: ^2.0.1-nullsafety.0
   pinput: ^1.2.0
   rflutter_alert: ^2.0.4
@@ -52,6 +55,12 @@ flutter:
     - assets/img/check-up.png
     - assets/img/night.png
     - assets/img/water.png
+    - assets/img/MBMI-1.png
+    - assets/img/MBMI-2.png
+    - assets/img/MBMI-3.png
+    - assets/img/MBMI-4.png
+    - assets/img/MBMI-5.png
+    - assets/img/MBMI-6.png
 
 
   fonts:
