@@ -62,7 +62,9 @@ class _WaterState extends State<Water> {
             ),
             SizedBox(height: 15),
             Text(
-              _result == null ? "Değeri Gir" : "${_result.toStringAsFixed(2)}",
+              _result == null
+                  ? "Değeri Gir"
+                  : "${_result.toStringAsFixed(2)} Litre",
               style: TextStyle(
                 color: Colors.pink.shade900,
                 fontSize: 19.4,

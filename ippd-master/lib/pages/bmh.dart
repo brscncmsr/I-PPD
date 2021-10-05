@@ -73,7 +73,6 @@ class _BmHState extends State<BmH> {
               buttons: const [
                 'Kadın',
                 'Erkek',
-                'Diger',
               ],
               borderRadius: BorderRadius.circular(30),
               onSelected: (i, selected) => select = i,
@@ -102,7 +101,7 @@ class _BmHState extends State<BmH> {
             ),
             SizedBox(height: 15),
             Text(
-              bmh == null ? "Değeri Gir" : "${bmh.toStringAsFixed(2)} ",
+              bmh == null ? "Değeri Gir" : "${bmh.toStringAsFixed(2)} kcal/gün",
               style: TextStyle(
                 color: Colors.pink.shade900,
                 fontSize: 19.4,
