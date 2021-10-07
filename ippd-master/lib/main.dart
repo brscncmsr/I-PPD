@@ -35,7 +35,7 @@ class MyApp extends StatelessWidget {
         pageTransitionType: PageTransitionType.leftToRight,
         backgroundColor: Color.fromARGB(255, 219, 239, 236),
         curve: Curves.easeOutBack,
-        splashIconSize: 400,
+        splashIconSize: 650,
         splash:
             Image(fit: BoxFit.fill, image: AssetImage('assets/img/ippd2.png')),
       ),
