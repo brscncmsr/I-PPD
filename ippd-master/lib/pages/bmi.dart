@@ -20,13 +20,17 @@ class _BmIState extends State<BmI> {
 
   double _result = 0.0;
   int select = 0;
+  double _fontsize = 14;
   String _textR = "";
   String _img = "assets/img/MBMI-0.png";
+  String _imgn = "assets/img/nurse3.png";
   String sugges1 = "";
   String sugges2 = "";
+  String sugges3 = "";
   bool isobes = false;
   bool isrisky = false;
   bool checkbelly = false;
+  Color _colortext = Colors.pink.shade900;
 
   @override
   Widget build(BuildContext context) {
@@ -130,6 +134,26 @@ class _BmIState extends State<BmI> {
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     Container(
+                      alignment: Alignment.bottomCenter,
+                      child: Text(
+                        sugges3,
+                        style: TextStyle(
+                          color: Colors.blue.shade200,
+                          fontSize: _fontsize,
+                          fontWeight: FontWeight.w500,
+                        ),
+                      ),
+                    ),
+                    Image(image: AssetImage(_imgn))
+                  ],
+                ),
+                SizedBox(
+                  height: 15,
+                ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Container(
                       width: MediaQuery.of(context).size.width * 0.3,
                       height: MediaQuery.of(context).size.height * 0.3,
                       child: Image(image: AssetImage(_img)),
@@ -142,7 +166,7 @@ class _BmIState extends State<BmI> {
                         Text(
                           _result == null ? "Değeri Gir" : _textR,
                           style: TextStyle(
-                            color: Colors.pink.shade900,
+                            color: _colortext,
                             fontSize: 19.4,
                             fontWeight: FontWeight.w500,
                           ),
@@ -156,19 +180,19 @@ class _BmIState extends State<BmI> {
                           child: Text(
                             sugges1,
                             style: TextStyle(
-                              color: Colors.pink.shade900,
+                              color: _colortext,
                               fontSize: 15.4,
                               fontWeight: FontWeight.w500,
                             ),
                           ),
                         ),
                         Container(
-                          width: MediaQuery.of(context).size.width * 0.3,
+                          width: MediaQuery.of(context).size.width * 0.4,
                           height: MediaQuery.of(context).size.height * 0.2,
                           child: Text(
                             sugges2,
                             style: TextStyle(
-                              color: Colors.pink.shade900,
+                              color: _colortext,
                               fontSize: 15.4,
                               fontWeight: FontWeight.w500,
                             ),
@@ -197,37 +221,43 @@ class _BmIState extends State<BmI> {
     if (result < 18.5) {
       _textR = "Zayıf";
       _img = "assets/img/MBMI-1.png";
-      isobes = true;
-      isrisky = false;
+      isobes = false;
+      isrisky = true;
       checkbelly = true;
+      _colortext = Colors.green.shade300;
     } else if (result >= 18.5 && result <= 24.9) {
       _textR = "Normal";
       _img = "assets/img/MBMI-2.png";
       isrisky = true;
       checkbelly = true;
+      _colortext = Colors.green.shade500;
     } else if (result >= 25 && result <= 29.9) {
       _textR = "Fazla Kilolu";
       _img = "assets/img/MBMI-3.png";
       isrisky = true;
       checkbelly = true;
+      _colortext = Colors.orange.shade500;
     } else if (result >= 30 && result <= 34.9) {
       _textR = "Obez";
       _img = "assets/img/MBMI-4.png";
       isobes = true;
       isrisky = false;
       checkbelly = true;
+      _colortext = Colors.orange.shade800;
     } else if (result >= 35 && result <= 39.9) {
       _textR = "Ağır Obez";
       _img = "assets/img/MBMI-5.png";
       isobes = true;
       isrisky = false;
       checkbelly = false;
+      _colortext = Colors.red.shade600;
     } else if (result >= 40) {
       _textR = "Aşırı Obez";
       _img = "assets/img/MBMI-6.png";
       isobes = true;
       isrisky = false;
       checkbelly = false;
+      _colortext = Colors.red.shade900;
     }
 
     if (isobes) {
@@ -236,26 +266,47 @@ class _BmIState extends State<BmI> {
             "Beslenme durumunuzun değerlendirilmesi için diyetisyene danışınız.";
         sugges2 = "";
       }
-      if (result >= 30) {
+      if (result >= 30 && result <= 39.9) {
+        _imgn = "assets/img/nurse2.png";
         sugges1 =
             "Beslenme durumunuzun değerlendirilmesi için diyetisyene danışınız.";
         sugges2 =
             "Fiziksel aktivite için uygulamamızda bulunan yaşınıza uygun egzersiz planlarına erişim sağlayabilirsiniz.";
+        sugges3 = "İnancını Değil Kilonu Kaybet";
+        _fontsize = 14;
+      }
+      if (result >= 40) {
+        _imgn = "assets/img/nurse2.png";
+        sugges1 =
+            "Beslenme durumunuzun değerlendirilmesi için diyetisyene danışınız.";
+        sugges2 =
+            "Fiziksel aktivite için uygulamamızda bulunan yaşınıza uygun egzersiz planlarına erişim sağlayabilirsiniz.";
+        sugges3 =
+            "Endokrinoloji uzmanına danışınız.\nEn yakın sağlık kurumuna gidiniz.";
+        _fontsize = 12;
       }
     }
     if (isrisky) {
+      sugges3 = "";
+      _imgn = "assets/img/nurse3.png";
       if (age >= 19 && age < 30 && select == 0) {
-        sugges1 = "Obezite riskiniz %41 oranındadır.";
-        sugges2 = "Beslenmenize ve Hayat Tarzınıza dikkat ediniz.";
+        sugges1 = "Obezite riskiniz yaşınız baz alındığında %41 oranındadır.";
+        sugges2 =
+            "Daha sağlıklı ve kaliteli bir yaşam için uygulamamızda bulunan yaşınıza uygun egzersiz planlarını kontrol edebilirsiniz.";
       } else if (age >= 19 && age < 30 && select == 1) {
-        sugges1 = "Obezite riskiniz %20.5 oranındadır.";
-        sugges2 = "Beslenmenize ve Hayat Tarzınıza dikkat ediniz.";
+        sugges1 = "Obezite riskiniz yaşınız baz alındığında %20.5 oranındadır.";
+        sugges2 =
+            "Daha sağlıklı ve kaliteli bir yaşam için uygulamamızda bulunan yaşınıza uygun egzersiz planlarını kontrol edebilirsiniz.";
       } else if (age >= 30 && select == 1) {
-        sugges1 = "Obezite riskiniz %20.5 oranından fazladır.";
-        sugges2 = "Beslenmenize ve Hayat Tarzınıza dikkat ediniz.";
+        sugges1 =
+            "Obezite riskiniz yaşınız baz alındığında %20.5 oranından fazladır.";
+        sugges2 =
+            "Daha sağlıklı ve kaliteli bir yaşam için uygulamamızda bulunan yaşınıza uygun egzersiz planlarını kontrol edebilirsiniz.";
       } else if (age >= 30 && select == 0) {
-        sugges1 = "Obezite riskiniz %41 oranından fazladır.";
-        sugges2 = "Beslenmenize ve Hayat Tarzınıza dikkat ediniz.";
+        sugges1 =
+            "Obezite riskiniz yaşınız baz alındığında %41 oranından fazladır.";
+        sugges2 =
+            "Daha sağlıklı ve kaliteli bir yaşam için uygulamamızda bulunan yaşınıza uygun egzersiz planlarını kontrol edebilirsiniz.";
       }
     }
     if (checkbelly) {

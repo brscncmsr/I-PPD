@@ -13,7 +13,8 @@ class _WaterState extends State<Water> {
   final TextEditingController _weightController = TextEditingController();
 
   double _result = 0.0;
-
+  double bardak = 0.0;
+  var x = 0;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -47,7 +48,9 @@ class _WaterState extends State<Water> {
                     "Hesapla",
                     style: TextStyle(color: Colors.white),
                   ),
-                  onPressed: water,
+                  onPressed: () {
+                    water();
+                  },
                 ),
                 SizedBox(width: 20),
                 RaisedButton(
@@ -64,13 +67,70 @@ class _WaterState extends State<Water> {
             Text(
               _result == null
                   ? "Değeri Gir"
-                  : "${_result.toStringAsFixed(2)} Litre",
+                  : "Günde ortalama ${_result.toStringAsFixed(1)} litre su içmelisiniz.",
               style: TextStyle(
                 color: Colors.pink.shade900,
                 fontSize: 19.4,
                 fontWeight: FontWeight.w500,
               ),
             ),
+            SizedBox(height: 15),
+            Text(
+              _result == null
+                  ? "Değeri Gir"
+                  : "ve bu günde ${bardak.toStringAsFixed(1)} bardak suya eşdeğerdir.",
+              style: TextStyle(
+                color: Colors.pink.shade900,
+                fontSize: 19.4,
+                fontWeight: FontWeight.w500,
+              ),
+            ),
+            Column(
+              children: [
+                Row(
+                  children: <Widget>[
+                    for (int i = 0; i < bardak; i++)
+                      i < 8
+                          ? Container(
+                              width: MediaQuery.of(context).size.height * 0.06,
+                              height: MediaQuery.of(context).size.height * 0.06,
+                              child: Image(
+                                  fit: BoxFit.cover,
+                                  image: AssetImage('assets/img/water.png')),
+                            )
+                          : Container()
+                  ],
+                ),
+                Row(
+                  children: <Widget>[
+                    for (int i = 8; i < bardak; i++)
+                      i < 15
+                          ? Container(
+                              width: MediaQuery.of(context).size.height * 0.06,
+                              height: MediaQuery.of(context).size.height * 0.06,
+                              child: Image(
+                                  fit: BoxFit.cover,
+                                  image: AssetImage('assets/img/water.png')),
+                            )
+                          : Container()
+                  ],
+                ),
+                Row(
+                  children: <Widget>[
+                    for (int i = 15; i < bardak; i++)
+                      i < 23
+                          ? Container(
+                              width: MediaQuery.of(context).size.height * 0.06,
+                              height: MediaQuery.of(context).size.height * 0.06,
+                              child: Image(
+                                  fit: BoxFit.cover,
+                                  image: AssetImage('assets/img/water.png')),
+                            )
+                          : Container()
+                  ],
+                ),
+              ],
+            )
           ],
         ),
       ),
@@ -81,8 +141,17 @@ class _WaterState extends State<Water> {
     double weight = double.parse(_weightController.text);
 
     double result = weight * 0.03;
-
+    result.toStringAsFixed(1);
     _result = result;
+    bardak = result / 0.2;
+      if(bardak % 0.5 == 0)
+      {
+      
+      }
+      else
+      {
+        
+      }
 
     setState(() {});
   }
