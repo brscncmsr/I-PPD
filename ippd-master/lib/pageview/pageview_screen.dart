@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:ippd/home/home.dart';
+import 'package:ippd/home/login.dart';
+import 'package:ippd/home/otp.dart';
 import 'package:page_transition/page_transition.dart';
 import 'slider.dart';
+
 
 class Pageviewing extends StatefulWidget {
   @override
@@ -29,58 +32,7 @@ class _PageviewingState extends State<Pageviewing> {
         description:
             " IPP-D uygulamasının doğru sonuçları verebilmesi için istenilen bilgileri, anket formlarını ve gerekli bütün bilgileri doğru girmeniz önem arz etmektedir..",
         image: ""),
-    Column(
-      mainAxisAlignment:MainAxisAlignment.center,
-      children:
-      [
-        Container(
-          width:250,
-          child:
-          Text(
-            "Giriş Yapabilmeniz için telefon numaranızı girmelisiniz ve ardından gelen sms ile numaranızı doğruladığınızda giriş yapabilirsiniz."
-          ,style:GoogleFonts.amaticSc(
-                height: 1.5,
-                fontWeight: FontWeight.normal,
-                fontSize: 18,
-                letterSpacing: 0.5,
-          )
-              ),
-        ),
-        SizedBox(height:50),
-        Container(
-          width:250,
-          child: TextField(
-            autocorrect: true,
-            
-                                      //controller: emailController,
-                                      keyboardType: TextInputType.number,
-                                      cursorColor: Colors.amber,
-                                      decoration: InputDecoration(
-                                        focusedBorder: OutlineInputBorder(
-                                          borderSide: BorderSide(
-                                            color: Colors.blue,
-                                            width: 2,
-                                          ),
-                                          borderRadius: BorderRadius.all(Radius.circular(5)),
-                                        ),
-                                        enabledBorder: OutlineInputBorder(
-                  borderSide: BorderSide(color: Colors.blue, width: 2),
-                ),
-                                        suffixIcon: Icon(Icons.phone_rounded),
-                                         
-                                        //labelStyle: TextStyle(color: Colors.amber),
-                                        labelText: 'Telefon',
-                                        hintText: 'Telefon numaranızı girin...',
-                                        hintStyle: TextStyle(
-                                          color: Colors.blue,
-                                        ),
-                                        
-                                      ),
-                                    ),
-        ),
-        SizedBox(height: 140,)
-      ],
-    )
+    Login(),
   ];
 
   _onchanged(int index) {
@@ -144,7 +96,13 @@ class _PageviewingState extends State<Pageviewing> {
                               duration: Duration(milliseconds: 500),
                               child: Anasayfa(),
                             ),
-                          ),
+                          ), /*() {
+                            Navigator.of(context)
+                                .push(MaterialPageRoute(builder: (c) => OTP(
+                                  phone: tex, // -?
+                                  codeDigits: dialCodeDigits
+                                )));
+                          },*/
                           child: Text(
                             "Başla",
                             style: TextStyle(

@@ -1,16 +1,16 @@
 //import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-
+import 'package:ippd/home/home.dart';
 import 'package:animated_splash_screen/animated_splash_screen.dart';
 import 'package:ippd/pageview/pageview_screen.dart';
 import 'package:page_transition/page_transition.dart';
-//import 'package:firebase_core/firebase_core.dart';
+import 'package:firebase_core/firebase_core.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
 
-  //await Firebase.initializeApp();
+  await Firebase.initializeApp();
 
   SystemChrome.setPreferredOrientations(<DeviceOrientation>[
     DeviceOrientation.portraitUp,

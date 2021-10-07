@@ -23,7 +23,7 @@ class _HomeState extends State<Home> {
     await Future.delayed(Duration(seconds: 2));
   }
 
-  double bmI = 0.0;
+  double bmI = 27.0;
 
   @override
   Widget build(BuildContext context) {
@@ -477,11 +477,12 @@ _dialogalert1(context) {
     closeIcon: Container(
         decoration: BoxDecoration(
           shape: BoxShape.circle,
-          border: Border.all(width: 3, color: Colors.blue),
+          border: Border.all(width: 3, color: Colors.red),
         ),
         padding: EdgeInsets.all(2),
-        child: Icon(Icons.close_outlined, size: 25, color: Colors.blue)),
+        child: Icon(Icons.close_outlined, size: 25, color: Colors.red)),
     style: AlertStyle(
+      isButtonVisible: false,
       backgroundColor: Colors.blue.shade200,
       alertElevation: 10,
       alertPadding: EdgeInsets.all(10),

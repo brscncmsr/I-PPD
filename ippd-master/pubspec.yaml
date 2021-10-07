@@ -5,17 +5,20 @@ publish_to: 'none'
 version: 1.0.0+1
 
 environment:
-  sdk: ">=2.12.0 <=3.0.0"
+  sdk: ">=2.12.0 <3.0.0"
 
 dependencies:
   animated_splash_screen: ^1.1.0
+  basic_utils: ^3.6.1
   cloud_firestore: ^2.5.1
+  country_code_picker: ^2.0.2
   cupertino_icons: ^1.0.2
   cupertino_radio_choice: ^1.0.1+1
   firebase_auth: ^3.1.0
   firebase_core: ^1.6.0
 
   
+  firebase_storage: ^10.0.5
   flutter:
     sdk: flutter
   flutter_svg: ^0.22.0
@@ -31,6 +34,7 @@ dependencies:
   pinput: ^1.2.0
   rflutter_alert: ^2.0.4
   syncfusion_flutter_sliders: ^19.2.59
+  url_launcher: ^6.0.12
 
 dev_dependencies:
   flutter_test:
@@ -40,6 +44,37 @@ flutter:
   uses-material-design: true
 
   assets:
+    - assets/img/exercise/dag_durusu.png
+    - assets/img/exercise/duvarkay.png
+    - assets/img/exercise/comelme.png
+    - assets/img/exercise/dambılbukle.png
+    - assets/img/exercise/dizcok.png
+    - assets/img/exercise/olubocek.png
+    - assets/img/exercise/triceps.png
+    - assets/img/exercise/duvarit.png
+    - assets/img/exercise/avkopegi.png
+    - assets/img/exercise/kahraman.png
+    - assets/img/exercise/duvarotur.png
+    - assets/img/exercise/yanyat.png
+    - assets/img/exercise/gogusomuz.png
+    - assets/img/exercise/oturmusruh.png
+    - assets/img/exercise/ileriakciger.png
+    - assets/img/exercise/kopekpozu.png
+    - assets/img/exercise/kopru.png
+    - assets/img/exercise/ayaktadort.png
+    - assets/img/exercise/kolcember.png
+    - assets/img/exercise/cocukpozu.png
+    - assets/img/exercise/tekbacak.png
+    - assets/img/exercise/yalanci.png
+    - assets/img/exercise/treepose.png
+    - assets/img/exercise/catcow.png
+    - assets/img/exercise/seatedneck.png
+    - assets/img/exercise/sfenks.png
+    - assets/img/exercise/seatedneck.png
+    - assets/img/exercise/oturyanviraj.png
+    - assets/img/exercise/duvarcomelmesi.png
+    - assets/img/exercise/cesetpozu.png
+
     - assets/img/nurse.png
     - assets/img/nurse2.png
     - assets/img/nurse3.png

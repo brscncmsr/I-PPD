@@ -7,7 +7,6 @@ import 'package:ippd/pages/homepage.dart';
 import 'package:ippd/pages/notifications.dart';
 import 'package:ippd/pages/profil.dart';
 import 'package:line_icons/line_icons.dart';
-
 class Anasayfa extends StatefulWidget {
   Anasayfa({Key? key}) : super(key: key);
 
@@ -22,7 +21,8 @@ class _AnasayfaState extends State<Anasayfa> {
 
   int _selectedIndex = 0;
 
-  static List<Widget> _widgetOptions = <Widget>[
+  static List<Widget> _widgetOptions = <Widget>
+  [
     Home(),
     Exercise(),
     Bildirim(),
@@ -89,20 +89,22 @@ class _AnasayfaState extends State<Anasayfa> {
             ),
           ),
         ),
-        appBar: AppBar(
-          backgroundColor: Colors.blue.shade200,
-          title: Center(
-            child: Text(
-              "I-PPD",
-              style: GoogleFonts.patrickHand(
-                  color: Colors.pink.shade900,
-                  fontSize: 35,
-                  fontWeight: FontWeight.w600),
-            ),
-          ),
+        appBar:
+    AppBar(
+      backgroundColor: Colors.blue.shade200,
+      title: Center(
+        child: Text(
+          "I-PPD",
+          style: GoogleFonts.patrickHand(
+              color: Colors.pink.shade900,
+              fontSize: 35,
+              fontWeight: FontWeight.w600),
         ),
       ),
+    ),
+      ),
     );
+    
   }
 }
 

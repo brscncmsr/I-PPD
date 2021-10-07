@@ -290,21 +290,23 @@ class _BmIState extends State<BmI> {
       sugges3 = "";
       _imgn = "assets/img/nurse3.png";
       if (age >= 19 && age < 30 && select == 0) {
-        sugges1 = "Obezite riskiniz yaşınız baz alındığında %41 oranındadır.";
+        sugges1 =
+            "Obezite riskiniz cinsiyetiniz ve yaşınız baz alındığında %41 oranındadır.";
         sugges2 =
             "Daha sağlıklı ve kaliteli bir yaşam için uygulamamızda bulunan yaşınıza uygun egzersiz planlarını kontrol edebilirsiniz.";
       } else if (age >= 19 && age < 30 && select == 1) {
-        sugges1 = "Obezite riskiniz yaşınız baz alındığında %20.5 oranındadır.";
+        sugges1 =
+            "Obezite riskiniz cinsiyetiniz ve yaşınız baz alındığında %20.5 oranındadır.";
         sugges2 =
             "Daha sağlıklı ve kaliteli bir yaşam için uygulamamızda bulunan yaşınıza uygun egzersiz planlarını kontrol edebilirsiniz.";
       } else if (age >= 30 && select == 1) {
         sugges1 =
-            "Obezite riskiniz yaşınız baz alındığında %20.5 oranından fazladır.";
+            "Obezite riskiniz cinsiyetiniz ve  yaşınız baz alındığında %20.5 oranından fazladır.";
         sugges2 =
             "Daha sağlıklı ve kaliteli bir yaşam için uygulamamızda bulunan yaşınıza uygun egzersiz planlarını kontrol edebilirsiniz.";
       } else if (age >= 30 && select == 0) {
         sugges1 =
-            "Obezite riskiniz yaşınız baz alındığında %41 oranından fazladır.";
+            "Obezite riskiniz cinsiyetiniz ve yaşınız baz alındığında %41 oranından fazladır.";
         sugges2 =
             "Daha sağlıklı ve kaliteli bir yaşam için uygulamamızda bulunan yaşınıza uygun egzersiz planlarını kontrol edebilirsiniz.";
       }

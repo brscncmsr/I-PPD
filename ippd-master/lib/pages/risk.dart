@@ -242,7 +242,7 @@ class _BloodState extends State<Blood> {
 
   void calcRisk() {
     if (mrh == 1 && frh == 0) {
-      _rsttext = "Gebelik Sürecinde Kan Uyuşmazlığı Riski olabilir.";
+      _rsttext = "Gebelik Sürecinde Kan Uyuşmazlığı Riski vardır.";
     } else {
       _rsttext = "Herhangi bir Kan Uyuşmazlığı Riskiniz Yoktur.";
     }

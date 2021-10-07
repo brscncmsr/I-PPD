@@ -137,7 +137,7 @@ class _BmHState extends State<BmH> {
                     RaisedButton(
                       color: Colors.blue.shade200,
                       child: Text(
-                        "Aktiflik Seviyesi Nedir ?",
+                        "Aktiflik Seviyesi\nNedir ?",
                         style: TextStyle(color: Colors.white),
                       ),
                       onPressed: () => _dialogalert(context),
@@ -246,11 +246,13 @@ class _BmHState extends State<BmH> {
       closeIcon: Container(
           decoration: BoxDecoration(
             shape: BoxShape.circle,
-            border: Border.all(width: 3, color: Colors.blue),
+            border: Border.all(width: 3, color: Colors.red),
           ),
           padding: EdgeInsets.all(2),
-          child: Icon(Icons.close_outlined, size: 25, color: Colors.blue)),
+          child: Icon(Icons.close_outlined, size: 25, color: Colors.red)),
+        
       style: AlertStyle(
+        isButtonVisible: false,
         backgroundColor: Colors.blue.shade200,
         alertElevation: 10,
         alertPadding: EdgeInsets.all(10),
@@ -272,8 +274,8 @@ class _BmHState extends State<BmH> {
         children: <Widget>[
           Container(
               margin: EdgeInsets.fromLTRB(5, 25, 5, 10),
-              width: MediaQuery.of(context).size.height * 0.60,
-              height: MediaQuery.of(context).size.height * 0.75,
+              width: MediaQuery.of(context).size.height * 0.6,
+              height: MediaQuery.of(context).size.height * 0.9,
               child: Card(
                 color: Colors.blue.shade100,
                 shadowColor: Colors.black,
