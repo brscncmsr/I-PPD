@@ -37,34 +37,94 @@ class _BmHState extends State<BmH> {
               children: <Widget>[
                 Padding(padding: EdgeInsets.all(10.0)),
                 SizedBox(height: 20),
-                TextField(
-                  controller: _heightController,
-                  keyboardType: TextInputType.number,
-                  decoration: InputDecoration(
-                    labelText: 'Boy cm cinsinden',
-                    icon: Icon(Icons.trending_up),
-                  ),
-                ),
+                SizedBox(
+                          width: 300,
+                          child: TextField( 
+                            maxLength: 3,
+                            controller: _heightController,
+                            keyboardType: TextInputType.number,
+                            decoration: InputDecoration(
+                              //counterText: 'max değeri geçmeyiniz',
+                              helperText: 'Örneğin 160 olarak girebilirsiniz',
+                              icon: Container(
+                                                                    width: MediaQuery.of(context)
+                                                                            .size
+                                                                            .height *
+                                                                        0.05,
+                                                                    height: MediaQuery.of(context)
+                                                                            .size
+                                                                            .height *
+                                                                        0.05,
+                                                                    child: Image(
+              fit: BoxFit.fill,
+              image: AssetImage('assets/img/height.png'))),
+                              labelText: 'Boy cm cinsinden',
+                              border: OutlineInputBorder(
+                                borderRadius: BorderRadius.all(Radius.circular(10)),
+                               ),
+                            ),
+                          ),
+                        ),
                 Padding(padding: EdgeInsets.all(10.0)),
                 SizedBox(height: 20),
-                TextField(
-                  controller: _weightController,
-                  keyboardType: TextInputType.number,
-                  decoration: InputDecoration(
-                    labelText: 'Kilo kg cinsinden',
-                    icon: Icon(Icons.line_weight),
-                  ),
-                ),
+                SizedBox(
+                          width: 300,
+                          child: TextField( 
+                            maxLength: 3,
+                            controller: _weightController,
+                            keyboardType: TextInputType.number,
+                            decoration: InputDecoration(
+                              //counterText: 'max değeri geçmeyiniz',
+                              helperText: 'Örneğin 80 olarak girebilirsiniz',
+                              icon: Container(
+                                                                    width: MediaQuery.of(context)
+                                                                            .size
+                                                                            .height *
+                                                                        0.05,
+                                                                    height: MediaQuery.of(context)
+                                                                            .size
+                                                                            .height *
+                                                                        0.05,
+                                                                    child: Image(
+              fit: BoxFit.fill,
+              image: AssetImage('assets/img/weight.png'))),
+                              labelText: 'Kilo kg cinsinden',
+                              border: OutlineInputBorder(
+                                borderRadius: BorderRadius.all(Radius.circular(10)),
+                               ),
+                            ),
+                          ),
+                        ),
                 Padding(padding: EdgeInsets.all(10.0)),
                 SizedBox(height: 20),
-                TextField(
-                  controller: _ageController,
-                  keyboardType: TextInputType.number,
-                  decoration: InputDecoration(
-                    labelText: 'Yaşınızı Girin',
-                    icon: Icon(Icons.line_weight),
-                  ),
-                ),
+                SizedBox(
+                          width: 300,
+                          child: TextField( 
+                            maxLength: 2,
+                            controller: _ageController,
+                            keyboardType: TextInputType.number,
+                            decoration: InputDecoration(
+                              //counterText: 'max değeri geçmeyiniz',
+                              helperText: 'Örneğin 40 olarak girebilirsiniz',
+                              icon: Container(
+                                                                    width: MediaQuery.of(context)
+                                                                            .size
+                                                                            .height *
+                                                                        0.05,
+                                                                    height: MediaQuery.of(context)
+                                                                            .size
+                                                                            .height *
+                                                                        0.05,
+                                                                    child: Image(
+              fit: BoxFit.fill,
+              image: AssetImage('assets/img/age.png'))),
+                              labelText: 'Yaşınız',
+                              border: OutlineInputBorder(
+                                borderRadius: BorderRadius.all(Radius.circular(10)),
+                               ),
+                            ),
+                          ),
+                        ),
                 Padding(padding: EdgeInsets.all(10.0)),
                 SizedBox(height: 20),
                 GroupButton(
@@ -116,35 +176,69 @@ class _BmHState extends State<BmH> {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    RaisedButton(
-                      color: Colors.blue.shade200,
-                      child: Text(
-                        "Hesapla",
-                        style: TextStyle(color: Colors.white),
-                      ),
+                    FlatButton(
+                                        color: Colors.blue.shade300,
+                                        shape: RoundedRectangleBorder(
+                                          side: BorderSide(
+                                              width: 3,
+                                              color: Colors.blue,
+                                              style: BorderStyle.solid),
+                                          borderRadius: BorderRadius.all(
+                                              Radius.circular(10)),
+                                        ),
+                                        child: Text(
+                                          "Hesapla",
+                                          style: GoogleFonts.patrickHand(
+                                              color: Colors.white60,
+                                              fontWeight: FontWeight.bold,
+                                              fontSize: 21),
+                                        ),
                       onPressed: calculateBMI,
                     ),
                     SizedBox(width: 10),
-                    RaisedButton(
-                      color: Colors.blue.shade200,
-                      child: Text(
-                        "Temizle",
-                        style: TextStyle(color: Colors.white),
-                      ),
+                    FlatButton(
+                                        color: Colors.blue.shade300,
+                                        shape: RoundedRectangleBorder(
+                                          side: BorderSide(
+                                              width: 3,
+                                              color: Colors.blue,
+                                              style: BorderStyle.solid),
+                                          borderRadius: BorderRadius.all(
+                                              Radius.circular(10)),
+                                        ),
+                                        child: Text(
+                                          "Temizle",
+                                          style: GoogleFonts.patrickHand(
+                                              color: Colors.white60,
+                                              fontWeight: FontWeight.bold,
+                                              fontSize: 21),
+                                        ),
                       onPressed: _clear,
                     ),
-                    SizedBox(width: 10),
-                    RaisedButton(
-                      color: Colors.blue.shade200,
-                      child: Text(
-                        "Aktiflik Seviyesi\nNedir ?",
-                        style: TextStyle(color: Colors.white),
-                      ),
-                      onPressed: () => _dialogalert(context),
-                    ),
+                    SizedBox(height: 15),
+                    
                   ],
                 ),
-                SizedBox(height: 15),
+                SizedBox(height: 10),
+                FlatButton(
+                                        color: Colors.blue.shade300,
+                                        shape: RoundedRectangleBorder(
+                                          side: BorderSide(
+                                              width: 3,
+                                              color: Colors.blue,
+                                              style: BorderStyle.solid),
+                                          borderRadius: BorderRadius.all(
+                                              Radius.circular(10)),
+                                        ),
+                                        child: Text(
+                                          "Aktiflik Seviyesi\n       Nedir?",
+                                          style: GoogleFonts.patrickHand(
+                                              color: Colors.white60,
+                                              fontWeight: FontWeight.bold,
+                                              fontSize: 18),
+                                        ),
+                      onPressed: () => _dialogalert(context),
+                    ),
                 Text(
                   bmh == null ? "Değeri Gir" : _bmhtext,
                   style: TextStyle(

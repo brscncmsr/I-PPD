@@ -1,7 +1,9 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get_connect/http/src/utils/utils.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:group_button/group_button.dart';
+import 'package:ippd/home/login.dart';
 import 'package:ippd/pages/exercise.dart';
 import 'package:ippd/pages/func.dart';
 
@@ -12,26 +14,25 @@ class BmI extends StatefulWidget {
   _BmIState createState() => _BmIState();
 }
 
+final TextEditingController _heightController = TextEditingController();
+final TextEditingController _weightController = TextEditingController();
+final TextEditingController _bellyController = TextEditingController();
+final TextEditingController _ageController = TextEditingController();
+double _result = 0.0;
+int select = 0;
+double _fontsize = 14;
+String _textR = "";
+String _img = "assets/img/MBMI-0.png";
+String _imgn = "assets/img/nurse3.png";
+String sugges1 = "";
+String sugges2 = "";
+String sugges3 = "";
+bool isobes = false;
+bool isrisky = false;
+bool checkbelly = false;
+Color _colortext = Colors.pink.shade900;
+
 class _BmIState extends State<BmI> {
-  final TextEditingController _heightController = TextEditingController();
-  final TextEditingController _weightController = TextEditingController();
-  final TextEditingController _bellyController = TextEditingController();
-  final TextEditingController _ageController = TextEditingController();
-
-  double _result = 0.0;
-  int select = 0;
-  double _fontsize = 14;
-  String _textR = "";
-  String _img = "assets/img/MBMI-0.png";
-  String _imgn = "assets/img/nurse3.png";
-  String sugges1 = "";
-  String sugges2 = "";
-  String sugges3 = "";
-  bool isobes = false;
-  bool isrisky = false;
-  bool checkbelly = false;
-  Color _colortext = Colors.pink.shade900;
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -47,43 +48,98 @@ class _BmIState extends State<BmI> {
             child: Column(
               children: <Widget>[
                 Padding(padding: EdgeInsets.all(10.0)),
-                SizedBox(height: 20),
-                TextField(
-                  controller: _heightController,
-                  keyboardType: TextInputType.number,
-                  decoration: InputDecoration(
-                    labelText: 'Boy cm cinsinden',
-                    icon: Icon(Icons.trending_up),
+                SizedBox(
+                  width: 300,
+                  child: TextField(
+                    maxLength: 3,
+                    controller: _heightController,
+                    keyboardType: TextInputType.number,
+                    decoration: InputDecoration(
+                      //counterText: 'max değeri geçmeyiniz',
+                      helperText: 'Örneğin 160 olarak girebilirsiniz',
+                      icon: Container(
+                          width: MediaQuery.of(context).size.height * 0.05,
+                          height: MediaQuery.of(context).size.height * 0.05,
+                          child: Image(
+                              fit: BoxFit.fill,
+                              image: AssetImage('assets/img/height.png'))),
+                      labelText: 'Boy cm cinsinden',
+                      border: OutlineInputBorder(
+                        borderRadius: BorderRadius.all(Radius.circular(10)),
+                      ),
+                    ),
                   ),
                 ),
                 Padding(padding: EdgeInsets.all(10.0)),
                 SizedBox(height: 20),
-                TextField(
-                  controller: _weightController,
-                  keyboardType: TextInputType.number,
-                  decoration: InputDecoration(
-                    labelText: 'Kilo kg cinsinden',
-                    icon: Icon(Icons.line_weight),
+                SizedBox(
+                  width: 300,
+                  child: TextField(
+                    maxLength: 3,
+                    controller: _weightController,
+                    keyboardType: TextInputType.number,
+                    decoration: InputDecoration(
+                      //counterText: 'max değeri geçmeyiniz',
+                      helperText: 'Örneğin 80 olarak girebilirsiniz',
+                      icon: Container(
+                          width: MediaQuery.of(context).size.height * 0.05,
+                          height: MediaQuery.of(context).size.height * 0.05,
+                          child: Image(
+                              fit: BoxFit.fill,
+                              image: AssetImage('assets/img/weight.png'))),
+                      labelText: 'Kilo kg cinsinden',
+                      border: OutlineInputBorder(
+                        borderRadius: BorderRadius.all(Radius.circular(10)),
+                      ),
+                    ),
                   ),
                 ),
                 Padding(padding: EdgeInsets.all(10.0)),
                 SizedBox(height: 20),
-                TextField(
-                  controller: _bellyController,
-                  keyboardType: TextInputType.number,
-                  decoration: InputDecoration(
-                    labelText: 'Bel Çevresi',
-                    icon: Icon(Icons.line_weight),
+                SizedBox(
+                  width: 300,
+                  child: TextField(
+                    maxLength: 2,
+                    controller: _bellyController,
+                    keyboardType: TextInputType.number,
+                    decoration: InputDecoration(
+                      //counterText: 'max değeri geçmeyiniz',
+                      helperText: 'Örneğin 40 olarak girebilirsiniz',
+                      icon: Container(
+                          width: MediaQuery.of(context).size.height * 0.05,
+                          height: MediaQuery.of(context).size.height * 0.05,
+                          child: Image(
+                              fit: BoxFit.fill,
+                              image: AssetImage('assets/img/bel.png'))),
+                      labelText: 'Bel cm cinsinden',
+                      border: OutlineInputBorder(
+                        borderRadius: BorderRadius.all(Radius.circular(10)),
+                      ),
+                    ),
                   ),
                 ),
                 Padding(padding: EdgeInsets.all(10.0)),
                 SizedBox(height: 20),
-                TextField(
-                  controller: _ageController,
-                  keyboardType: TextInputType.number,
-                  decoration: InputDecoration(
-                    labelText: 'Yaşınız',
-                    icon: Icon(Icons.line_weight),
+                SizedBox(
+                  width: 300,
+                  child: TextField(
+                    maxLength: 2,
+                    controller: _ageController,
+                    keyboardType: TextInputType.number,
+                    decoration: InputDecoration(
+                      //counterText: 'max değeri geçmeyiniz',
+                      helperText: 'Örneğin 40 olarak girebilirsiniz',
+                      icon: Container(
+                          width: MediaQuery.of(context).size.height * 0.05,
+                          height: MediaQuery.of(context).size.height * 0.05,
+                          child: Image(
+                              fit: BoxFit.fill,
+                              image: AssetImage('assets/img/age.png'))),
+                      labelText: 'Yaşınız',
+                      border: OutlineInputBorder(
+                        borderRadius: BorderRadius.all(Radius.circular(10)),
+                      ),
+                    ),
                   ),
                 ),
                 Padding(padding: EdgeInsets.all(10.0)),
@@ -208,129 +264,131 @@ class _BmIState extends State<BmI> {
         ));
   }
 
-  void calculateBMI() {
-    double height = double.parse(_heightController.text) / 100;
-    double weight = double.parse(_weightController.text);
-    double belly = double.parse(_bellyController.text);
-    double age = double.parse(_ageController.text);
-
-    double heightSquare = height * height;
-    double result = weight / heightSquare;
-
-    _result = result;
-    if (result < 18.5) {
-      _textR = "Zayıf";
-      _img = "assets/img/MBMI-1.png";
-      isobes = false;
-      isrisky = true;
-      checkbelly = true;
-      _colortext = Colors.green.shade300;
-    } else if (result >= 18.5 && result <= 24.9) {
-      _textR = "Normal";
-      _img = "assets/img/MBMI-2.png";
-      isrisky = true;
-      checkbelly = true;
-      _colortext = Colors.green.shade500;
-    } else if (result >= 25 && result <= 29.9) {
-      _textR = "Fazla Kilolu";
-      _img = "assets/img/MBMI-3.png";
-      isrisky = true;
-      checkbelly = true;
-      _colortext = Colors.orange.shade500;
-    } else if (result >= 30 && result <= 34.9) {
-      _textR = "Obez";
-      _img = "assets/img/MBMI-4.png";
-      isobes = true;
-      isrisky = false;
-      checkbelly = true;
-      _colortext = Colors.orange.shade800;
-    } else if (result >= 35 && result <= 39.9) {
-      _textR = "Ağır Obez";
-      _img = "assets/img/MBMI-5.png";
-      isobes = true;
-      isrisky = false;
-      checkbelly = false;
-      _colortext = Colors.red.shade600;
-    } else if (result >= 40) {
-      _textR = "Aşırı Obez";
-      _img = "assets/img/MBMI-6.png";
-      isobes = true;
-      isrisky = false;
-      checkbelly = false;
-      _colortext = Colors.red.shade900;
-    }
-
-    if (isobes) {
-      if (result < 18.5) {
-        sugges1 =
-            "Beslenme durumunuzun değerlendirilmesi için diyetisyene danışınız.";
-        sugges2 = "";
-      }
-      if (result >= 30 && result <= 39.9) {
-        _imgn = "assets/img/nurse2.png";
-        sugges1 =
-            "Beslenme durumunuzun değerlendirilmesi için diyetisyene danışınız.";
-        sugges2 =
-            "Fiziksel aktivite için uygulamamızda bulunan yaşınıza uygun egzersiz planlarına erişim sağlayabilirsiniz.";
-        sugges3 = "İnancını Değil Kilonu Kaybet";
-        _fontsize = 14;
-      }
-      if (result >= 40) {
-        _imgn = "assets/img/nurse2.png";
-        sugges1 =
-            "Beslenme durumunuzun değerlendirilmesi için diyetisyene danışınız.";
-        sugges2 =
-            "Fiziksel aktivite için uygulamamızda bulunan yaşınıza uygun egzersiz planlarına erişim sağlayabilirsiniz.";
-        sugges3 =
-            "Endokrinoloji uzmanına danışınız.\nEn yakın sağlık kurumuna gidiniz.";
-        _fontsize = 12;
-      }
-    }
-    if (isrisky) {
-      sugges3 = "";
-      _imgn = "assets/img/nurse3.png";
-      if (age >= 19 && age < 30 && select == 0) {
-        sugges1 =
-            "Obezite riskiniz cinsiyetiniz ve yaşınız baz alındığında %41 oranındadır.";
-        sugges2 =
-            "Daha sağlıklı ve kaliteli bir yaşam için uygulamamızda bulunan yaşınıza uygun egzersiz planlarını kontrol edebilirsiniz.";
-      } else if (age >= 19 && age < 30 && select == 1) {
-        sugges1 =
-            "Obezite riskiniz cinsiyetiniz ve yaşınız baz alındığında %20.5 oranındadır.";
-        sugges2 =
-            "Daha sağlıklı ve kaliteli bir yaşam için uygulamamızda bulunan yaşınıza uygun egzersiz planlarını kontrol edebilirsiniz.";
-      } else if (age >= 30 && select == 1) {
-        sugges1 =
-            "Obezite riskiniz cinsiyetiniz ve  yaşınız baz alındığında %20.5 oranından fazladır.";
-        sugges2 =
-            "Daha sağlıklı ve kaliteli bir yaşam için uygulamamızda bulunan yaşınıza uygun egzersiz planlarını kontrol edebilirsiniz.";
-      } else if (age >= 30 && select == 0) {
-        sugges1 =
-            "Obezite riskiniz cinsiyetiniz ve yaşınız baz alındığında %41 oranından fazladır.";
-        sugges2 =
-            "Daha sağlıklı ve kaliteli bir yaşam için uygulamamızda bulunan yaşınıza uygun egzersiz planlarını kontrol edebilirsiniz.";
-      }
-    }
-    if (checkbelly) {
-      if (belly > 100 && select == 1) {
-        sugges1 =
-            "Beslenme durumunuzun değerlendirilmesi için diyetisyene danışınız.";
-        sugges2 =
-            "Fiziksel aktivite için uygulamamızda bulunan yaşınıza uygun egzersiz planlarına erişim sağlayabilirsiniz.";
-      } else if (age > 90 && select == 0) {
-        sugges1 =
-            "Beslenme durumunuzun değerlendirilmesi için diyetisyene danışınız.";
-        sugges2 =
-            "Fiziksel aktivite için uygulamamızda bulunan yaşınıza uygun egzersiz planlarına erişim sağlayabilirsiniz.";
-      }
-    }
-    setState(() {});
-  }
-
   void _clear() {
     setState(() {
       _weightController.clear();
       _heightController.clear();
     });
   }
+}
+
+void calculateBMI() {
+  double height = double.parse(_heightController.text) / 100;
+  double weight = double.parse(_weightController.text);
+  double belly = double.parse(_bellyController.text);
+  double age = double.parse(_ageController.text);
+
+  double heightSquare = height * height;
+  double result = weight / heightSquare;
+
+  _result = result;
+  if (result < 18.5) {
+    _textR = "Zayıf";
+    _img = "assets/img/MBMI-1.png";
+    isobes = false;
+    isrisky = true;
+    checkbelly = true;
+    _colortext = Colors.green.shade300;
+  } else if (result >= 18.5 && result <= 24.9) {
+    _textR = "Normal";
+    _img = "assets/img/MBMI-2.png";
+    isrisky = true;
+    checkbelly = true;
+    _colortext = Colors.green.shade500;
+  } else if (result >= 25 && result <= 29.9) {
+    _textR = "Fazla Kilolu";
+    _img = "assets/img/MBMI-3.png";
+    isrisky = true;
+    checkbelly = true;
+    _colortext = Colors.orange.shade500;
+  } else if (result >= 30 && result <= 34.9) {
+    _textR = "Obez";
+    _img = "assets/img/MBMI-4.png";
+    isobes = true;
+    isrisky = false;
+    checkbelly = true;
+    _colortext = Colors.orange.shade800;
+  } else if (result >= 35 && result <= 39.9) {
+    _textR = "Ağır Obez";
+    _img = "assets/img/MBMI-5.png";
+    isobes = true;
+    isrisky = false;
+    checkbelly = false;
+    _colortext = Colors.red.shade600;
+  } else if (result >= 40) {
+    _textR = "Aşırı Obez";
+    _img = "assets/img/MBMI-6.png";
+    isobes = true;
+    isrisky = false;
+    checkbelly = false;
+    _colortext = Colors.red.shade900;
+  }
+
+  if (isobes) {
+    if (result < 18.5) {
+      sugges1 =
+          "Beslenme durumunuzun değerlendirilmesi için diyetisyene danışınız.";
+      sugges2 = "";
+    }
+    if (result >= 30 && result <= 39.9) {
+      _imgn = "assets/img/nurse2.png";
+      sugges1 =
+          "Beslenme durumunuzun değerlendirilmesi için diyetisyene danışınız.";
+      sugges2 =
+          "Fiziksel aktivite için uygulamamızda bulunan yaşınıza uygun egzersiz planlarına erişim sağlayabilirsiniz.";
+      sugges3 = "İnancını Değil Kilonu Kaybet";
+      _fontsize = 14;
+    }
+    if (result >= 40) {
+      _imgn = "assets/img/nurse2.png";
+      sugges1 =
+          "Beslenme durumunuzun değerlendirilmesi için diyetisyene danışınız.";
+      sugges2 =
+          "Fiziksel aktivite için uygulamamızda bulunan yaşınıza uygun egzersiz planlarına erişim sağlayabilirsiniz.";
+      sugges3 =
+          "Endokrinoloji uzmanına danışınız.\nEn yakın sağlık kurumuna gidiniz.";
+      _fontsize = 12;
+    }
+  }
+  if (isrisky) {
+    sugges3 = "";
+    _imgn = "assets/img/nurse3.png";
+    if (age >= 19 && age < 30 && select == 0) {
+      sugges1 =
+          "Obezite riskiniz cinsiyetiniz ve yaşınız baz alındığında %41 oranındadır.";
+      sugges2 =
+          "Daha sağlıklı ve kaliteli bir yaşam için uygulamamızda bulunan yaşınıza uygun egzersiz planlarını kontrol edebilirsiniz.";
+    } else if (age >= 19 && age < 30 && select == 1) {
+      sugges1 =
+          "Obezite riskiniz cinsiyetiniz ve yaşınız baz alındığında %20.5 oranındadır.";
+      sugges2 =
+          "Daha sağlıklı ve kaliteli bir yaşam için uygulamamızda bulunan yaşınıza uygun egzersiz planlarını kontrol edebilirsiniz.";
+    } else if (age >= 30 && select == 1) {
+      sugges1 =
+          "Obezite riskiniz cinsiyetiniz ve yaşınız baz alındığında %20.5 oranından fazladır.";
+      sugges2 =
+          "Daha sağlıklı ve kaliteli bir yaşam için uygulamamızda bulunan yaşınıza uygun egzersiz planlarını kontrol edebilirsiniz.";
+    } else if (age >= 30 && select == 0) {
+      sugges1 =
+          "Obezite riskiniz cinsiyetiniz ve yaşınız baz alındığında %41 oranından fazladır.";
+      sugges2 =
+          "Daha sağlıklı ve kaliteli bir yaşam için uygulamamızda bulunan yaşınıza uygun egzersiz planlarını kontrol edebilirsiniz.";
+    }
+  }
+  if (checkbelly) {
+    if (belly > 100 && select == 1) {
+      sugges1 =
+          "Beslenme durumunuzun değerlendirilmesi için diyetisyene danışınız.";
+      sugges2 =
+          "Fiziksel aktivite için uygulamamızda bulunan yaşınıza uygun egzersiz planlarına erişim sağlayabilirsiniz.";
+    } else if (age > 90 && select == 0) {
+      sugges1 =
+          "Beslenme durumunuzun değerlendirilmesi için diyetisyene danışınız.";
+      sugges2 =
+          "Fiziksel aktivite için uygulamamızda bulunan yaşınıza uygun egzersiz planlarına erişim sağlayabilirsiniz.";
+    }
+  }
+
+  FirebaseFirestore.instance.collection("bmi").doc(user!.uid).set(
+      {"result": _result, "yas": _ageController.text, "userid": user!.uid});
 }

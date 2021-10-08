@@ -29,14 +29,34 @@ class _WaterState extends State<Water> {
           children: <Widget>[
             Padding(padding: EdgeInsets.all(10.0)),
             SizedBox(height: 20),
-            TextField(
-              controller: _weightController,
-              keyboardType: TextInputType.number,
-              decoration: InputDecoration(
-                labelText: 'Kilo kg cinsinden',
-                icon: Icon(Icons.line_weight),
-              ),
-            ),
+            SizedBox(
+                          width: 300,
+                          child: TextField( 
+                            maxLength: 3,
+                            controller: _weightController,
+                            keyboardType: TextInputType.number,
+                            decoration: InputDecoration(
+                              //counterText: 'max değeri geçmeyiniz',
+                              helperText: 'Örneğin 80 olarak girebilirsiniz',
+                              icon: Container(
+                                                                    width: MediaQuery.of(context)
+                                                                            .size
+                                                                            .height *
+                                                                        0.05,
+                                                                    height: MediaQuery.of(context)
+                                                                            .size
+                                                                            .height *
+                                                                        0.05,
+                                                                    child: Image(
+              fit: BoxFit.fill,
+              image: AssetImage('assets/img/weight.png'))),
+                              labelText: 'Kilo kg cinsinden',
+                              border: OutlineInputBorder(
+                                borderRadius: BorderRadius.all(Radius.circular(10)),
+                               ),
+                            ),
+                          ),
+                        ),
             Padding(padding: EdgeInsets.all(10.0)),
             SizedBox(height: 20),
             Row(

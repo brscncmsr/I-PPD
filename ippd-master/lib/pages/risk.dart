@@ -55,11 +55,11 @@ class _RiskState extends State<Risk> {
                 color: Colors.blue.shade500,
                 child: FlatButton(
                     onPressed: () {
-                      Navigator.push(
-                          context,
-                          PageTransition(
-                              child: BmI(),
-                              type: PageTransitionType.bottomToTop));
+                        Navigator.push(
+                            context,
+                            PageTransition(
+                                child: BmI(),
+                                type: PageTransitionType.bottomToTop));
                     },
                     child: Row(
                       children: [
@@ -242,7 +242,7 @@ class _BloodState extends State<Blood> {
 
   void calcRisk() {
     if (mrh == 1 && frh == 0) {
-      _rsttext = "Gebelik Sürecinde Kan Uyuşmazlığı Riski vardır.";
+      _rsttext = "Gebelik Sürecinde Kan Uyuşmazlığı Riski olabilir.";
     } else {
       _rsttext = "Herhangi bir Kan Uyuşmazlığı Riskiniz Yoktur.";
     }

@@ -230,7 +230,7 @@ class ExerciseState extends State<Exercise> {
                                                                     child: Image(
                                                                         fit: BoxFit
                                                                             .fill,
-                                                                        image: AssetImage(
+                                                                        image: NetworkImage(
                                                                             '${data['image']}'))),
                                                               ],
                                                             ),
