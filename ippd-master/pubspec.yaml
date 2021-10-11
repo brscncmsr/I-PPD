@@ -17,6 +17,7 @@ dependencies:
   firebase_auth: ^3.1.0
   firebase_core: ^1.6.0
 
+
   
   firebase_storage: ^10.0.5
   flutter:
@@ -42,6 +43,7 @@ dev_dependencies:
 
 flutter:
   uses-material-design: true
+ 
 
   assets:
     - assets/img/exercise/dag_durusu.png
@@ -117,3 +119,4 @@ flutter:
     - family: WorkSansMedium
       fonts:
         - asset: assets/fonts/Work_Sans/WorkSans-Medium.ttf
+

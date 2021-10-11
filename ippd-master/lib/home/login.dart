@@ -16,7 +16,7 @@ User? user = FirebaseAuth.instance.currentUser;
 
 String dialCodeDigits = '';
 TextEditingController _controller = TextEditingController();
-String tex =  _controller.text;
+String tex = _controller.text;
 
 class _LoginState extends State<Login> {
   @override
@@ -26,8 +26,7 @@ class _LoginState extends State<Login> {
       children: [
         Container(
           width: 250,
-          child: Text(
-              "Giriş Yapabilmeniz için telefon numaranızı girmelisiniz ve ardından gelen sms ile numaranızı doğruladığınızda giriş yapabilirsiniz.",
+          child: Text("Sizi Tanıyabilmemiz İçin Adınızı ve Soyadınızı Giriniz",
               style: GoogleFonts.amaticSc(
                 height: 1.5,
                 fontWeight: FontWeight.normal,
@@ -36,24 +35,12 @@ class _LoginState extends State<Login> {
               )),
         ),
         SizedBox(
-            width: 400,
-            height: 60,
-            child: CountryCodePicker(
-              onChanged: (country) {
-                setState(() {
-                  dialCodeDigits = country.dialCode!;
-                });
-              },
-              initialSelection: 'TR',
-              showCountryOnly: false,
-              showOnlyCountryWhenClosed: false,
-              favorite: ["TR","AZ"],
-            )),
+          width: 400,
+          height: 60,
+        ),
         Container(
           width: 250,
           child: TextField(
-            maxLength: 12,
-            autocorrect: true,
             controller: _controller,
             keyboardType: TextInputType.number,
             decoration: InputDecoration(
@@ -67,31 +54,28 @@ class _LoginState extends State<Login> {
               enabledBorder: OutlineInputBorder(
                 borderSide: BorderSide(color: Colors.blue, width: 2),
               ),
-              suffixIcon: Icon(Icons.phone_rounded),
-              labelText: 'Telefon',
-              hintText: 'Telefon numaranızı girin...',
+              suffixIcon: Icon(Icons.person),
+              labelText: 'Ad ve Soyadı',
+              hintText: 'Adınızı ve Soyadınızı girin..',
               hintStyle: TextStyle(
                 color: Colors.blue,
               ),
               prefix: Padding(
                 padding: EdgeInsets.all(4),
-                child: Text(dialCodeDigits),
               ),
             ),
           ),
         ),
         FlatButton(
-                          onPressed:() {
-                            
-                          },
-                          child: Text(
-                            "Başla",
-                            style: TextStyle(
-                              color: Colors.white,
-                              fontSize: 20,
-                            ),
-                          ),
-                        )
+          onPressed: () {},
+          child: Text(
+            "Başla",
+            style: TextStyle(
+              color: Colors.white,
+              fontSize: 20,
+            ),
+          ),
+        )
       ],
     );
   }

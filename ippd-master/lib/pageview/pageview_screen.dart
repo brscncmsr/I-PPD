@@ -6,7 +6,6 @@ import 'package:ippd/home/otp.dart';
 import 'package:page_transition/page_transition.dart';
 import 'slider.dart';
 
-
 class Pageviewing extends StatefulWidget {
   @override
   _PageviewingState createState() => _PageviewingState();
@@ -96,7 +95,8 @@ class _PageviewingState extends State<Pageviewing> {
                               duration: Duration(milliseconds: 500),
                               child: Anasayfa(),
                             ),
-                          ), /*() {
+                          ),
+                          /*() {
                             Navigator.of(context)
                                 .push(MaterialPageRoute(builder: (c) => OTP(
                                   phone: tex, // -?

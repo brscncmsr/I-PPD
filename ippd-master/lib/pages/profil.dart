@@ -1,3 +1,4 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -23,6 +24,9 @@ class _ProfilState extends State<Profil> {
   String _height = "Boyunuzu Girin";
   String _weight = "Kilonuzu Girin";
   String _age = "Yaşınızı Girin";
+  double weightp = 0.0;
+  double heightp = 0.0;
+  double agep = 0.0;
 
   bool status1 = false;
   bool status2 = false;
@@ -351,6 +355,14 @@ class _ProfilState extends State<Profil> {
   }
 
   void getMenu() {
+    double weightp = double.parse(_weightController.text);
+    double heightp = double.parse(_heightController.text);
+    double agep = double.parse(_ageController.text);
+
+    FirebaseFirestore db = FirebaseFirestore.instance;
+    CollectionReference profile =
+        FirebaseFirestore.instance.collection("profile");
+
     _name = _nameController.text;
     _height = "Boyunuz ${_heightController.text}";
     _weight = "Kilonuz ${_weightController.text}";
@@ -360,6 +372,16 @@ class _ProfilState extends State<Profil> {
     status2 = false;
     status3 = false;
     status4 = false;
+
+    if (agep != 0 && weightp != 0 && heightp != 0) {
+      profile.add({
+        'name': _nameController.text,
+        'height': heightp,
+        'age': agep,
+        'weight': weightp,
+      });
+    }
+
     setState(() {});
   }
 }
