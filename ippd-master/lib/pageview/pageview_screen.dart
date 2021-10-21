@@ -18,6 +18,7 @@ User? user = FirebaseAuth.instance.currentUser;
 class _PageviewingState extends State<Pageviewing> {
   int _currentPage = 0;
   PageController _controller = PageController();
+  User? user = FirebaseAuth.instance.currentUser;
 
   List<Widget> _pages = [
     SliderPage(
@@ -120,6 +121,7 @@ class _PageviewingState extends State<Pageviewing> {
   }
 
   void checkSign() async {
+<<<<<<< HEAD
     FirebaseAuth.instance.idTokenChanges().listen((User? user) {
       if (user != null) {
         Navigator.push(
@@ -140,6 +142,28 @@ class _PageviewingState extends State<Pageviewing> {
       }
     });
 
+=======
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+
+    if (prefs.getString('email') != null) {
+      Navigator.push(
+        context,
+        PageTransition(
+          type: PageTransitionType.rightToLeft,
+          duration: Duration(milliseconds: 500),
+          child: Anasayfa(),
+        ),
+      );
+    } else
+      Navigator.push(
+        context,
+        PageTransition(
+          type: PageTransitionType.rightToLeft,
+          duration: Duration(milliseconds: 500),
+          child: LoginPage(),
+        ),
+      );
+>>>>>>> fa1d9c221ac000e65c82bcb548753806e550c8e1
     setState(() {});
   }
 }

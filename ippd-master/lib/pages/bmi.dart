@@ -41,8 +41,12 @@ class _BmIState extends State<BmI> {
     return Scaffold(
         resizeToAvoidBottomInset: false,
         appBar: AppBar(
+<<<<<<< HEAD
           title: Text('Vücut Kitle Endeksi',
               style: GoogleFonts.balooThambi(color: Colors.blue)),
+=======
+          title: Text('Vücut Kitle Endeksi',style:GoogleFonts.balooThambi(color:Colors.blue)),
+>>>>>>> fa1d9c221ac000e65c82bcb548753806e550c8e1
           centerTitle: true,
           backgroundColor: Colors.blue.shade200,
         ),
@@ -61,8 +65,12 @@ class _BmIState extends State<BmI> {
                     decoration: InputDecoration(
                       counterText: '',
                       helperText: 'Örneğin 160 olarak girebilirsiniz',
+<<<<<<< HEAD
                       helperStyle: GoogleFonts.patrickHand(
                           fontWeight: FontWeight.bold, fontSize: 18),
+=======
+                      helperStyle: GoogleFonts.patrickHand(fontWeight: FontWeight.bold,fontSize: 18),
+>>>>>>> fa1d9c221ac000e65c82bcb548753806e550c8e1
                       icon: Container(
                           width: MediaQuery.of(context).size.height * 0.05,
                           height: MediaQuery.of(context).size.height * 0.05,
@@ -88,8 +96,12 @@ class _BmIState extends State<BmI> {
                     decoration: InputDecoration(
                       counterText: '',
                       helperText: 'Örneğin 80 olarak girebilirsiniz',
+<<<<<<< HEAD
                       helperStyle: GoogleFonts.patrickHand(
                           fontWeight: FontWeight.bold, fontSize: 18),
+=======
+                      helperStyle: GoogleFonts.patrickHand(fontWeight: FontWeight.bold,fontSize: 18),
+>>>>>>> fa1d9c221ac000e65c82bcb548753806e550c8e1
                       icon: Container(
                           width: MediaQuery.of(context).size.height * 0.05,
                           height: MediaQuery.of(context).size.height * 0.05,
@@ -115,8 +127,12 @@ class _BmIState extends State<BmI> {
                     decoration: InputDecoration(
                       counterText: '',
                       helperText: 'Örneğin 40 olarak girebilirsiniz',
+<<<<<<< HEAD
                       helperStyle: GoogleFonts.patrickHand(
                           fontWeight: FontWeight.bold, fontSize: 18),
+=======
+                      helperStyle: GoogleFonts.patrickHand(fontWeight: FontWeight.bold,fontSize: 18),
+>>>>>>> fa1d9c221ac000e65c82bcb548753806e550c8e1
                       icon: Container(
                           width: MediaQuery.of(context).size.height * 0.05,
                           height: MediaQuery.of(context).size.height * 0.05,
@@ -142,8 +158,12 @@ class _BmIState extends State<BmI> {
                     decoration: InputDecoration(
                       counterText: '',
                       helperText: 'Örneğin 40 olarak girebilirsiniz',
+<<<<<<< HEAD
                       helperStyle: GoogleFonts.patrickHand(
                           fontWeight: FontWeight.bold, fontSize: 18),
+=======
+                      helperStyle: GoogleFonts.patrickHand(fontWeight: FontWeight.bold,fontSize: 18),
+>>>>>>> fa1d9c221ac000e65c82bcb548753806e550c8e1
                       icon: Container(
                           width: MediaQuery.of(context).size.height * 0.05,
                           height: MediaQuery.of(context).size.height * 0.05,
@@ -179,6 +199,7 @@ class _BmIState extends State<BmI> {
                   onSelected: (i, selected) => select = i,
                 ),
                 FlatButton(
+<<<<<<< HEAD
                   color: Colors.blue.shade300,
                   shape: RoundedRectangleBorder(
                     side: BorderSide(
@@ -194,6 +215,25 @@ class _BmIState extends State<BmI> {
                   ),
                   onPressed: () {},
                 ),
+=======
+                      color: Colors.blue.shade300,
+                      shape: RoundedRectangleBorder(
+                        side: BorderSide(
+                            width: 3,
+                            color: Colors.blue,
+                            style: BorderStyle.solid),
+                        borderRadius: BorderRadius.all(Radius.circular(10)),
+                      ),
+                      child: Text(
+                        "Bilgileri Getir",
+                        style: GoogleFonts.patrickHand(
+                            color: Colors.white60,
+                            fontWeight: FontWeight.bold,
+                            fontSize: 21),
+                      ),
+                      onPressed: (){},
+                    ),
+>>>>>>> fa1d9c221ac000e65c82bcb548753806e550c8e1
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
@@ -271,7 +311,11 @@ class _BmIState extends State<BmI> {
                     Column(
                       children: [
                         Text(
+<<<<<<< HEAD
                           _result == null ? "Değeri Gir" : _textR,
+=======
+                          _result == null ? "Değeri Gir": _textR,
+>>>>>>> fa1d9c221ac000e65c82bcb548753806e550c8e1
                           style: GoogleFonts.patrickHand(
                             color: _colortext,
                             fontSize: 19.4,
@@ -283,12 +327,17 @@ class _BmIState extends State<BmI> {
                         ),
                         AnimatedContainer(
                           duration: Duration(milliseconds: 500),
+<<<<<<< HEAD
                           width: _isInitialValue
                               ? MediaQuery.of(context).size.width * 0.1
                               : MediaQuery.of(context).size.width * 0.3,
                           height: _isInitialValue
                               ? MediaQuery.of(context).size.width * 0.2
                               : MediaQuery.of(context).size.width * 0.4,
+=======
+                          width: _isInitialValue ?MediaQuery.of(context).size.width * 0.1 : MediaQuery.of(context).size.width * 0.3,
+                          height: _isInitialValue ?MediaQuery.of(context).size.width * 0.2 : MediaQuery.of(context).size.width * 0.4,
+>>>>>>> fa1d9c221ac000e65c82bcb548753806e550c8e1
                           child: Text(
                             sugges1,
                             style: GoogleFonts.patrickHand(
@@ -329,7 +378,9 @@ class _BmIState extends State<BmI> {
   }
 }
 
+
 void calculateBMI() {
+
   double height = double.parse(_heightController.text) / 100;
   double weight = double.parse(_weightController.text);
   double belly = double.parse(_bellyController.text);

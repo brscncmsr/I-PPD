@@ -25,6 +25,7 @@ final TextEditingController _ageController = TextEditingController();
 
 class _ProfilState extends State<Profil> {
   Future<Null> refresh() async {
+<<<<<<< HEAD
     await Future.delayed(
       Duration(seconds: 2),
     );
@@ -38,6 +39,30 @@ class _ProfilState extends State<Profil> {
 
   String _name = "";
   String _height = "";
+=======
+    await Future.delayed(Duration(seconds: 2), () => getData());
+  }
+
+  final Stream<DocumentSnapshot<Map<String, dynamic>>> _usersStream =
+      FirebaseFirestore.instance.collection('users').doc(user!.uid).snapshots();
+  void getData() {
+    FirebaseFirestore.instance
+        .collection('users')
+        .doc(user!.email)
+        .get()
+        .then((DocumentSnapshot documentSnapshot) {
+      if (documentSnapshot.exists) {
+        dynamic data = documentSnapshot.data()!;
+        String _height1 = data["boy"].toString();
+        height(_height1);
+        setState(() {});
+      }
+    });
+  }
+
+  String _name = "";
+  String _height = "Kilonuzu Girin";
+>>>>>>> fa1d9c221ac000e65c82bcb548753806e550c8e1
   String _weight = "Kilonuzu Girin";
   String _age = "Yaşınızı Girin";
   double weightp = 0.0;
@@ -195,8 +220,12 @@ class _ProfilState extends State<Profil> {
                             : ListTile(
                                 contentPadding: EdgeInsets.all(10),
                                 title: Text("Boy"),
+<<<<<<< HEAD
                                 subtitle:
                                     Text(_usersStream.elementAt(0).toString()),
+=======
+                                subtitle: Text(_height),
+>>>>>>> fa1d9c221ac000e65c82bcb548753806e550c8e1
                                 leading: Icon(Icons.height), //başına ikon
                                 trailing: Icon(Icons.arrow_forward_ios_rounded),
                                 onTap: () => {height("a")}, //sonuna ikon
@@ -373,7 +402,11 @@ class _ProfilState extends State<Profil> {
                         fontWeight: FontWeight.bold,
                       ),
                     ),
+<<<<<<< HEAD
                     onPressed: () => FirebaseAuth.instance.signOut(),
+=======
+                    onPressed: () {},
+>>>>>>> fa1d9c221ac000e65c82bcb548753806e550c8e1
                   ),
                 ),
                 SizedBox(height: 30)
