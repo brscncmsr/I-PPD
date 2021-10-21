@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:group_button/group_button.dart';
+import 'package:get/get.dart';
 
 class Sleep extends StatefulWidget {
   Sleep({Key? key}) : super(key: key);
@@ -10,6 +11,8 @@ class Sleep extends StatefulWidget {
 }
 
 class _SleepState extends State<Sleep> {
+  dynamic argumentData = Get.arguments;
+
   final TextEditingController _ageController = TextEditingController();
 
   String _result = "Değer Girin";
@@ -21,82 +24,126 @@ class _SleepState extends State<Sleep> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Günlük Uyku İhtiyacı'),
-        centerTitle: true,
+        title: Text('Günlük Uyku İhtiyacı',style:GoogleFonts.balooThambi(color:Colors.blue)),
+        //centerTitle: true,
         backgroundColor: Colors.blue.shade200,
       ),
       body: Container(
-        padding: EdgeInsets.symmetric(horizontal: 10.0),
-        child: Column(
-          children: <Widget>[
-            Padding(padding: EdgeInsets.all(10.0)),
-            SizedBox(height: 20),
-            Text("Yaş Grubu"),
-            SizedBox(height: 20),
-            GroupButton(
-              selectedTextStyle: GoogleFonts.amaticSc(
-                  color: Colors.black87, fontWeight: FontWeight.bold),
-              unselectedTextStyle: GoogleFonts.amaticSc(color: Colors.black87),
-              isRadio: true,
-              selectedBorderColor: Colors.blue.shade300,
-              selectedColor: Colors.blue.shade200,
-              unselectedColor: Colors.blue.shade100,
-              unselectedBorderColor: Colors.blue,
-              spacing: 10,
-              buttons: const [
-                'Bebek',
-                'Çocuk',
-                'Genç Birey',
-                'Yetişkin',
-                'Yaşlı',
-              ],
-              borderRadius: BorderRadius.circular(30),
-              onSelected: (i, selected) => _text(i),
-            ),
-            Padding(padding: EdgeInsets.all(10.0)),
-            SizedBox(height: 20),
-            TextField(
-              controller: _ageController,
-              keyboardType: TextInputType.number,
-              decoration: InputDecoration(
-                labelText: _lbtext,
-                icon: Icon(Icons.line_weight),
-              ),
-            ),
-            Padding(padding: EdgeInsets.all(10.0)),
-            SizedBox(height: 20),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                RaisedButton(
-                  color: Colors.blue.shade200,
-                  child: Text(
-                    "Hesapla",
-                    style: TextStyle(color: Colors.white),
-                  ),
-                  onPressed: _timeofsleep,
+        child: SingleChildScrollView(
+          child: Container(
+            padding: EdgeInsets.symmetric(horizontal: 10.0),
+            child: Column(
+              children: <Widget>[
+                Padding(padding: EdgeInsets.all(10.0)),
+                SizedBox(height: 20),
+                Text("Yaş Grubu",style:GoogleFonts.patrickHand(
+                       fontWeight: FontWeight.bold)),
+                SizedBox(height: 20),
+                GroupButton(
+                  selectedTextStyle: GoogleFonts.patrickHand(
+                      color: Colors.black87, fontWeight: FontWeight.bold),
+                  unselectedTextStyle:
+                      GoogleFonts.patrickHand(color: Colors.black87),
+                  isRadio: true,
+                  selectedBorderColor: Colors.blue.shade300,
+                  selectedColor: Colors.blue.shade200,
+                  unselectedColor: Colors.blue.shade100,
+                  unselectedBorderColor: Colors.blue,
+                  spacing: 10,
+                  buttons: const [
+                    'Bebek',
+                    'Çocuk',
+                    'Genç Birey',
+                    'Yetişkin',
+                    'Yaşlı',
+                  ],
+                  borderRadius: BorderRadius.circular(30),
+                  onSelected: (i, selected) => _text(i),
                 ),
-                SizedBox(width: 20),
-                RaisedButton(
-                  color: Colors.blue.shade200,
-                  child: Text(
-                    "Temizle",
-                    style: TextStyle(color: Colors.white),
+                Padding(padding: EdgeInsets.all(10.0)),
+                SizedBox(height: 20),
+                SizedBox(
+                  width: 300,
+                  child: TextField(
+                    maxLength: 2,
+                    controller: _ageController,
+                    keyboardType: TextInputType.number,
+                    decoration: InputDecoration(
+                      counterText: '',
+                      helperText: 'Örneğin 40 olarak girebilirsiniz',
+                      helperStyle: GoogleFonts.patrickHand(
+                          fontWeight: FontWeight.bold, fontSize: 18),
+                      icon: Container(
+                          width: MediaQuery.of(context).size.height * 0.05,
+                          height: MediaQuery.of(context).size.height * 0.05,
+                          child: Image(
+                              fit: BoxFit.fill,
+                              image: AssetImage('assets/img/age.png'))),
+                      labelText: _lbtext,
+                      labelStyle: GoogleFonts.patrickHand(),
+                      border: OutlineInputBorder(
+                        borderRadius: BorderRadius.all(Radius.circular(10)),
+                      ),
+                    ),
                   ),
-                  onPressed: _clear,
+                ),
+                Padding(padding: EdgeInsets.all(10.0)),
+                SizedBox(height: 20),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    FlatButton(
+                      color: Colors.blue.shade300,
+                      shape: RoundedRectangleBorder(
+                        side: BorderSide(
+                            width: 3,
+                            color: Colors.blue,
+                            style: BorderStyle.solid),
+                        borderRadius: BorderRadius.all(Radius.circular(10)),
+                      ),
+                      child: Text(
+                        "Hesapla",
+                        style: GoogleFonts.patrickHand(
+                            color: Colors.white60,
+                            fontWeight: FontWeight.bold,
+                            fontSize: 21),
+                      ),
+                      onPressed: _timeofsleep,
+                    ),
+                    SizedBox(width: 10),
+                    FlatButton(
+                      color: Colors.blue.shade300,
+                      shape: RoundedRectangleBorder(
+                        side: BorderSide(
+                            width: 3,
+                            color: Colors.blue,
+                            style: BorderStyle.solid),
+                        borderRadius: BorderRadius.all(Radius.circular(10)),
+                      ),
+                      child: Text(
+                        "Temizle",
+                        style: GoogleFonts.patrickHand(
+                            color: Colors.white60,
+                            fontWeight: FontWeight.bold,
+                            fontSize: 21),
+                      ),
+                      onPressed: _clear,
+                    ),
+                    SizedBox(height: 15),
+                  ],
+                ),
+                SizedBox(height: 15),
+                Text(
+                  _result == null ? "Değeri Gir" : _rsttext,
+                  style: GoogleFonts.patrickHand(
+                    color: Colors.pink.shade900,
+                    fontSize: 27,
+                    fontWeight: FontWeight.bold,
+                  ),
                 ),
               ],
             ),
-            SizedBox(height: 15),
-            Text(
-              _result == null ? "Değeri Gir" : _rsttext,
-              style: TextStyle(
-                color: Colors.pink.shade900,
-                fontSize: 19.4,
-                fontWeight: FontWeight.w500,
-              ),
-            ),
-          ],
+          ),
         ),
       ),
     );
@@ -117,6 +164,33 @@ class _SleepState extends State<Sleep> {
       _lbtext = "Kaç Yaşındasınız ?";
     }
 
+    setState(() {});
+  }
+
+  void _timeof() {
+    double _age = double.parse(argumentData.text);
+    double age = _age;
+    if (select == 0) {
+      if (age >= 0 && age <= 3) {
+        _rsttext = "Önerilen Uyku Süresi 14-17 saat.";
+      } else if (age >= 4 && age <= 11) {
+        _rsttext = "Önerilen Uyku Süresi 12-15 saat.";
+      }
+    } else {
+      if (age >= 1 && age <= 2) {
+        _rsttext = "Önerilen Uyku Süresi 11-14 saat.";
+      } else if (age >= 3 && age <= 5) {
+        _rsttext = "Önerilen Uyku Süresi 10-13 saat.";
+      } else if (age >= 6 && age <= 13) {
+        _rsttext = "Önerilen Uyku Süresi 9-11 saat.";
+      } else if (age >= 14 && age <= 17) {
+        _rsttext = "Önerilen Uyku Süresi 8-10 saat.";
+      } else if (age >= 18 && age <= 64) {
+        _rsttext = "Önerilen Uyku Süresi 7-9 saat.";
+      } else if (64 <= age) {
+        _rsttext = "Önerilen Uyku Süresi 7-8 saat.";
+      }
+    }
     setState(() {});
   }
 

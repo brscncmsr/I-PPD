@@ -3,9 +3,9 @@ import 'package:flutter/material.dart';
 import 'package:get/get_connect/http/src/utils/utils.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:group_button/group_button.dart';
-import 'package:ippd/home/login.dart';
 import 'package:ippd/pages/exercise.dart';
 import 'package:ippd/pages/func.dart';
+import 'package:ippd/pages/profil.dart';
 
 class BmI extends StatefulWidget {
   BmI({Key? key}) : super(key: key);
@@ -13,6 +13,8 @@ class BmI extends StatefulWidget {
   @override
   _BmIState createState() => _BmIState();
 }
+
+bool _isInitialValue = true;
 
 final TextEditingController _heightController = TextEditingController();
 final TextEditingController _weightController = TextEditingController();
@@ -38,7 +40,7 @@ class _BmIState extends State<BmI> {
     return Scaffold(
         resizeToAvoidBottomInset: false,
         appBar: AppBar(
-          title: Text('Vücut Kitle Endeksi'),
+          title: Text('Vücut Kitle Endeksi',style:GoogleFonts.balooThambi(color:Colors.blue)),
           centerTitle: true,
           backgroundColor: Colors.blue.shade200,
         ),
@@ -55,8 +57,9 @@ class _BmIState extends State<BmI> {
                     controller: _heightController,
                     keyboardType: TextInputType.number,
                     decoration: InputDecoration(
-                      //counterText: 'max değeri geçmeyiniz',
+                      counterText: '',
                       helperText: 'Örneğin 160 olarak girebilirsiniz',
+                      helperStyle: GoogleFonts.patrickHand(fontWeight: FontWeight.bold,fontSize: 18),
                       icon: Container(
                           width: MediaQuery.of(context).size.height * 0.05,
                           height: MediaQuery.of(context).size.height * 0.05,
@@ -64,6 +67,7 @@ class _BmIState extends State<BmI> {
                               fit: BoxFit.fill,
                               image: AssetImage('assets/img/height.png'))),
                       labelText: 'Boy cm cinsinden',
+                      labelStyle: GoogleFonts.patrickHand(),
                       border: OutlineInputBorder(
                         borderRadius: BorderRadius.all(Radius.circular(10)),
                       ),
@@ -79,8 +83,9 @@ class _BmIState extends State<BmI> {
                     controller: _weightController,
                     keyboardType: TextInputType.number,
                     decoration: InputDecoration(
-                      //counterText: 'max değeri geçmeyiniz',
+                      counterText: '',
                       helperText: 'Örneğin 80 olarak girebilirsiniz',
+                      helperStyle: GoogleFonts.patrickHand(fontWeight: FontWeight.bold,fontSize: 18),
                       icon: Container(
                           width: MediaQuery.of(context).size.height * 0.05,
                           height: MediaQuery.of(context).size.height * 0.05,
@@ -88,6 +93,7 @@ class _BmIState extends State<BmI> {
                               fit: BoxFit.fill,
                               image: AssetImage('assets/img/weight.png'))),
                       labelText: 'Kilo kg cinsinden',
+                      labelStyle: GoogleFonts.patrickHand(),
                       border: OutlineInputBorder(
                         borderRadius: BorderRadius.all(Radius.circular(10)),
                       ),
@@ -99,12 +105,13 @@ class _BmIState extends State<BmI> {
                 SizedBox(
                   width: 300,
                   child: TextField(
-                    maxLength: 2,
+                    maxLength: 3,
                     controller: _bellyController,
                     keyboardType: TextInputType.number,
                     decoration: InputDecoration(
-                      //counterText: 'max değeri geçmeyiniz',
+                      counterText: '',
                       helperText: 'Örneğin 40 olarak girebilirsiniz',
+                      helperStyle: GoogleFonts.patrickHand(fontWeight: FontWeight.bold,fontSize: 18),
                       icon: Container(
                           width: MediaQuery.of(context).size.height * 0.05,
                           height: MediaQuery.of(context).size.height * 0.05,
@@ -112,6 +119,7 @@ class _BmIState extends State<BmI> {
                               fit: BoxFit.fill,
                               image: AssetImage('assets/img/bel.png'))),
                       labelText: 'Bel cm cinsinden',
+                      labelStyle: GoogleFonts.patrickHand(),
                       border: OutlineInputBorder(
                         borderRadius: BorderRadius.all(Radius.circular(10)),
                       ),
@@ -127,8 +135,9 @@ class _BmIState extends State<BmI> {
                     controller: _ageController,
                     keyboardType: TextInputType.number,
                     decoration: InputDecoration(
-                      //counterText: 'max değeri geçmeyiniz',
+                      counterText: '',
                       helperText: 'Örneğin 40 olarak girebilirsiniz',
+                      helperStyle: GoogleFonts.patrickHand(fontWeight: FontWeight.bold,fontSize: 18),
                       icon: Container(
                           width: MediaQuery.of(context).size.height * 0.05,
                           height: MediaQuery.of(context).size.height * 0.05,
@@ -136,6 +145,7 @@ class _BmIState extends State<BmI> {
                               fit: BoxFit.fill,
                               image: AssetImage('assets/img/age.png'))),
                       labelText: 'Yaşınız',
+                      labelStyle: GoogleFonts.patrickHand(),
                       border: OutlineInputBorder(
                         borderRadius: BorderRadius.all(Radius.circular(10)),
                       ),
@@ -145,10 +155,10 @@ class _BmIState extends State<BmI> {
                 Padding(padding: EdgeInsets.all(10.0)),
                 SizedBox(height: 20),
                 GroupButton(
-                  selectedTextStyle: GoogleFonts.amaticSc(
+                  selectedTextStyle: GoogleFonts.patrickHand(
                       color: Colors.black87, fontWeight: FontWeight.bold),
                   unselectedTextStyle:
-                      GoogleFonts.amaticSc(color: Colors.black87),
+                      GoogleFonts.patrickHand(color: Colors.black87),
                   isRadio: true,
                   selectedBorderColor: Colors.blue.shade300,
                   selectedColor: Colors.blue.shade200,
@@ -162,24 +172,61 @@ class _BmIState extends State<BmI> {
                   borderRadius: BorderRadius.circular(30),
                   onSelected: (i, selected) => select = i,
                 ),
+                FlatButton(
+                      color: Colors.blue.shade300,
+                      shape: RoundedRectangleBorder(
+                        side: BorderSide(
+                            width: 3,
+                            color: Colors.blue,
+                            style: BorderStyle.solid),
+                        borderRadius: BorderRadius.all(Radius.circular(10)),
+                      ),
+                      child: Text(
+                        "Bilgileri Getir",
+                        style: GoogleFonts.patrickHand(
+                            color: Colors.white60,
+                            fontWeight: FontWeight.bold,
+                            fontSize: 21),
+                      ),
+                      onPressed: (){},
+                    ),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    RaisedButton(
-                        color: Colors.blue.shade200,
-                        child: Text(
-                          "Hesapla",
-                          style: TextStyle(color: Colors.white),
-                        ),
-                        onPressed: () {
-                          calculateBMI();
-                        }),
-                    SizedBox(width: 20),
-                    RaisedButton(
-                      color: Colors.blue.shade200,
+                    FlatButton(
+                      color: Colors.blue.shade300,
+                      shape: RoundedRectangleBorder(
+                        side: BorderSide(
+                            width: 3,
+                            color: Colors.blue,
+                            style: BorderStyle.solid),
+                        borderRadius: BorderRadius.all(Radius.circular(10)),
+                      ),
+                      child: Text(
+                        "Hesapla",
+                        style: GoogleFonts.patrickHand(
+                            color: Colors.white60,
+                            fontWeight: FontWeight.bold,
+                            fontSize: 21),
+                      ),
+                      onPressed: calculateBMI,
+                    ),
+                    SizedBox(width: 10),
+                    FlatButton(
+                      color: Colors.blue.shade300,
+                      shape: RoundedRectangleBorder(
+                        side: BorderSide(
+                            width: 3,
+                            color: Colors.blue,
+                            style: BorderStyle.solid),
+                        borderRadius: BorderRadius.all(Radius.circular(10)),
+                      ),
                       child: Text(
                         "Temizle",
-                        style: TextStyle(color: Colors.white),
+                        style: GoogleFonts.patrickHand(
+                            color: Colors.white60,
+                            fontWeight: FontWeight.bold,
+                            fontSize: 21),
                       ),
                       onPressed: _clear,
                     ),
@@ -193,10 +240,10 @@ class _BmIState extends State<BmI> {
                       alignment: Alignment.bottomCenter,
                       child: Text(
                         sugges3,
-                        style: TextStyle(
+                        style: GoogleFonts.patrickHand(
                           color: Colors.blue.shade200,
                           fontSize: _fontsize,
-                          fontWeight: FontWeight.w500,
+                          fontWeight: FontWeight.bold,
                         ),
                       ),
                     ),
@@ -220,37 +267,39 @@ class _BmIState extends State<BmI> {
                     Column(
                       children: [
                         Text(
-                          _result == null ? "Değeri Gir" : _textR,
-                          style: TextStyle(
+                          _result == null ? "Değeri Gir": _textR,
+                          style: GoogleFonts.patrickHand(
                             color: _colortext,
                             fontSize: 19.4,
-                            fontWeight: FontWeight.w500,
+                            fontWeight: FontWeight.bold,
                           ),
                         ),
                         SizedBox(
                           height: 20,
                         ),
-                        Container(
-                          width: MediaQuery.of(context).size.width * 0.3,
-                          height: MediaQuery.of(context).size.height * 0.2,
+                        AnimatedContainer(
+                          duration: Duration(milliseconds: 500),
+                          width: _isInitialValue ?MediaQuery.of(context).size.width * 0.1 : MediaQuery.of(context).size.width * 0.3,
+                          height: _isInitialValue ?MediaQuery.of(context).size.width * 0.2 : MediaQuery.of(context).size.width * 0.4,
                           child: Text(
                             sugges1,
-                            style: TextStyle(
+                            style: GoogleFonts.patrickHand(
                               color: _colortext,
                               fontSize: 15.4,
-                              fontWeight: FontWeight.w500,
+                              fontWeight: FontWeight.bold,
                             ),
                           ),
                         ),
-                        Container(
+                        AnimatedContainer(
+                          duration: Duration(milliseconds: 500),
                           width: MediaQuery.of(context).size.width * 0.4,
                           height: MediaQuery.of(context).size.height * 0.2,
                           child: Text(
                             sugges2,
-                            style: TextStyle(
+                            style: GoogleFonts.patrickHand(
                               color: _colortext,
                               fontSize: 15.4,
-                              fontWeight: FontWeight.w500,
+                              fontWeight: FontWeight.bold,
                             ),
                           ),
                         )
@@ -272,7 +321,9 @@ class _BmIState extends State<BmI> {
   }
 }
 
+
 void calculateBMI() {
+
   double height = double.parse(_heightController.text) / 100;
   double weight = double.parse(_weightController.text);
   double belly = double.parse(_bellyController.text);
@@ -388,7 +439,6 @@ void calculateBMI() {
           "Fiziksel aktivite için uygulamamızda bulunan yaşınıza uygun egzersiz planlarına erişim sağlayabilirsiniz.";
     }
   }
-
-  FirebaseFirestore.instance.collection("bmi").doc(user!.uid).set(
-      {"result": _result, "yas": _ageController.text, "userid": user!.uid});
+  //FirebaseFirestore.instance.collection("bmi").doc(user!.uid).set(
+  //  {"result": _result, "yas": _ageController.text, "userid": user!.uid});
 }

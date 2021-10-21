@@ -28,11 +28,18 @@ class _RiskState extends State<Risk> {
             padding: const EdgeInsets.all(8),
             children: <Widget>[
               Container(
-                margin: EdgeInsets.all(10),
-                padding: EdgeInsets.all(20),
-                height: 80,
-                color: Colors.blue.shade900,
+                margin: EdgeInsets.all(5),
+                padding: EdgeInsets.all(4),
+                height: 100,
                 child: FlatButton(
+                  color: Colors.indigo.shade300,
+                        shape: RoundedRectangleBorder(
+                          side: BorderSide(
+                              width: 3,
+                              color: Colors.indigo.shade700,
+                              style: BorderStyle.solid),
+                          borderRadius: BorderRadius.all(Radius.circular(10)),
+                        ),
                     onPressed: () {
                       Navigator.push(
                           context,
@@ -42,18 +49,31 @@ class _RiskState extends State<Risk> {
                     },
                     child: Row(
                       children: [
-                        Image(image: AssetImage("assets/img/blood.png")),
+                        Image(height:60,image: AssetImage("assets/img/blood.png")),
                         SizedBox(width: 10),
-                        Text("Kan Uyuşmazlığı Riskimi Hesapla"),
+                        Text("Kan Uyuşmazlığı\nRiskimi Hesapla",style:GoogleFonts.patrickHand(
+                          color: Colors.white,
+                          fontWeight: FontWeight.bold,
+                          fontSize: 24
+                        )),
                       ],
                     )),
               ),
               Container(
-                margin: EdgeInsets.all(10),
-                padding: EdgeInsets.all(20),
-                height: 80,
-                color: Colors.blue.shade500,
+                margin: EdgeInsets.all(5),
+                padding: EdgeInsets.all(4),
+                height: 100,
+                width:MediaQuery.of(context).size.width * 0.75,
+                //color: Colors.blue.shade500,
                 child: FlatButton(
+                  color: Colors.blue.shade300,
+                        shape: RoundedRectangleBorder(
+                          side: BorderSide(
+                              width: 3,
+                              color: Colors.blue.shade700,
+                              style: BorderStyle.solid),
+                          borderRadius: BorderRadius.all(Radius.circular(10)),
+                        ),
                     onPressed: () {
                         Navigator.push(
                             context,
@@ -63,9 +83,13 @@ class _RiskState extends State<Risk> {
                     },
                     child: Row(
                       children: [
-                        Image(image: AssetImage("assets/img/obesite.png")),
-                        SizedBox(width: 10),
-                        Text("Obezite Riskimi Hesapla"),
+                        Image(height:60,image: AssetImage("assets/img/obesite.png")),
+                        SizedBox(width: 5),
+                        Text("Obezite Riskimi Hesapla",style:GoogleFonts.patrickHand(
+                          color: Colors.white,
+                          fontWeight: FontWeight.bold,
+                          fontSize: 24
+                        )),
                       ],
                     )),
               ),
@@ -92,8 +116,8 @@ class _BloodState extends State<Blood> {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
-          title: Text('Kan Uyuşmazlığı Riski'),
-          centerTitle: true,
+          title: Text('Kan Uyuşmazlığı Riski',style:GoogleFonts.balooThambi(color:Colors.blue)),
+          //centerTitle: true,
           backgroundColor: Colors.blue.shade200,
         ),
         body: SingleChildScrollView(
@@ -106,7 +130,7 @@ class _BloodState extends State<Blood> {
                       children: <Widget>[
                         Padding(padding: EdgeInsets.all(10.0)),
                         SizedBox(height: 20),
-                        Text("Anne Rh Durumu"),
+                        Text("Anne Rh Durumu",style: GoogleFonts.patrickHand(fontWeight: FontWeight.bold,fontSize: 18)),
                         SizedBox(height: 20),
                         GroupButton(
                           direction: Axis.horizontal,
@@ -128,7 +152,7 @@ class _BloodState extends State<Blood> {
                           borderRadius: BorderRadius.circular(30),
                           onSelected: (i, selected) => mrh = i,
                         ),
-                        Text("Anne Kan Grubu"),
+                        Text("Anne Kan Grubu",style: GoogleFonts.patrickHand(fontWeight: FontWeight.bold,fontSize: 18)),
                         SizedBox(height: 20),
                         GroupButton(
                           direction: Axis.vertical,
@@ -161,7 +185,7 @@ class _BloodState extends State<Blood> {
                       children: <Widget>[
                         Padding(padding: EdgeInsets.all(10.0)),
                         SizedBox(height: 20),
-                        Text("Baba Rh Durumu"),
+                        Text("Baba Rh Durumu",style: GoogleFonts.patrickHand(fontWeight: FontWeight.bold,fontSize: 18)),
                         SizedBox(height: 20),
                         GroupButton(
                           direction: Axis.horizontal,
@@ -183,7 +207,7 @@ class _BloodState extends State<Blood> {
                           borderRadius: BorderRadius.circular(30),
                           onSelected: (i, selected) => frh = i,
                         ),
-                        Text("Baba Kan Grubu"),
+                        Text("Baba Kan Grubu",style: GoogleFonts.patrickHand(fontWeight: FontWeight.bold,fontSize: 18)),
                         SizedBox(height: 20),
                         GroupButton(
                           direction: Axis.vertical,
@@ -213,11 +237,20 @@ class _BloodState extends State<Blood> {
                   ]),
               Container(
                 padding: EdgeInsets.all(10),
-                child: RaisedButton(
-                    color: Colors.blue.shade200,
-                    child: Text(
+                child: FlatButton(
+                      color: Colors.blue.shade300,
+                      shape: RoundedRectangleBorder(
+                        side: BorderSide(
+                            width: 3,
+                            color: Colors.blue,
+                            style: BorderStyle.solid),
+                        borderRadius: BorderRadius.all(Radius.circular(10)),
+                      ),
+                      child: Text(
                       "Riski Hesapla",
-                      style: TextStyle(color: Colors.white),
+                      style: GoogleFonts.patrickHandSc(color: Colors.white60,
+                            fontWeight: FontWeight.bold,
+                            fontSize: 21),
                     ),
                     onPressed: () {
                       calcRisk();
@@ -228,7 +261,7 @@ class _BloodState extends State<Blood> {
                 height: MediaQuery.of(context).size.height * 0.1,
                 child: Text(
                   _rsttext,
-                  style: TextStyle(
+                  style: GoogleFonts.patrickHand(
                     color: Colors.pink.shade900,
                     fontSize: 15.4,
                     fontWeight: FontWeight.w500,

@@ -12,13 +12,13 @@ class BmH extends StatefulWidget {
 }
 
 class _BmHState extends State<BmH> {
-  final Stream<QuerySnapshot> _usersStream = FirebaseFirestore.instance
+  /*final Stream<QuerySnapshot> _usersStream = FirebaseFirestore.instance
       .collection('profile')
       //.orderBy()
       //.where('yas',isGreaterThanOrEqualTo: )
-      .snapshots();
+      .snapshots();*/
 
-  TextEditingController _heightController = TextEditingController();
+  final TextEditingController _heightController = TextEditingController();
   final TextEditingController _weightController = TextEditingController();
   final TextEditingController _ageController = TextEditingController();
   int select = 0;
@@ -36,8 +36,8 @@ class _BmHState extends State<BmH> {
     return Scaffold(
         resizeToAvoidBottomInset: false,
         appBar: AppBar(
-          title: Text('Bazal Metabolizma Hızı'),
-          centerTitle: true,
+          title: Text('Bazal Metabolizma Hızı',style:GoogleFonts.balooThambi(color:Colors.blue)),
+          //centerTitle: true,
           backgroundColor: Colors.blue.shade200,
         ),
         body: SingleChildScrollView(
@@ -54,15 +54,18 @@ class _BmHState extends State<BmH> {
                     controller: _heightController,
                     keyboardType: TextInputType.number,
                     decoration: InputDecoration(
-                      //counterText: 'max değeri geçmeyiniz',
+                      counterText: '',
                       helperText: 'Örneğin 160 olarak girebilirsiniz',
+                      helperStyle: GoogleFonts.patrickHand(
+                          fontWeight: FontWeight.bold, fontSize: 18),
                       icon: Container(
                           width: MediaQuery.of(context).size.height * 0.05,
                           height: MediaQuery.of(context).size.height * 0.05,
                           child: Image(
                               fit: BoxFit.fill,
                               image: AssetImage('assets/img/height.png'))),
-                      labelText: "Kilonuzu Girin",
+                      labelText: 'Boy cm cinsinden',
+                      labelStyle: GoogleFonts.patrickHand(),
                       border: OutlineInputBorder(
                         borderRadius: BorderRadius.all(Radius.circular(10)),
                       ),
@@ -78,8 +81,10 @@ class _BmHState extends State<BmH> {
                     controller: _weightController,
                     keyboardType: TextInputType.number,
                     decoration: InputDecoration(
-                      //counterText: 'max değeri geçmeyiniz',
+                      counterText: '',
                       helperText: 'Örneğin 80 olarak girebilirsiniz',
+                      helperStyle: GoogleFonts.patrickHand(
+                          fontWeight: FontWeight.bold, fontSize: 18),
                       icon: Container(
                           width: MediaQuery.of(context).size.height * 0.05,
                           height: MediaQuery.of(context).size.height * 0.05,
@@ -87,6 +92,7 @@ class _BmHState extends State<BmH> {
                               fit: BoxFit.fill,
                               image: AssetImage('assets/img/weight.png'))),
                       labelText: 'Kilo kg cinsinden',
+                      labelStyle: GoogleFonts.patrickHand(),
                       border: OutlineInputBorder(
                         borderRadius: BorderRadius.all(Radius.circular(10)),
                       ),
@@ -102,8 +108,10 @@ class _BmHState extends State<BmH> {
                     controller: _ageController,
                     keyboardType: TextInputType.number,
                     decoration: InputDecoration(
-                      //counterText: 'max değeri geçmeyiniz',
+                      counterText: '',
                       helperText: 'Örneğin 40 olarak girebilirsiniz',
+                      helperStyle: GoogleFonts.patrickHand(
+                          fontWeight: FontWeight.bold, fontSize: 18),
                       icon: Container(
                           width: MediaQuery.of(context).size.height * 0.05,
                           height: MediaQuery.of(context).size.height * 0.05,
@@ -111,6 +119,7 @@ class _BmHState extends State<BmH> {
                               fit: BoxFit.fill,
                               image: AssetImage('assets/img/age.png'))),
                       labelText: 'Yaşınız',
+                      labelStyle: GoogleFonts.patrickHand(),
                       border: OutlineInputBorder(
                         borderRadius: BorderRadius.all(Radius.circular(10)),
                       ),
@@ -120,10 +129,10 @@ class _BmHState extends State<BmH> {
                 Padding(padding: EdgeInsets.all(10.0)),
                 SizedBox(height: 20),
                 GroupButton(
-                  selectedTextStyle: GoogleFonts.amaticSc(
+                  selectedTextStyle: GoogleFonts.patrickHand(
                       color: Colors.black87, fontWeight: FontWeight.bold),
                   unselectedTextStyle:
-                      GoogleFonts.amaticSc(color: Colors.black87),
+                      GoogleFonts.patrickHand(color: Colors.black87),
                   isRadio: true,
                   selectedBorderColor: Colors.blue.shade300,
                   selectedColor: Colors.blue.shade200,
@@ -140,15 +149,15 @@ class _BmHState extends State<BmH> {
                 SizedBox(
                   height: 10,
                 ),
-                Text("Aktiflik Seviyesi"),
+                Text("Aktiflik Seviyesi", style: GoogleFonts.patrickHand()),
                 SizedBox(
                   height: 10,
                 ),
                 GroupButton(
-                  selectedTextStyle: GoogleFonts.amaticSc(
+                  selectedTextStyle: GoogleFonts.patrickHand(
                       color: Colors.black87, fontWeight: FontWeight.bold),
                   unselectedTextStyle:
-                      GoogleFonts.amaticSc(color: Colors.black87),
+                      GoogleFonts.patrickHand(color: Colors.black87),
                   isRadio: true,
                   selectedBorderColor: Colors.blue.shade300,
                   selectedColor: Colors.blue.shade200,
@@ -210,36 +219,38 @@ class _BmHState extends State<BmH> {
                 ),
                 SizedBox(height: 10),
                 FlatButton(
-                  color: Colors.blue.shade300,
-                  shape: RoundedRectangleBorder(
-                    side: BorderSide(
-                        width: 3, color: Colors.blue, style: BorderStyle.solid),
-                    borderRadius: BorderRadius.all(Radius.circular(10)),
-                  ),
-                  child: Text(
-                    "Bilgileri Getir",
-                    style: GoogleFonts.patrickHand(
-                        color: Colors.white60,
-                        fontWeight: FontWeight.bold,
-                        fontSize: 18),
-                  ),
-                  onPressed: () => setData(),
-                ),
+                    color: Colors.blue.shade300,
+                    shape: RoundedRectangleBorder(
+                      side: BorderSide(
+                          width: 3,
+                          color: Colors.blue,
+                          style: BorderStyle.solid),
+                      borderRadius: BorderRadius.all(Radius.circular(10)),
+                    ),
+                    child: Text(
+                      "Bilgileri Getir",
+                      style: GoogleFonts.patrickHand(
+                          color: Colors.white60,
+                          fontWeight: FontWeight.bold,
+                          fontSize: 18),
+                    ),
+                    onPressed: _dialogalert(context),
+                    ),
                 Text(
                   bmh == null ? "Değeri Gir" : _bmhtext,
-                  style: TextStyle(
+                  style: GoogleFonts.patrickHand(
                     color: Colors.pink.shade900,
-                    fontSize: 19.4,
-                    fontWeight: FontWeight.w500,
+                    fontSize: 24,
+                    fontWeight: FontWeight.bold,
                   ),
                 ),
                 SizedBox(height: 15),
                 Text(
                   bmh == null ? "Değeri Gir" : bmhtext,
-                  style: TextStyle(
+                  style: GoogleFonts.patrickHand(
                     color: Colors.pink.shade900,
-                    fontSize: 19.4,
-                    fontWeight: FontWeight.w500,
+                    fontSize: 24,
+                    fontWeight: FontWeight.bold,
                   ),
                 ),
               ],
@@ -248,20 +259,11 @@ class _BmHState extends State<BmH> {
         ));
   }
 
-  void setData() {
-    _usersStream.last.then((infos) {
-      setState(() {
-        _usersStream.elementAt(2)
-          ..whenComplete(() => null).then((value) => heighta = value as double);
-      });
-    });
-  }
-
   void calculateBMI() {
     double height = double.parse(_heightController.text) / 100;
     double weight = double.parse(_weightController.text);
     double age = double.parse(_ageController.text);
-    _heightController = heighta as TextEditingController;
+    //_heightController = heighta as TextEditingController;
 
     if (select == 0) {
       _bmh = 655.1 + (9.56 * weight) + (1.85 + height) - (4.68 * age);

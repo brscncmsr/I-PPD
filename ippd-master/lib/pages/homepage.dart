@@ -2,13 +2,13 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:google_nav_bar/google_nav_bar.dart';
 import 'package:group_button/group_button.dart';
-import 'package:ippd/location/location.dart';
 import 'package:ippd/pages/bmh.dart';
 import 'package:ippd/pages/bmi.dart';
 import 'package:ippd/pages/nurse.dart';
 import 'package:ippd/pages/risk.dart';
 import 'package:ippd/pages/sleep.dart';
 import 'package:ippd/pages/water.dart';
+import 'package:ippd/pharmacy/nobetci.dart';
 import 'package:page_transition/page_transition.dart';
 import 'package:rflutter_alert/rflutter_alert.dart';
 
@@ -18,21 +18,20 @@ class Home extends StatefulWidget {
   @override
   _HomeState createState() => _HomeState();
 }
-
 class _HomeState extends State<Home> {
   Future<Null> refresh() async {
     await Future.delayed(Duration(seconds: 2));
   }
 
   double bmI = 0.0;
+  double? su;
+
 
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
         debugShowCheckedModeBanner: false,
-        theme: ThemeData(primaryColor: Colors.blue.shade200
-            //brightness: Brightness.dark,
-            ),
+        
         home: Scaffold(
           resizeToAvoidBottomInset: false,
           floatingActionButton: FloatingActionButton(
@@ -53,13 +52,13 @@ class _HomeState extends State<Home> {
             child: Container(
               width: MediaQuery.of(context).size.width * 1,
               height: MediaQuery.of(context).size.height * 1,
-              decoration: BoxDecoration(
+              /*decoration: BoxDecoration(
                   image: DecorationImage(
                       image: AssetImage('assets/img/background.png'),
                       repeat: ImageRepeat.repeat,
                       colorFilter:
                           ColorFilter.mode(Colors.white60, BlendMode.color),
-                      fit: BoxFit.cover)),
+                      fit: BoxFit.cover)),*/
               child: Column(
                 children: [
                   Image(
@@ -130,7 +129,7 @@ class _HomeState extends State<Home> {
                                                   'assets/img/bmi.png'))),
                                       Text(
                                         "Beden Kitle\n   Endeksi",
-                                        style: GoogleFonts.amaticSc(
+                                        style: GoogleFonts.patrickHand(
                                             fontWeight: FontWeight.w600,
                                             fontSize: 14,
                                             color: Colors.white60),
@@ -171,7 +170,7 @@ class _HomeState extends State<Home> {
                                     PageTransition(
                                       type: PageTransitionType.rightToLeft,
                                       duration: Duration(milliseconds: 500),
-                                      child: Konum(),
+                                      child: NobetciEczane(),
                                     ),
                                   ),
                                   //color:Colors.blue.shade700,
@@ -194,8 +193,8 @@ class _HomeState extends State<Home> {
                                               image: AssetImage(
                                                   'assets/img/drugstore.png'))),
                                       Text(
-                                        "Nöbetçi Eczaneler",
-                                        style: GoogleFonts.amaticSc(
+                                        "    Nöbetçi\n   Eczaneler",
+                                        style: GoogleFonts.patrickHand(
                                             fontWeight: FontWeight.w600,
                                             fontSize: 14,
                                             color: Colors.white60),
@@ -260,8 +259,8 @@ class _HomeState extends State<Home> {
                                               image: AssetImage(
                                                   'assets/img/heart-disease.png'))),
                                       Text(
-                                        "Hastalık Riskimi Hesapla",
-                                        style: GoogleFonts.amaticSc(
+                                        "Hastalık Riskimi\n      Hesapla",
+                                        style: GoogleFonts.patrickHand(
                                             fontWeight: FontWeight.w600,
                                             fontSize: 14,
                                             color: Colors.white60),
@@ -331,8 +330,8 @@ class _HomeState extends State<Home> {
                                               image: AssetImage(
                                                   'assets/img/check-up.png'))),
                                       Text(
-                                        "Bazal Metabolizma",
-                                        style: GoogleFonts.amaticSc(
+                                        "       Bazal \n  Metabolizma",
+                                        style: GoogleFonts.patrickHand(
                                             fontWeight: FontWeight.w600,
                                             fontSize: 14,
                                             color: Colors.white60),
@@ -398,7 +397,7 @@ class _HomeState extends State<Home> {
                                                   'assets/img/water.png'))),
                                       Text(
                                         "Su İhtiyacım",
-                                        style: GoogleFonts.amaticSc(
+                                        style: GoogleFonts.patrickHand(
                                             fontWeight: FontWeight.w600,
                                             fontSize: 14,
                                             color: Colors.white60),
@@ -464,7 +463,7 @@ class _HomeState extends State<Home> {
                                                   'assets/img/night.png'))),
                                       Text(
                                         "Uyku Sürem",
-                                        style: GoogleFonts.amaticSc(
+                                        style: GoogleFonts.patrickHand(
                                             fontWeight: FontWeight.w600,
                                             fontSize: 14,
                                             color: Colors.white60),

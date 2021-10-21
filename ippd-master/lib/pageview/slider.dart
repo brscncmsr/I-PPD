@@ -27,7 +27,7 @@ class SliderPage extends StatelessWidget {
             height: 60,
           ),
           Text(title,
-              style: GoogleFonts.amaticSc(
+              style: GoogleFonts.charm(
                 fontSize: 28,
                 fontWeight: FontWeight.bold,
               )),
@@ -38,7 +38,7 @@ class SliderPage extends StatelessWidget {
             padding: const EdgeInsets.symmetric(horizontal: 80),
             child: Text(
               description,
-              style: GoogleFonts.amaticSc(
+              style: GoogleFonts.charm(
                 height: 1.5,
                 fontWeight: FontWeight.bold,
                 fontSize: 18,
@@ -48,7 +48,7 @@ class SliderPage extends StatelessWidget {
             ),
           ),
           SizedBox(
-            height: 60,
+            height: 90,
           ),
         ],
       ),
