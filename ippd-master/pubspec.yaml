@@ -7,7 +7,14 @@ version: 1.0.0+1
 environment:
   sdk: ">=2.12.0 <3.0.0"
 
+
+flutter_icons:
+  android: true
+  ios: true
+  image_path: "assets/img/ippd.png"
+
 dependencies:
+  
   animated_splash_screen: ^1.1.0
   basic_utils: ^3.6.1
   cloud_firestore: ^2.5.1
@@ -17,10 +24,12 @@ dependencies:
   firebase_auth: ^3.1.0
   firebase_core: ^1.6.0
 
+
   
   firebase_storage: ^10.0.5
   flutter:
     sdk: flutter
+  flutter_launcher_icons: 
   flutter_svg: ^0.22.0
   font_awesome_flutter:
   get: ^4.3.8
@@ -33,6 +42,7 @@ dependencies:
   page_transition: ^2.0.1-nullsafety.0
   pinput: ^1.2.0
   rflutter_alert: ^2.0.4
+  shared_preferences: ^2.0.8
   syncfusion_flutter_sliders: ^19.2.59
   url_launcher: ^6.0.12
 
@@ -42,6 +52,7 @@ dev_dependencies:
 
 flutter:
   uses-material-design: true
+ 
 
   assets:
     - assets/img/exercise/dag_durusu.png
@@ -76,6 +87,7 @@ flutter:
     - assets/img/exercise/cesetpozu.png
 
     - assets/img/nurse.png
+    - assets/img/kid.png
     - assets/img/nurse2.png
     - assets/img/nurse3.png
     - assets/img/ippd.png

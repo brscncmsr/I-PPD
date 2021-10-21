@@ -150,6 +150,7 @@ class ExerciseState extends State<Exercise> {
                                               ),
                                             ),
                                             title: data['egzersiz'],
+                                            
                                             context: context,
                                             content: Column(
                                               mainAxisAlignment:
@@ -167,8 +168,9 @@ class ExerciseState extends State<Exercise> {
                                                         MediaQuery.of(context)
                                                                 .size
                                                                 .height *
-                                                            0.75,
+                                                            2.25,
                                                     child: Card(
+                                                      
                                                       color:
                                                           Colors.blue.shade100,
                                                       shadowColor: Colors.black,
@@ -197,9 +199,9 @@ class ExerciseState extends State<Exercise> {
                                                                               5),
                                                                   child: Text(
                                                                     "${data['egzersiz']} için Bilgiler",
-                                                                    style: TextStyle(
+                                                                    style: GoogleFonts.patrickHand(
                                                                         fontSize:
-                                                                            18,
+                                                                            24,
                                                                         fontWeight:
                                                                             FontWeight.bold),
                                                                   ),
@@ -210,10 +212,10 @@ class ExerciseState extends State<Exercise> {
                                                                           .all(
                                                                               5),
                                                                   child: Text(
-                                                                    "Günde şu kadar kez yapmalısınız",
-                                                                    style: TextStyle(
+                                                                    "${data['bas']}",
+                                                                    style: GoogleFonts.patrickHand(
                                                                         fontSize:
-                                                                            14,
+                                                                            16,
                                                                         fontWeight:
                                                                             FontWeight.normal),
                                                                   ),
@@ -232,6 +234,137 @@ class ExerciseState extends State<Exercise> {
                                                                             .fill,
                                                                         image: NetworkImage(
                                                                             '${data['image']}'))),
+                                                                            SizedBox(height:10),
+                                                                  Container(
+                                                                  margin:
+                                                                      EdgeInsets
+                                                                          .all(
+                                                                              5),
+                                                                  child: Text(
+                                                                    '${data['1.satır']}',
+                                                                    style: GoogleFonts.patrickHand(
+                                                                        fontSize:
+                                                                            16,
+                                                                        fontWeight:
+                                                                            FontWeight.normal),
+                                                                  ),
+                                                                ),
+                                                                Container(
+                                                                  margin:
+                                                                      EdgeInsets
+                                                                          .all(
+                                                                              5),
+                                                                  child: Text(
+                                                                    '${data['2.satır']}',
+                                                                    style: GoogleFonts.patrickHand(
+                                                                        fontSize:
+                                                                            16,
+                                                                        fontWeight:
+                                                                            FontWeight.normal),
+                                                                  ),
+                                                                ),
+                                                                Container(
+                                                                  margin:
+                                                                      EdgeInsets
+                                                                          .all(
+                                                                              5),
+                                                                  child: Text(
+                                                                    '${data['3.satır']}',
+                                                                    style: GoogleFonts.patrickHand(
+                                                                        fontSize:
+                                                                            16,
+                                                                        fontWeight:
+                                                                            FontWeight.normal),
+                                                                  ),
+                                                                ),
+                                                                Container(
+                                                                  margin:
+                                                                      EdgeInsets
+                                                                          .all(
+                                                                              5),
+                                                                  child: Text(
+                                                                    '${data['4.satır']}',
+                                                                    style: GoogleFonts.patrickHand(
+                                                                        fontSize:
+                                                                            16,
+                                                                        fontWeight:
+                                                                            FontWeight.normal),
+                                                                  ),
+                                                                ),
+                                                                Container(
+                                                                  margin:
+                                                                      EdgeInsets
+                                                                          .all(
+                                                                              5),
+                                                                  child: Text(
+                                                                    '${data['5.satır']}',
+                                                                    style: GoogleFonts.patrickHand(
+                                                                        fontSize:
+                                                                            16,
+                                                                        fontWeight:
+                                                                            FontWeight.normal),
+                                                                  ),
+                                                                ),
+                                                                Center(
+                                                                  child:Container(
+                                                                  margin:
+                                                                      EdgeInsets
+                                                                          .all(
+                                                                              5),
+                                                                  child: Text(
+                                                                    'Uygun Form Ve Nefes Modeli',
+                                                                    style: GoogleFonts.patrickHand(
+                                                                        fontSize:
+                                                                            21,
+                                                                        fontWeight:
+                                                                            FontWeight.bold),
+                                                                  ),
+                                                                ),
+                                                                ),
+                                                                SizedBox(height:10),
+                                                                  Container(
+                                                                  margin:
+                                                                      EdgeInsets
+                                                                          .all(
+                                                                              5),
+                                                                  child: Text(
+                                                                    '${data['baslık2']}',
+                                                                    style: GoogleFonts.patrickHand(
+                                                                        fontSize:
+                                                                            16,
+                                                                        fontWeight:
+                                                                            FontWeight.normal),
+                                                                  ),
+                                                                ),
+                                                                SizedBox(height:10),
+                                                                  Container(
+                                                                  margin:
+                                                                      EdgeInsets
+                                                                          .all(
+                                                                              5),
+                                                                  child: Text(
+                                                                    'Egzersiz Faydaları',
+                                                                    style: GoogleFonts.patrickHand(
+                                                                        fontSize:
+                                                                            21,
+                                                                        fontWeight:
+                                                                            FontWeight.bold),
+                                                                  ),
+                                                                ),
+                                                                  Container(
+                                                                  margin:
+                                                                      EdgeInsets
+                                                                          .all(
+                                                                              5),
+                                                                  child: Text(
+                                                                    '${data['egzersizfay']}',
+                                                                    style: GoogleFonts.patrickHand(
+                                                                        fontSize:
+                                                                            16,
+                                                                        fontWeight:
+                                                                            FontWeight.normal),
+                                                                  ),
+                                                                ),
                                                               ],
                                                             ),
                                                           ),

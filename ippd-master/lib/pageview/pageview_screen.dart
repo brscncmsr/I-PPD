@@ -1,16 +1,19 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:ippd/home/home.dart';
-import 'package:ippd/home/login.dart';
-import 'package:ippd/home/otp.dart';
+import 'package:ippd/login/pages/login_page.dart';
 import 'package:page_transition/page_transition.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import 'slider.dart';
-
+import 'package:get/get.dart';
 
 class Pageviewing extends StatefulWidget {
   @override
   _PageviewingState createState() => _PageviewingState();
 }
+
+User? user = FirebaseAuth.instance.currentUser;
 
 class _PageviewingState extends State<Pageviewing> {
   int _currentPage = 0;
@@ -32,7 +35,6 @@ class _PageviewingState extends State<Pageviewing> {
         description:
             " IPP-D uygulamasının doğru sonuçları verebilmesi için istenilen bilgileri, anket formlarını ve gerekli bütün bilgileri doğru girmeniz önem arz etmektedir..",
         image: ""),
-    Login(),
   ];
 
   _onchanged(int index) {
@@ -43,6 +45,8 @@ class _PageviewingState extends State<Pageviewing> {
 
   @override
   Widget build(BuildContext context) {
+    var data = Get.arguments;
+
     return Scaffold(
       body: Stack(
         children: <Widget>[
@@ -89,26 +93,13 @@ class _PageviewingState extends State<Pageviewing> {
                       borderRadius: BorderRadius.circular(35)),
                   child: (_currentPage == (_pages.length - 1))
                       ? FlatButton(
-                          onPressed: () => Navigator.push(
-                            context,
-                            PageTransition(
-                              type: PageTransitionType.rightToLeft,
-                              duration: Duration(milliseconds: 500),
-                              child: Anasayfa(),
-                            ),
-                          ), /*() {
-                            Navigator.of(context)
-                                .push(MaterialPageRoute(builder: (c) => OTP(
-                                  phone: tex, // -?
-                                  codeDigits: dialCodeDigits
-                                )));
-                          },*/
+                          onPressed: () => checkSign(),
                           child: Text(
                             "Başla",
-                            style: TextStyle(
-                              color: Colors.white,
-                              fontSize: 20,
-                            ),
+                            style: GoogleFonts.patrickHand(
+                                color: Colors.white60,
+                                fontSize: 30,
+                                fontWeight: FontWeight.bold),
                           ),
                         )
                       : Icon(
@@ -126,5 +117,29 @@ class _PageviewingState extends State<Pageviewing> {
         ],
       ),
     );
+  }
+
+  void checkSign() async {
+    FirebaseAuth.instance.idTokenChanges().listen((User? user) {
+      if (user != null) {
+        Navigator.push(
+            context,
+            PageTransition(
+              type: PageTransitionType.rightToLeft,
+              duration: Duration(milliseconds: 500),
+              child: Anasayfa(),
+            ));
+      } else {
+        Navigator.push(
+            context,
+            PageTransition(
+              type: PageTransitionType.rightToLeft,
+              duration: Duration(milliseconds: 500),
+              child: LoginPage(),
+            ));
+      }
+    });
+
+    setState(() {});
   }
 }
