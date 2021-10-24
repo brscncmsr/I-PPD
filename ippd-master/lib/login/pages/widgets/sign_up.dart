@@ -5,6 +5,7 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:group_button/group_button.dart';
 import 'package:ippd/home/home.dart';
+import 'package:ippd/login/pages/widgets/sign_up2.dart';
 import 'package:ippd/login/theme.dart';
 import 'package:ippd/login/widgets/snackbar.dart';
 import 'package:ippd/pages/bmi.dart';
@@ -63,103 +64,9 @@ class _SignUpState extends State<SignUp> {
                 ),
                 child: Container(
                   width: 300.0,
-                  height: 620.0,
+                  height: 285.0,
                   child: Column(
                     children: <Widget>[
-                      Padding(
-                        padding: const EdgeInsets.only(
-                            top: 20.0, bottom: 20.0, left: 25.0, right: 25.0),
-                        child: TextField(
-                          controller: signupboyController,
-                          maxLength: 3,
-                          keyboardType: TextInputType.number,
-                          style: TextStyle(
-                              fontFamily: 'WorkSansSemiBold',
-                              fontSize: 16.0,
-                              color: Colors.black),
-                          decoration: InputDecoration(
-                            border: InputBorder.none,
-                            icon: Icon(
-                              FontAwesomeIcons.envelope,
-                              color: Colors.black,
-                              size: 22.0,
-                            ),
-                            counterText: '',
-                            hintText: 'Boy',
-                            hintStyle: GoogleFonts.patrickHand(
-                                fontSize: 17.0, fontWeight: FontWeight.bold),
-                          ),
-                          onSubmitted: (_) {
-                            focusNodePassword.requestFocus();
-                          },
-                        ),
-                      ),
-                      Container(
-                        width: 250.0,
-                        height: 1.0,
-                        color: Colors.grey[400],
-                      ),
-                      Padding(
-                        padding: const EdgeInsets.only(
-                            top: 20.0, bottom: 20.0, left: 25.0, right: 25.0),
-                        child: TextField(
-                          controller: signupkiloController,
-                          keyboardType: TextInputType.number,
-                          maxLength: 3,
-                          style: TextStyle(
-                              fontFamily: 'WorkSansSemiBold',
-                              fontSize: 16.0,
-                              color: Colors.black),
-                          decoration: InputDecoration(
-                            border: InputBorder.none,
-                            icon: Icon(
-                              FontAwesomeIcons.envelope,
-                              color: Colors.black,
-                              size: 22.0,
-                            ),
-                            counterText: '',
-                            hintText: 'Kilo',
-                            hintStyle: GoogleFonts.patrickHand(
-                                fontSize: 17.0, fontWeight: FontWeight.bold),
-                          ),
-                          onSubmitted: (_) {
-                            focusNodePassword.requestFocus();
-                          },
-                        ),
-                      ),
-                      Container(
-                        width: 250.0,
-                        height: 1.0,
-                        color: Colors.grey[400],
-                      ),
-                      Padding(
-                        padding: const EdgeInsets.only(
-                            top: 20.0, bottom: 20.0, left: 25.0, right: 25.0),
-                        child: TextField(
-                          controller: signupyasController,
-                          keyboardType: TextInputType.number,
-                          maxLength: 3,
-                          style: TextStyle(
-                              fontFamily: 'WorkSansSemiBold',
-                              fontSize: 16.0,
-                              color: Colors.black),
-                          decoration: InputDecoration(
-                            border: InputBorder.none,
-                            icon: Icon(
-                              FontAwesomeIcons.envelope,
-                              color: Colors.black,
-                              size: 22.0,
-                            ),
-                            counterText: '',
-                            hintText: 'Yaş',
-                            hintStyle: GoogleFonts.patrickHand(
-                                fontSize: 17.0, fontWeight: FontWeight.bold),
-                          ),
-                          onSubmitted: (_) {
-                            focusNodePassword.requestFocus();
-                          },
-                        ),
-                      ),
                       Container(
                         width: 250.0,
                         height: 1.0,
@@ -300,7 +207,7 @@ class _SignUpState extends State<SignUp> {
               Container(
                 width: 150,
                 height: 50,
-                margin: const EdgeInsets.only(top: 595.0),
+                margin: const EdgeInsets.only(top: 260.0),
                 child: FlatButton(
                   color: Colors.blue,
                   shape: RoundedRectangleBorder(
@@ -323,19 +230,8 @@ class _SignUpState extends State<SignUp> {
                         .then((_) => {
                               Navigator.of(context).pushReplacement(
                                   MaterialPageRoute(
-                                      builder: (context) => Anasayfa()))
+                                      builder: (context) => SignUp2()))
                             });
-                    await FirebaseFirestore.instance
-                        .collection("users")
-                        .doc(user!.uid)
-                        .set({
-                      'email': signupEmailController.text,
-                      'sifre': signupConfirmPasswordController.text,
-                      'yas': signupyasController.text,
-                      'boy': signupboyController.text,
-                      'kilo': signupkiloController.text,
-                      'userid': user!.uid
-                    });
                   },
                 ),
               )

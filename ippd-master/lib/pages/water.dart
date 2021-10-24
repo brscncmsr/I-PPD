@@ -42,8 +42,8 @@ class _WaterState extends State<Water> {
                   decoration: InputDecoration(
                     counterText: '',
                     helperText: 'Örneğin 80 olarak girebilirsiniz',
-                    helperStyle: GoogleFonts.patrickHand(
-                        fontWeight: FontWeight.bold, fontSize: 18),
+                    helperStyle: TextStyle(fontFamily:'Roboto',
+                        fontWeight: FontWeight.bold, fontSize: MediaQuery.of(context).size.width * 0.035),
                     icon: Container(
                         width: MediaQuery.of(context).size.height * 0.05,
                         height: MediaQuery.of(context).size.height * 0.05,
@@ -51,7 +51,7 @@ class _WaterState extends State<Water> {
                             fit: BoxFit.fill,
                             image: AssetImage('assets/img/weight.png'))),
                     labelText: 'Kilo kg cinsinden',
-                    labelStyle: GoogleFonts.patrickHand(
+                    labelStyle: TextStyle(fontFamily:'Roboto',
                         fontWeight: FontWeight.bold, fontSize: 18),
                     border: OutlineInputBorder(
                       borderRadius: BorderRadius.all(Radius.circular(10)),
@@ -129,9 +129,9 @@ class _WaterState extends State<Water> {
                 _result == null
                     ? "Değeri Gir"
                     : "Günde ortalama ${_result.toStringAsFixed(1)} litre su içmelisiniz.",
-                style: GoogleFonts.patrickHand(
+                style: TextStyle(fontFamily:'Roboto',
                   color: Colors.pink.shade900,
-                  fontSize: 27,
+                  fontSize: MediaQuery.of(context).size.width * 0.07,
                   fontWeight: FontWeight.bold,
                 ),
               ),
@@ -140,9 +140,9 @@ class _WaterState extends State<Water> {
                 _result == null
                     ? "Değeri Gir"
                     : "ve bu günde ${bardak.ceil()} bardak suya eşdeğerdir.",
-                style: GoogleFonts.patrickHand(
+                style: TextStyle(fontFamily:'Roboto',
                   color: Colors.pink.shade900,
-                  fontSize: 27,
+                  fontSize: MediaQuery.of(context).size.width * 0.07,
                   fontWeight: FontWeight.bold,
                 ),
               ),

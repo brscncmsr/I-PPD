@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:ippd/pages/contactnurse.dart';
 import 'package:page_transition/page_transition.dart';
 import 'package:rflutter_alert/rflutter_alert.dart';
 
@@ -24,131 +25,141 @@ class _NurseState extends State<Nurse> {
           child: ListView(
             padding: const EdgeInsets.all(8),
             children: <Widget>[
-              Container(
-                margin: EdgeInsets.all(5),
-                padding: EdgeInsets.all(4),
-                height: 120,
-                width:350,
-                child: FlatButton(
-                  color: Colors.green.shade300,
-                        shape: RoundedRectangleBorder(
-                          side: BorderSide(
-                              width: 3,
-                              color: Colors.green.shade700,
-                              style: BorderStyle.solid),
-                          borderRadius: BorderRadius.all(Radius.circular(10)),
-                        ),
-                    onPressed: () => _dialogalert1(context),
-                    child: Row(
-                      children: [
-                        Text("\t\t\t\t\tYeterli Ve Dengeli \n\t\t\t\t\tBeslenme Önerileri",style:GoogleFonts.patrickHand(
-                          color: Colors.white,
-                          fontWeight: FontWeight.bold,
-                          fontSize: 24
-                        )),
-                      ],
-                    )),
-              ),
-              Container(
-                margin: EdgeInsets.all(5),
-                padding: EdgeInsets.all(4),
-                height: 120,
-                width:350,
-                child: FlatButton(
-                  color: Colors.blue.shade300,
-                        shape: RoundedRectangleBorder(
-                          side: BorderSide(
-                              width: 3,
-                              color: Colors.blue.shade700,
-                              style: BorderStyle.solid),
-                          borderRadius: BorderRadius.all(Radius.circular(10)),
-                        ),
-                    onPressed: () => _dialogalert3(context),
-                    child: Row(
-                      children: [
-                        Text("\t\t\t\t\tAileler ve Toplum için \n\t\t\t\t\tErgenlikte Obeziteden\n Korunmayı Sağlayan İpuçları",style:GoogleFonts.patrickHand(
-                          color: Colors.white,
-                          fontWeight: FontWeight.bold,
-                          fontSize: 24
-                        )),
-                      ],
-                    )),
-              ),
-              Container(
-                margin: EdgeInsets.all(5),
-                padding: EdgeInsets.all(4),
-                height: 120,
-                width:350,
-                child: FlatButton(
-                  color: Colors.orange.shade300,
-                        shape: RoundedRectangleBorder(
-                          side: BorderSide(
-                              width: 3,
-                              color: Colors.orange.shade700,
-                              style: BorderStyle.solid),
-                          borderRadius: BorderRadius.all(Radius.circular(10)),
-                        ),
-                    onPressed: () => _dialogalert2(context),
-                    child: Row(
-                      children: [
-                        Text("Fazla Kilolu ve Obez Bireyler İçin\nSağlıklı Beslenme Önerileri",style:GoogleFonts.patrickHand(
-                          color: Colors.white,
-                          fontWeight: FontWeight.bold,
-                          fontSize: 22
-                        )),
-                      ],
-                    )),
-              ),
-              Container(
-                margin: EdgeInsets.all(5),
-                padding: EdgeInsets.all(4),
-                height: 120,
-                width:350,
-                child: FlatButton(
-                  color: Colors.red.shade300,
-                        shape: RoundedRectangleBorder(
-                          side: BorderSide(
-                              width: 3,
-                              color: Colors.red.shade700,
-                              style: BorderStyle.solid),
-                          borderRadius: BorderRadius.all(Radius.circular(10)),
-                        ),
-                    onPressed: () => _dialogalert4(context),
-                    child: Row(
-                      children: [
-                        Text("Obeziteden Kurtulmak İçin \nHangi Düşüncelerden Uzak\nDurmalıyım ?",style:GoogleFonts.patrickHand(
-                          color: Colors.white,
-                          fontWeight: FontWeight.bold,
-                          fontSize: 22
-                        )),
-                      ],
-                    )),
-              ),
-              Container(
-                margin: EdgeInsets.all(5),
-                padding: EdgeInsets.all(4),
-                height: 160,
-                width:350,
-                child: FlatButton(
-                  color: Colors.purple.shade300,
-                        shape: RoundedRectangleBorder(
-                          side: BorderSide(
-                              width: 3,
-                              color: Colors.purple.shade700,
-                              style: BorderStyle.solid),
-                          borderRadius: BorderRadius.all(Radius.circular(10)),
-                        ),
-                    onPressed: () => _dialogalert5(context),
-                    child: Row(
-                      children: [
-                        Text("Obezim! Diyetisyenden destek\nalmaz beslenmeme dikkat etmez\negzersiz planıma uymazsam \nhangi hastalıklar için\nriskli durumdayım?",style:GoogleFonts.patrickHand(
-                          color: Colors.white,
-                          fontWeight: FontWeight.bold,
-                          fontSize: 22
-                        )),
-                      ],
-                    )),
-              ),
+              Row(mainAxisAlignment: MainAxisAlignment.center, children: [
+                Text(
+                    "Merhabalar Ben Asistan Hemşireniz \n Size Nasıl Yardımcı Olabilirim ?",
+                    style: GoogleFonts.patrickHand(
+                        color: Colors.grey.shade500,
+                        fontWeight: FontWeight.bold,
+                        fontSize: 16)),
+                Image(image: AssetImage("assets/img/nurse2.png"))
+              ]),
+              FlatButton(
+                  color: Colors.grey.shade500,
+                  shape: RoundedRectangleBorder(
+                    side: BorderSide(
+                        width: 3,
+                        color: Colors.grey.shade700,
+                        style: BorderStyle.solid),
+                    borderRadius: BorderRadius.all(Radius.circular(10)),
+                  ),
+                  onPressed: () => _dialogalert1(context),
+                  child: Row(
+                    children: [
+                      Text("Yeterli Ve Dengeli Beslenme Önerileri",
+                          style: GoogleFonts.patrickHand(
+                              color: Colors.white,
+                              fontWeight: FontWeight.bold,
+                              fontSize: 14)),
+                    ],
+                  )),
+              FlatButton(
+                  color: Colors.grey.shade500,
+                  shape: RoundedRectangleBorder(
+                    side: BorderSide(
+                        width: 3,
+                        color: Colors.grey.shade700,
+                        style: BorderStyle.solid),
+                    borderRadius: BorderRadius.all(Radius.circular(10)),
+                  ),
+                  onPressed: () => _dialogalert3(context),
+                  child: Row(
+                    children: [
+                      Text(
+                          "Aileler ve Toplum için Ergenlikte Obeziteden Korunmayı Sağlayan İpuçları",
+                          style: GoogleFonts.patrickHand(
+                              color: Colors.white,
+                              fontWeight: FontWeight.bold,
+                              fontSize: 12)),
+                    ],
+                  )),
+              FlatButton(
+                  color: Colors.grey.shade500,
+                  shape: RoundedRectangleBorder(
+                    side: BorderSide(
+                        width: 3,
+                        color: Colors.grey.shade700,
+                        style: BorderStyle.solid),
+                    borderRadius: BorderRadius.all(Radius.circular(10)),
+                  ),
+                  onPressed: () => _dialogalert2(context),
+                  child: Row(
+                    children: [
+                      Center(
+                        child: Text(
+                            "Fazla Kilolu ve Obez Bireyler İçin Sağlıklı Beslenme Önerileri",
+                            style: GoogleFonts.patrickHand(
+                                color: Colors.white,
+                                fontWeight: FontWeight.bold,
+                                fontSize: 14)),
+                      )
+                    ],
+                  )),
+              FlatButton(
+                  color: Colors.grey.shade500,
+                  shape: RoundedRectangleBorder(
+                    side: BorderSide(
+                        width: 3,
+                        color: Colors.grey.shade700,
+                        style: BorderStyle.solid),
+                    borderRadius: BorderRadius.all(Radius.circular(10)),
+                  ),
+                  onPressed: () => _dialogalert4(context),
+                  child: Row(
+                    children: [
+                      Text(
+                          "Obeziteden Kurtulmak İçin Hangi Düşüncelerden Uzak Durmalıyım ?",
+                          style: GoogleFonts.patrickHand(
+                              color: Colors.white,
+                              fontWeight: FontWeight.bold,
+                              fontSize: 14)),
+                    ],
+                  )),
+              FlatButton(
+                  color: Colors.grey.shade500,
+                  shape: RoundedRectangleBorder(
+                    side: BorderSide(
+                        width: 3,
+                        color: Colors.grey.shade700,
+                        style: BorderStyle.solid),
+                    borderRadius: BorderRadius.all(Radius.circular(10)),
+                  ),
+                  onPressed: () => _dialogalert5(context),
+                  child: Row(
+                    children: [
+                      Text(
+                          "Obezim! Diyetisyenden destek almaz beslenmeme dikkat etmez\negzersiz planıma uymazsam hangi hastalıklar için riskli durumdayım?",
+                          style: GoogleFonts.patrickHand(
+                              color: Colors.white,
+                              fontWeight: FontWeight.bold,
+                              fontSize: 12)),
+                    ],
+                  )),
+              FlatButton(
+                  color: Colors.grey.shade500,
+                  shape: RoundedRectangleBorder(
+                    side: BorderSide(
+                        width: 3,
+                        color: Colors.grey.shade700,
+                        style: BorderStyle.solid),
+                    borderRadius: BorderRadius.all(Radius.circular(10)),
+                  ),
+                  onPressed: () => Navigator.push(
+                      context,
+                      PageTransition(
+                          child: ContactNurse(),
+                          type: PageTransitionType.bottomToTop)),
+                  child: Row(
+                    children: [
+                      Center(
+                        child: Text("Hemşilere Ulaşın",
+                            style: GoogleFonts.patrickHand(
+                                color: Colors.white,
+                                fontWeight: FontWeight.bold,
+                                fontSize: 14)),
+                      )
+                    ],
+                  ))
             ],
           )),
     );
@@ -194,12 +205,12 @@ _dialogalert1(context) {
             height: MediaQuery.of(context).size.height * 1,
             child: Card(
               shape: RoundedRectangleBorder(
-                          side: BorderSide(
-                              width: 3,
-                              color: Colors.blue.shade300,
-                              style: BorderStyle.solid),
-                          borderRadius: BorderRadius.all(Radius.circular(10)),
-                        ),
+                side: BorderSide(
+                    width: 3,
+                    color: Colors.blue.shade300,
+                    style: BorderStyle.solid),
+                borderRadius: BorderRadius.all(Radius.circular(10)),
+              ),
               color: Colors.blue.shade100,
               shadowColor: Colors.black,
               child: Padding(
@@ -277,12 +288,12 @@ _dialogalert2(context) {
             height: MediaQuery.of(context).size.height * 1,
             child: Card(
               shape: RoundedRectangleBorder(
-                          side: BorderSide(
-                              width: 3,
-                              color: Colors.blue.shade300,
-                              style: BorderStyle.solid),
-                          borderRadius: BorderRadius.all(Radius.circular(10)),
-                        ),
+                side: BorderSide(
+                    width: 3,
+                    color: Colors.blue.shade300,
+                    style: BorderStyle.solid),
+                borderRadius: BorderRadius.all(Radius.circular(10)),
+              ),
               color: Colors.blue.shade100,
               shadowColor: Colors.black,
               child: Padding(
@@ -300,16 +311,16 @@ _dialogalert2(context) {
                           margin: EdgeInsets.all(5),
                           child: Text(
                             "Fazla Kilolu ve Obez Bireyler İçin Sağlıklı Beslenme Önerileri",
-                            style: TextStyle(
-                                fontSize: 18, fontWeight: FontWeight.bold),
+                            style: GoogleFonts.patrickHand(
+                                fontSize: 21, fontWeight: FontWeight.bold),
                           ),
                         ),
                         Container(
                           margin: EdgeInsets.all(5),
                           child: Text(
                             "Yağ ve/veya şeker miktarı azaltılmış (diyet/light) ürünler, her zaman düşük enerji içermez. Bu ürünlerin tüketiminde dikkatli olunmalıdır.\nHazır meyve suları, gazlı içecekler vb. yerine sağlıklı içecekler tercih edilmelidir.\nKızartma yerine ızgara, haşlama, buharda ve fırında pişirme yöntemleri seçilmelidir. \nGün boyu aktif olunmalıdır.\nHızlı vücut ağırlık kaybına neden olan popüler diyetler ve kontrolsüz zayıflama ilaçları kesinlikle uygulanmamalıdır.",
-                            style: TextStyle(
-                                fontSize: 14, fontWeight: FontWeight.normal),
+                            style: GoogleFonts.patrickHand(
+                                fontSize: 16, fontWeight: FontWeight.w500),
                           ),
                         ),
                       ],
@@ -360,12 +371,12 @@ _dialogalert3(context) {
             height: MediaQuery.of(context).size.height * 1,
             child: Card(
               shape: RoundedRectangleBorder(
-                          side: BorderSide(
-                              width: 3,
-                              color: Colors.blue.shade300,
-                              style: BorderStyle.solid),
-                          borderRadius: BorderRadius.all(Radius.circular(10)),
-                        ),
+                side: BorderSide(
+                    width: 3,
+                    color: Colors.blue.shade300,
+                    style: BorderStyle.solid),
+                borderRadius: BorderRadius.all(Radius.circular(10)),
+              ),
               color: Colors.blue.shade100,
               shadowColor: Colors.black,
               child: Padding(
@@ -443,12 +454,12 @@ _dialogalert4(context) {
             height: MediaQuery.of(context).size.height * 1,
             child: Card(
               shape: RoundedRectangleBorder(
-                          side: BorderSide(
-                              width: 3,
-                              color: Colors.blue.shade300,
-                              style: BorderStyle.solid),
-                          borderRadius: BorderRadius.all(Radius.circular(10)),
-                        ),
+                side: BorderSide(
+                    width: 3,
+                    color: Colors.blue.shade300,
+                    style: BorderStyle.solid),
+                borderRadius: BorderRadius.all(Radius.circular(10)),
+              ),
               color: Colors.blue.shade100,
               shadowColor: Colors.black,
               child: Padding(
@@ -526,12 +537,12 @@ _dialogalert5(context) {
             height: MediaQuery.of(context).size.height * 1,
             child: Card(
               shape: RoundedRectangleBorder(
-                          side: BorderSide(
-                              width: 3,
-                              color: Colors.blue.shade300,
-                              style: BorderStyle.solid),
-                          borderRadius: BorderRadius.all(Radius.circular(10)),
-                        ),
+                side: BorderSide(
+                    width: 3,
+                    color: Colors.blue.shade300,
+                    style: BorderStyle.solid),
+                borderRadius: BorderRadius.all(Radius.circular(10)),
+              ),
               color: Colors.blue.shade100,
               shadowColor: Colors.black,
               child: Padding(

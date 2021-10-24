@@ -52,13 +52,22 @@ class _HomeState extends State<Home> {
             child: Container(
               width: MediaQuery.of(context).size.width * 1,
               height: MediaQuery.of(context).size.height * 1,
-              /*decoration: BoxDecoration(
-                  image: DecorationImage(
-                      image: AssetImage('assets/img/background.png'),
-                      repeat: ImageRepeat.repeat,
-                      colorFilter:
-                          ColorFilter.mode(Colors.white60, BlendMode.color),
-                      fit: BoxFit.cover)),*/
+              padding: const EdgeInsets.all(0.0),
+            alignment: Alignment.center,
+            decoration: new BoxDecoration(
+            gradient: new RadialGradient(
+              center: Alignment.center,
+              radius: 0.75,
+              colors: [
+                Colors.white60,
+                Colors.blue.shade200,
+              ],
+              stops: [
+                0,
+                1.0,
+              ],
+              ),
+            ),
               child: Column(
                 children: [
                   Image(
@@ -105,8 +114,7 @@ class _HomeState extends State<Home> {
                                         PageTransition(
                                             child: BmI(),
                                             type: PageTransitionType
-                                                .bottomToTop));
-                                  },
+                                                .bottomToTop));},
 
                                   //color:Colors.blue.shade700,
                                   padding: EdgeInsets.all(5),
@@ -139,6 +147,7 @@ class _HomeState extends State<Home> {
                                 ),
                               ),
                             ),
+                            
                             Container(
                               margin: EdgeInsets.all(7.5),
                               width: MediaQuery.of(context).size.height * 0.15,
@@ -165,14 +174,15 @@ class _HomeState extends State<Home> {
                                     borderRadius:
                                         BorderRadius.all(Radius.circular(15)),
                                   ),
-                                  onPressed: () => Navigator.push(
-                                    context,
-                                    PageTransition(
-                                      type: PageTransitionType.rightToLeft,
-                                      duration: Duration(milliseconds: 500),
-                                      child: NobetciEczane(),
-                                    ),
-                                  ),
+                                  onPressed: () {
+                                    Navigator.push(
+                                        context,
+                                        PageTransition(
+                                            child: Sleep(),
+                                            type: PageTransitionType
+                                                .bottomToTop));
+                                  },
+
                                   //color:Colors.blue.shade700,
                                   padding: EdgeInsets.all(5),
                                   child: Column(
@@ -191,9 +201,9 @@ class _HomeState extends State<Home> {
                                           child: Image(
                                               fit: BoxFit.fill,
                                               image: AssetImage(
-                                                  'assets/img/drugstore.png'))),
+                                                  'assets/img/night.png'))),
                                       Text(
-                                        "    Nöbetçi\n   Eczaneler",
+                                        "Uyku Sürem",
                                         style: GoogleFonts.patrickHand(
                                             fontWeight: FontWeight.w600,
                                             fontSize: 14,
@@ -433,15 +443,14 @@ class _HomeState extends State<Home> {
                                     borderRadius:
                                         BorderRadius.all(Radius.circular(15)),
                                   ),
-                                  onPressed: () {
-                                    Navigator.push(
-                                        context,
-                                        PageTransition(
-                                            child: Sleep(),
-                                            type: PageTransitionType
-                                                .bottomToTop));
-                                  },
-
+                                  onPressed: () => Navigator.push(
+                                    context,
+                                    PageTransition(
+                                      type: PageTransitionType.rightToLeft,
+                                      duration: Duration(milliseconds: 500),
+                                      child: NobetciEczane(),
+                                    ),
+                                  ),
                                   //color:Colors.blue.shade700,
                                   padding: EdgeInsets.all(5),
                                   child: Column(
@@ -460,9 +469,9 @@ class _HomeState extends State<Home> {
                                           child: Image(
                                               fit: BoxFit.fill,
                                               image: AssetImage(
-                                                  'assets/img/night.png'))),
+                                                  'assets/img/drugstore.png'))),
                                       Text(
-                                        "Uyku Sürem",
+                                        "    Nöbetçi\n   Eczaneler",
                                         style: GoogleFonts.patrickHand(
                                             fontWeight: FontWeight.w600,
                                             fontSize: 14,

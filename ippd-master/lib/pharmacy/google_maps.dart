@@ -60,6 +60,10 @@ class GoogleMapsPageState extends State<GoogleMapsPage> {
       body: Stack(
         children: [
           GoogleMap(
+            myLocationButtonEnabled: true,
+            myLocationEnabled: true,
+            compassEnabled: true,
+            buildingsEnabled: true,
             mapType: MapType.normal,
             initialCameraPosition: _initPos,
             onMapCreated: (GoogleMapController controller) {
@@ -76,7 +80,7 @@ class GoogleMapsPageState extends State<GoogleMapsPage> {
             child: Align(
               alignment: Alignment.bottomCenter,
               child: ConstrainedBox(
-                constraints: BoxConstraints.tightFor(width: 250, height: 50),
+                constraints: BoxConstraints.tightFor(width: 150, height: 50),
                 child: FlatButton(
                   color: Colors.blue,
                   shape: RoundedRectangleBorder(
@@ -103,7 +107,7 @@ class GoogleMapsPageState extends State<GoogleMapsPage> {
             child: Align(
               alignment: Alignment.topCenter,
               child: ConstrainedBox(
-                constraints: BoxConstraints.tightFor(width: 250, height: 50),
+                constraints: BoxConstraints.tightFor(width: 150, height: 50),
                 child: FlatButton(
                   color: Colors.blue,
                   shape: RoundedRectangleBorder(

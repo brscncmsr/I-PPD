@@ -38,6 +38,10 @@ class GoogleMapsSinglePageState extends State<GoogleMapsSinglePage> {
       body: Stack(
         children: [
           GoogleMap(
+            myLocationButtonEnabled: true,
+            myLocationEnabled: true,
+            compassEnabled: true,
+            buildingsEnabled: true,
             mapType: MapType.normal,
             initialCameraPosition: _initPos,
             onMapCreated: (GoogleMapController controller) {
@@ -57,7 +61,7 @@ class GoogleMapsSinglePageState extends State<GoogleMapsSinglePage> {
             child: Align(
               alignment: Alignment.bottomCenter,
               child: ConstrainedBox(
-                constraints: BoxConstraints.tightFor(width: 250, height: 50),
+                constraints: BoxConstraints.tightFor(width: 150, height: 50),
                 child: ElevatedButton(
                     style: ButtonStyle(
                       shape: MaterialStateProperty.all<RoundedRectangleBorder>(
@@ -79,7 +83,7 @@ class GoogleMapsSinglePageState extends State<GoogleMapsSinglePage> {
             child: Align(
               alignment: Alignment.topCenter,
               child: ConstrainedBox(
-                constraints: BoxConstraints.tightFor(width: 250, height: 50),
+                constraints: BoxConstraints.tightFor(width: 150, height: 50),
                 child: ElevatedButton(
                   style: ButtonStyle(
                     shape: MaterialStateProperty.all<RoundedRectangleBorder>(

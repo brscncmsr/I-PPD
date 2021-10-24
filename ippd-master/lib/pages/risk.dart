@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:group_button/group_button.dart';
 import 'package:ippd/pages/bmi.dart';
+import 'package:ippd/pages/diabet.dart';
 import 'package:page_transition/page_transition.dart';
 
 class Risk extends StatefulWidget {
@@ -32,14 +33,14 @@ class _RiskState extends State<Risk> {
                 padding: EdgeInsets.all(4),
                 height: 100,
                 child: FlatButton(
-                  color: Colors.indigo.shade300,
-                        shape: RoundedRectangleBorder(
-                          side: BorderSide(
-                              width: 3,
-                              color: Colors.indigo.shade700,
-                              style: BorderStyle.solid),
-                          borderRadius: BorderRadius.all(Radius.circular(10)),
-                        ),
+                    color: Colors.indigo.shade300,
+                    shape: RoundedRectangleBorder(
+                      side: BorderSide(
+                          width: 3,
+                          color: Colors.indigo.shade700,
+                          style: BorderStyle.solid),
+                      borderRadius: BorderRadius.all(Radius.circular(10)),
+                    ),
                     onPressed: () {
                       Navigator.push(
                           context,
@@ -49,13 +50,15 @@ class _RiskState extends State<Risk> {
                     },
                     child: Row(
                       children: [
-                        Image(height:60,image: AssetImage("assets/img/blood.png")),
+                        Image(
+                            height: 60,
+                            image: AssetImage("assets/img/blood.png")),
                         SizedBox(width: 10),
-                        Text("Kan Uyuşmazlığı\nRiskimi Hesapla",style:GoogleFonts.patrickHand(
-                          color: Colors.white,
-                          fontWeight: FontWeight.bold,
-                          fontSize: 24
-                        )),
+                        Text("Kan Uyuşmazlığı\nRiskimi Hesapla",
+                            style: GoogleFonts.patrickHand(
+                                color: Colors.white,
+                                fontWeight: FontWeight.bold,
+                                fontSize: 24)),
                       ],
                     )),
               ),
@@ -63,33 +66,69 @@ class _RiskState extends State<Risk> {
                 margin: EdgeInsets.all(5),
                 padding: EdgeInsets.all(4),
                 height: 100,
-                width:MediaQuery.of(context).size.width * 0.75,
+                width: MediaQuery.of(context).size.width * 0.75,
                 //color: Colors.blue.shade500,
                 child: FlatButton(
-                  color: Colors.blue.shade300,
-                        shape: RoundedRectangleBorder(
-                          side: BorderSide(
-                              width: 3,
-                              color: Colors.blue.shade700,
-                              style: BorderStyle.solid),
-                          borderRadius: BorderRadius.all(Radius.circular(10)),
-                        ),
+                    color: Colors.blue.shade300,
+                    shape: RoundedRectangleBorder(
+                      side: BorderSide(
+                          width: 3,
+                          color: Colors.blue.shade700,
+                          style: BorderStyle.solid),
+                      borderRadius: BorderRadius.all(Radius.circular(10)),
+                    ),
                     onPressed: () {
-                        Navigator.push(
-                            context,
-                            PageTransition(
-                                child: BmI(),
-                                type: PageTransitionType.bottomToTop));
+                      Navigator.push(
+                          context,
+                          PageTransition(
+                              child: BmI(),
+                              type: PageTransitionType.bottomToTop));
                     },
                     child: Row(
                       children: [
-                        Image(height:60,image: AssetImage("assets/img/obesite.png")),
+                        Image(
+                            height: 60,
+                            image: AssetImage("assets/img/obesite.png")),
                         SizedBox(width: 5),
-                        Text("Obezite Riskimi Hesapla",style:GoogleFonts.patrickHand(
-                          color: Colors.white,
-                          fontWeight: FontWeight.bold,
-                          fontSize: 24
-                        )),
+                        Text("Obezite Riskimi Hesapla",
+                            style: GoogleFonts.patrickHand(
+                                color: Colors.white,
+                                fontWeight: FontWeight.bold,
+                                fontSize: 24)),
+                      ],
+                    )),
+              ),
+              Container(
+                margin: EdgeInsets.all(5),
+                padding: EdgeInsets.all(4),
+                height: 100,
+                child: FlatButton(
+                    color: Colors.lightBlue.shade500,
+                    shape: RoundedRectangleBorder(
+                      side: BorderSide(
+                          width: 3,
+                          color: Colors.lightBlue.shade700,
+                          style: BorderStyle.solid),
+                      borderRadius: BorderRadius.all(Radius.circular(10)),
+                    ),
+                    onPressed: () {
+                      Navigator.push(
+                          context,
+                          PageTransition(
+                              child: Diabet(),
+                              type: PageTransitionType.bottomToTop));
+                    },
+                    child: Row(
+                      children: [
+                        Image(
+                            height: 60,
+                            image: AssetImage("assets/img/diabet.png")),
+                        SizedBox(width: 10),
+                        Text("Diyabet Riskimi Hesapla",
+                            style: GoogleFonts.patrickHand(
+                                color: Colors.white,
+                                fontWeight: FontWeight.bold,
+                                fontSize: 24)),
                       ],
                     )),
               ),
@@ -116,7 +155,8 @@ class _BloodState extends State<Blood> {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
-          title: Text('Kan Uyuşmazlığı Riski',style:GoogleFonts.balooThambi(color:Colors.blue)),
+          title: Text('Kan Uyuşmazlığı Riski',
+              style: GoogleFonts.balooThambi(color: Colors.blue)),
           //centerTitle: true,
           backgroundColor: Colors.blue.shade200,
         ),
@@ -130,7 +170,9 @@ class _BloodState extends State<Blood> {
                       children: <Widget>[
                         Padding(padding: EdgeInsets.all(10.0)),
                         SizedBox(height: 20),
-                        Text("Anne Rh Durumu",style: GoogleFonts.patrickHand(fontWeight: FontWeight.bold,fontSize: 18)),
+                        Text("Anne Rh Durumu",
+                            style: GoogleFonts.patrickHand(
+                                fontWeight: FontWeight.bold, fontSize: 18)),
                         SizedBox(height: 20),
                         GroupButton(
                           direction: Axis.horizontal,
@@ -152,7 +194,9 @@ class _BloodState extends State<Blood> {
                           borderRadius: BorderRadius.circular(30),
                           onSelected: (i, selected) => mrh = i,
                         ),
-                        Text("Anne Kan Grubu",style: GoogleFonts.patrickHand(fontWeight: FontWeight.bold,fontSize: 18)),
+                        Text("Anne Kan Grubu",
+                            style: GoogleFonts.patrickHand(
+                                fontWeight: FontWeight.bold, fontSize: 18)),
                         SizedBox(height: 20),
                         GroupButton(
                           direction: Axis.vertical,
@@ -185,7 +229,9 @@ class _BloodState extends State<Blood> {
                       children: <Widget>[
                         Padding(padding: EdgeInsets.all(10.0)),
                         SizedBox(height: 20),
-                        Text("Baba Rh Durumu",style: GoogleFonts.patrickHand(fontWeight: FontWeight.bold,fontSize: 18)),
+                        Text("Baba Rh Durumu",
+                            style: GoogleFonts.patrickHand(
+                                fontWeight: FontWeight.bold, fontSize: 18)),
                         SizedBox(height: 20),
                         GroupButton(
                           direction: Axis.horizontal,
@@ -207,7 +253,9 @@ class _BloodState extends State<Blood> {
                           borderRadius: BorderRadius.circular(30),
                           onSelected: (i, selected) => frh = i,
                         ),
-                        Text("Baba Kan Grubu",style: GoogleFonts.patrickHand(fontWeight: FontWeight.bold,fontSize: 18)),
+                        Text("Baba Kan Grubu",
+                            style: GoogleFonts.patrickHand(
+                                fontWeight: FontWeight.bold, fontSize: 18)),
                         SizedBox(height: 20),
                         GroupButton(
                           direction: Axis.vertical,
@@ -238,19 +286,20 @@ class _BloodState extends State<Blood> {
               Container(
                 padding: EdgeInsets.all(10),
                 child: FlatButton(
-                      color: Colors.blue.shade300,
-                      shape: RoundedRectangleBorder(
-                        side: BorderSide(
-                            width: 3,
-                            color: Colors.blue,
-                            style: BorderStyle.solid),
-                        borderRadius: BorderRadius.all(Radius.circular(10)),
-                      ),
-                      child: Text(
+                    color: Colors.blue.shade300,
+                    shape: RoundedRectangleBorder(
+                      side: BorderSide(
+                          width: 3,
+                          color: Colors.blue,
+                          style: BorderStyle.solid),
+                      borderRadius: BorderRadius.all(Radius.circular(10)),
+                    ),
+                    child: Text(
                       "Riski Hesapla",
-                      style: GoogleFonts.patrickHandSc(color: Colors.white60,
-                            fontWeight: FontWeight.bold,
-                            fontSize: 21),
+                      style: GoogleFonts.patrickHandSc(
+                          color: Colors.white60,
+                          fontWeight: FontWeight.bold,
+                          fontSize: 21),
                     ),
                     onPressed: () {
                       calcRisk();
@@ -280,5 +329,100 @@ class _BloodState extends State<Blood> {
       _rsttext = "Herhangi bir Kan Uyuşmazlığı Riskiniz Yoktur.";
     }
     setState(() {});
+  }
+}
+
+class Diabet extends StatefulWidget {
+  Diabet({Key? key}) : super(key: key);
+
+  @override
+  _DiabetState createState() => _DiabetState();
+}
+
+class _DiabetState extends State<Diabet> {
+  String? _value;
+  bool _isSelected = false;
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+        body: Column(mainAxisAlignment: MainAxisAlignment.center, children: [
+      Container(
+        margin: EdgeInsets.fromLTRB(60, 0, 50, 50),
+        padding: EdgeInsets.symmetric(horizontal: 10.0),
+        decoration: BoxDecoration(
+          color: Colors.white,
+          borderRadius: BorderRadius.circular(8.0),
+          boxShadow: [
+            BoxShadow(
+              color: Colors.grey.withOpacity(0.5),
+              spreadRadius: 2,
+              blurRadius: 7,
+              offset: Offset(0, 3), // changes position of shadow
+            ),
+          ],
+          border: Border.all(
+              color: Colors.black12, style: BorderStyle.solid, width: 0.80),
+        ),
+        child: DropdownButton<String>(
+          elevation: 8,
+          value: null,
+          style: TextStyle(color: Colors.black87, fontSize: 16),
+          icon: Icon(Icons.arrow_drop_down_circle),
+          iconEnabledColor: Colors.blue,
+          hint: Text("Şuan Diyabet Hastası Mısınız?"),
+          items: <String>["Evet", "Hayır"]
+              .map<DropdownMenuItem<String>>((String value) {
+            return DropdownMenuItem<String>(
+              value: value,
+              child: Text(value),
+            );
+          }).toList(),
+          onChanged: (String? newValue) {
+            setState(() {
+              _value = newValue!;
+              _isSelected = true;
+            });
+          },
+        ),
+      ),
+      ConstrainedBox(
+        constraints: BoxConstraints.tightFor(width: 250, height: 50),
+        child: FlatButton(
+          color: Colors.blue,
+          shape: RoundedRectangleBorder(
+            side: BorderSide(width: 3, color: Colors.blue.shade300),
+            borderRadius: BorderRadius.all(Radius.circular(15)),
+          ),
+          onPressed: _isSelected
+              ? () {
+                  setState(() {
+                    _isSelected = false;
+                  });
+                  checkDiase();
+                }
+              : null,
+          child: Text(
+            "Onayla",
+            style: GoogleFonts.patrickHand(
+              fontSize: 24,
+              color: Colors.white60,
+              fontWeight: FontWeight.bold,
+            ),
+          ),
+        ),
+      )
+    ]));
+  }
+
+  void checkDiase() {
+    if (_value == "Evet") {
+      Navigator.push(
+          context,
+          PageTransition(
+              child: DiabetRisk(), type: PageTransitionType.bottomToTop));
+    } else if (_value == "Hayır") {
+      Navigator.push(context,
+          PageTransition(child: Risk(), type: PageTransitionType.bottomToTop));
+    }
   }
 }

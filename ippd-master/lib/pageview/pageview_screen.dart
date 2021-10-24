@@ -13,6 +13,8 @@ class Pageviewing extends StatefulWidget {
   _PageviewingState createState() => _PageviewingState();
 }
 
+User? user = FirebaseAuth.instance.currentUser;
+
 class _PageviewingState extends State<Pageviewing> {
   int _currentPage = 0;
   PageController _controller = PageController();
@@ -23,17 +25,17 @@ class _PageviewingState extends State<Pageviewing> {
         title: "Kim Geliştirdi?",
         description:
             "IPP-D sizi sağlık durumu ve hastalık riskleri hakkında bilgilendirmek amacıyla BAP.ÖOP.004 nolu proje kodu ile geliştirilmiştir ve Hasan Kalyoncu Üniversitesi tarafından desteklenmektedir.",
-        image: ""),
+        image: "assets/img/MBMI-0.png"),
     SliderPage(
         title: "Neden geliştirildi?",
         description:
             " IPP-D uygulaması risk altında bulunduğunuz hastalıkları önlemek, mevcut sağlık düzeyinizi korumak ve geliştirmek amacıyla oluşturulan yapay zeka destekli bir uygulamadır.",
-        image: ""),
+        image: "assets/img/MBMI-0.png"),
     SliderPage(
         title: "Önemli Hatırlatma",
         description:
             " IPP-D uygulamasının doğru sonuçları verebilmesi için istenilen bilgileri, anket formlarını ve gerekli bütün bilgileri doğru girmeniz önem arz etmektedir..",
-        image: ""),
+        image: "assets/img/MBMI-0.png"),
   ];
 
   _onchanged(int index) {
@@ -119,26 +121,26 @@ class _PageviewingState extends State<Pageviewing> {
   }
 
   void checkSign() async {
-    SharedPreferences prefs = await SharedPreferences.getInstance();
+    FirebaseAuth.instance.idTokenChanges().listen((User? user) {
+      if (user != null) {
+        Navigator.push(
+            context,
+            PageTransition(
+              type: PageTransitionType.rightToLeft,
+              duration: Duration(milliseconds: 500),
+              child: Anasayfa(),
+            ));
+      } else {
+        Navigator.push(
+            context,
+            PageTransition(
+              type: PageTransitionType.rightToLeft,
+              duration: Duration(milliseconds: 500),
+              child: LoginPage(),
+            ));
+      }
+    });
 
-    if (prefs.getString('email') != null) {
-      Navigator.push(
-        context,
-        PageTransition(
-          type: PageTransitionType.rightToLeft,
-          duration: Duration(milliseconds: 500),
-          child: Anasayfa(),
-        ),
-      );
-    } else
-      Navigator.push(
-        context,
-        PageTransition(
-          type: PageTransitionType.rightToLeft,
-          duration: Duration(milliseconds: 500),
-          child: LoginPage(),
-        ),
-      );
     setState(() {});
   }
 }

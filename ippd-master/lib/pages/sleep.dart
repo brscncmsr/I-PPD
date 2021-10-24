@@ -36,14 +36,14 @@ class _SleepState extends State<Sleep> {
               children: <Widget>[
                 Padding(padding: EdgeInsets.all(10.0)),
                 SizedBox(height: 20),
-                Text("Yaş Grubu",style:GoogleFonts.patrickHand(
+                Text("Yaş Grubu",style:TextStyle(fontFamily : 'Roboto',
                        fontWeight: FontWeight.bold)),
                 SizedBox(height: 20),
                 GroupButton(
-                  selectedTextStyle: GoogleFonts.patrickHand(
+                  selectedTextStyle: TextStyle(fontFamily : 'Roboto',
                       color: Colors.black87, fontWeight: FontWeight.bold),
                   unselectedTextStyle:
-                      GoogleFonts.patrickHand(color: Colors.black87),
+                      TextStyle(fontFamily : 'Roboto',color: Colors.black87),
                   isRadio: true,
                   selectedBorderColor: Colors.blue.shade300,
                   selectedColor: Colors.blue.shade200,
@@ -71,8 +71,8 @@ class _SleepState extends State<Sleep> {
                     decoration: InputDecoration(
                       counterText: '',
                       helperText: 'Örneğin 40 olarak girebilirsiniz',
-                      helperStyle: GoogleFonts.patrickHand(
-                          fontWeight: FontWeight.bold, fontSize: 18),
+                      helperStyle: TextStyle(fontFamily : 'Roboto',
+                          fontWeight: FontWeight.bold, fontSize: MediaQuery.of(context).size.width * 0.035),
                       icon: Container(
                           width: MediaQuery.of(context).size.height * 0.05,
                           height: MediaQuery.of(context).size.height * 0.05,
@@ -80,7 +80,7 @@ class _SleepState extends State<Sleep> {
                               fit: BoxFit.fill,
                               image: AssetImage('assets/img/age.png'))),
                       labelText: _lbtext,
-                      labelStyle: GoogleFonts.patrickHand(),
+                      labelStyle: TextStyle(fontFamily : 'Roboto',),
                       border: OutlineInputBorder(
                         borderRadius: BorderRadius.all(Radius.circular(10)),
                       ),
@@ -106,7 +106,7 @@ class _SleepState extends State<Sleep> {
                         style: GoogleFonts.patrickHand(
                             color: Colors.white60,
                             fontWeight: FontWeight.bold,
-                            fontSize: 21),
+                            fontSize: MediaQuery.of(context).size.width * 0.055),
                       ),
                       onPressed: _timeofsleep,
                     ),
@@ -125,7 +125,7 @@ class _SleepState extends State<Sleep> {
                         style: GoogleFonts.patrickHand(
                             color: Colors.white60,
                             fontWeight: FontWeight.bold,
-                            fontSize: 21),
+                            fontSize: MediaQuery.of(context).size.width * 0.055),
                       ),
                       onPressed: _clear,
                     ),
@@ -135,9 +135,9 @@ class _SleepState extends State<Sleep> {
                 SizedBox(height: 15),
                 Text(
                   _result == null ? "Değeri Gir" : _rsttext,
-                  style: GoogleFonts.patrickHand(
+                  style: TextStyle(fontFamily : 'Roboto',
                     color: Colors.pink.shade900,
-                    fontSize: 27,
+                    fontSize: MediaQuery.of(context).size.width * 0.09,
                     fontWeight: FontWeight.bold,
                   ),
                 ),

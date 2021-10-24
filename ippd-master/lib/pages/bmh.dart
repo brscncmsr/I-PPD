@@ -36,7 +36,8 @@ class _BmHState extends State<BmH> {
     return Scaffold(
         resizeToAvoidBottomInset: false,
         appBar: AppBar(
-          title: Text('Bazal Metabolizma Hızı',style:GoogleFonts.balooThambi(color:Colors.blue)),
+          title: Text('Bazal Metabolizma Hızı',
+              style: GoogleFonts.balooThambi(color: Colors.blue)),
           //centerTitle: true,
           backgroundColor: Colors.blue.shade200,
         ),
@@ -56,8 +57,10 @@ class _BmHState extends State<BmH> {
                     decoration: InputDecoration(
                       counterText: '',
                       helperText: 'Örneğin 160 olarak girebilirsiniz',
-                      helperStyle: GoogleFonts.patrickHand(
-                          fontWeight: FontWeight.bold, fontSize: 18),
+                      helperStyle: TextStyle(
+                          fontFamily: 'Roboto',
+                          fontWeight: FontWeight.bold,
+                          fontSize: MediaQuery.of(context).size.width * 0.04),
                       icon: Container(
                           width: MediaQuery.of(context).size.height * 0.05,
                           height: MediaQuery.of(context).size.height * 0.05,
@@ -65,7 +68,7 @@ class _BmHState extends State<BmH> {
                               fit: BoxFit.fill,
                               image: AssetImage('assets/img/height.png'))),
                       labelText: 'Boy cm cinsinden',
-                      labelStyle: GoogleFonts.patrickHand(),
+                      labelStyle: TextStyle(fontFamily: 'Roboto'),
                       border: OutlineInputBorder(
                         borderRadius: BorderRadius.all(Radius.circular(10)),
                       ),
@@ -83,8 +86,10 @@ class _BmHState extends State<BmH> {
                     decoration: InputDecoration(
                       counterText: '',
                       helperText: 'Örneğin 80 olarak girebilirsiniz',
-                      helperStyle: GoogleFonts.patrickHand(
-                          fontWeight: FontWeight.bold, fontSize: 18),
+                      helperStyle: TextStyle(
+                          fontFamily: 'Roboto',
+                          fontWeight: FontWeight.bold,
+                          fontSize: MediaQuery.of(context).size.width * 0.04),
                       icon: Container(
                           width: MediaQuery.of(context).size.height * 0.05,
                           height: MediaQuery.of(context).size.height * 0.05,
@@ -92,7 +97,7 @@ class _BmHState extends State<BmH> {
                               fit: BoxFit.fill,
                               image: AssetImage('assets/img/weight.png'))),
                       labelText: 'Kilo kg cinsinden',
-                      labelStyle: GoogleFonts.patrickHand(),
+                      labelStyle: TextStyle(fontFamily: 'Roboto'),
                       border: OutlineInputBorder(
                         borderRadius: BorderRadius.all(Radius.circular(10)),
                       ),
@@ -110,8 +115,10 @@ class _BmHState extends State<BmH> {
                     decoration: InputDecoration(
                       counterText: '',
                       helperText: 'Örneğin 40 olarak girebilirsiniz',
-                      helperStyle: GoogleFonts.patrickHand(
-                          fontWeight: FontWeight.bold, fontSize: 18),
+                      helperStyle: TextStyle(
+                          fontFamily: 'Roboto',
+                          fontWeight: FontWeight.bold,
+                          fontSize: MediaQuery.of(context).size.width * 0.04),
                       icon: Container(
                           width: MediaQuery.of(context).size.height * 0.05,
                           height: MediaQuery.of(context).size.height * 0.05,
@@ -119,7 +126,7 @@ class _BmHState extends State<BmH> {
                               fit: BoxFit.fill,
                               image: AssetImage('assets/img/age.png'))),
                       labelText: 'Yaşınız',
-                      labelStyle: GoogleFonts.patrickHand(),
+                      labelStyle: TextStyle(fontFamily: 'Roboto'),
                       border: OutlineInputBorder(
                         borderRadius: BorderRadius.all(Radius.circular(10)),
                       ),
@@ -129,10 +136,12 @@ class _BmHState extends State<BmH> {
                 Padding(padding: EdgeInsets.all(10.0)),
                 SizedBox(height: 20),
                 GroupButton(
-                  selectedTextStyle: GoogleFonts.patrickHand(
-                      color: Colors.black87, fontWeight: FontWeight.bold),
+                  selectedTextStyle: TextStyle(
+                      fontFamily: 'Roboto',
+                      color: Colors.black87,
+                      fontWeight: FontWeight.bold),
                   unselectedTextStyle:
-                      GoogleFonts.patrickHand(color: Colors.black87),
+                      TextStyle(fontFamily: 'Roboto', color: Colors.black87),
                   isRadio: true,
                   selectedBorderColor: Colors.blue.shade300,
                   selectedColor: Colors.blue.shade200,
@@ -149,15 +158,22 @@ class _BmHState extends State<BmH> {
                 SizedBox(
                   height: 10,
                 ),
-                Text("Aktiflik Seviyesi", style: GoogleFonts.patrickHand()),
+                Text(
+                  "Aktiflik Seviyesi",
+                  style: TextStyle(
+                    fontFamily: 'Roboto',
+                  ),
+                ),
                 SizedBox(
                   height: 10,
                 ),
                 GroupButton(
-                  selectedTextStyle: GoogleFonts.patrickHand(
-                      color: Colors.black87, fontWeight: FontWeight.bold),
+                  selectedTextStyle: TextStyle(
+                      fontFamily: 'Roboto',
+                      color: Colors.black87,
+                      fontWeight: FontWeight.bold),
                   unselectedTextStyle:
-                      GoogleFonts.patrickHand(color: Colors.black87),
+                      TextStyle(fontFamily: 'Roboto', color: Colors.black87),
                   isRadio: true,
                   selectedBorderColor: Colors.blue.shade300,
                   selectedColor: Colors.blue.shade200,
@@ -214,31 +230,32 @@ class _BmHState extends State<BmH> {
                       ),
                       onPressed: _clear,
                     ),
-                    SizedBox(height: 15),
+                    SizedBox(width: 10),
+                    FlatButton(
+                      color: Colors.blue.shade300,
+                      shape: RoundedRectangleBorder(
+                        side: BorderSide(
+                            width: 3,
+                            color: Colors.blue,
+                            style: BorderStyle.solid),
+                        borderRadius: BorderRadius.all(Radius.circular(10)),
+                      ),
+                      child: Text(
+                        "Aktiflik Nedir",
+                        style: GoogleFonts.patrickHand(
+                            color: Colors.white60,
+                            fontWeight: FontWeight.bold,
+                            fontSize: 21),
+                      ),
+                      onPressed: () => _dialogalert(context),
+                    ),
                   ],
                 ),
                 SizedBox(height: 10),
-                FlatButton(
-                    color: Colors.blue.shade300,
-                    shape: RoundedRectangleBorder(
-                      side: BorderSide(
-                          width: 3,
-                          color: Colors.blue,
-                          style: BorderStyle.solid),
-                      borderRadius: BorderRadius.all(Radius.circular(10)),
-                    ),
-                    child: Text(
-                      "Bilgileri Getir",
-                      style: GoogleFonts.patrickHand(
-                          color: Colors.white60,
-                          fontWeight: FontWeight.bold,
-                          fontSize: 18),
-                    ),
-                    onPressed: _dialogalert(context),
-                    ),
                 Text(
                   bmh == null ? "Değeri Gir" : _bmhtext,
-                  style: GoogleFonts.patrickHand(
+                  style: TextStyle(
+                    fontFamily: 'Roboto',
                     color: Colors.pink.shade900,
                     fontSize: 24,
                     fontWeight: FontWeight.bold,
@@ -247,7 +264,8 @@ class _BmHState extends State<BmH> {
                 SizedBox(height: 15),
                 Text(
                   bmh == null ? "Değeri Gir" : bmhtext,
-                  style: GoogleFonts.patrickHand(
+                  style: TextStyle(
+                    fontFamily: 'Roboto',
                     color: Colors.pink.shade900,
                     fontSize: 24,
                     fontWeight: FontWeight.bold,
@@ -386,7 +404,9 @@ class _BmHState extends State<BmH> {
                             child: Text(
                               "Az Aktif",
                               style: TextStyle(
-                                  fontSize: 18, fontWeight: FontWeight.bold),
+                                  fontSize:
+                                      MediaQuery.of(context).size.width * 0.04,
+                                  fontWeight: FontWeight.bold),
                             ),
                           ),
                           Container(
@@ -402,7 +422,9 @@ class _BmHState extends State<BmH> {
                             child: Text(
                               "Hafif Düzeyde Aktif",
                               style: TextStyle(
-                                  fontSize: 18, fontWeight: FontWeight.bold),
+                                  fontSize:
+                                      MediaQuery.of(context).size.width * 0.04,
+                                  fontWeight: FontWeight.bold),
                             ),
                           ),
                           Container(
@@ -418,7 +440,9 @@ class _BmHState extends State<BmH> {
                             child: Text(
                               "Orta Düzeyde Aktif",
                               style: TextStyle(
-                                  fontSize: 18, fontWeight: FontWeight.bold),
+                                  fontSize:
+                                      MediaQuery.of(context).size.width * 0.04,
+                                  fontWeight: FontWeight.bold),
                             ),
                           ),
                           Container(
@@ -434,7 +458,9 @@ class _BmHState extends State<BmH> {
                             child: Text(
                               "Çok Aktif",
                               style: TextStyle(
-                                  fontSize: 18, fontWeight: FontWeight.bold),
+                                  fontSize:
+                                      MediaQuery.of(context).size.width * 0.04,
+                                  fontWeight: FontWeight.bold),
                             ),
                           ),
                           Container(
@@ -450,7 +476,9 @@ class _BmHState extends State<BmH> {
                             child: Text(
                               "Çok Çok Aktif",
                               style: TextStyle(
-                                  fontSize: 18, fontWeight: FontWeight.bold),
+                                  fontSize:
+                                      MediaQuery.of(context).size.width * 0.04,
+                                  fontWeight: FontWeight.bold),
                             ),
                           ),
                           Container(

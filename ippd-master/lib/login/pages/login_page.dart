@@ -60,8 +60,7 @@ class _LoginPageState extends State<LoginPage>
               Padding(
                 padding: const EdgeInsets.only(top: 75.0),
                 child: Image(
-                    height:
-                        MediaQuery.of(context).size.height * 0.5,
+                    height: MediaQuery.of(context).size.height * 0.5,
                     fit: BoxFit.fill,
                     image: const AssetImage('assets/img/ippd.png')),
               ),
@@ -129,9 +128,7 @@ class _LoginPageState extends State<LoginPage>
                 child: Text(
                   'Hesap',
                   style: GoogleFonts.patrickHand(
-                      color: left,
-                      fontSize: 16.0,
-                      fontWeight: FontWeight.bold),
+                      color: left, fontSize: 16.0, fontWeight: FontWeight.bold),
                 ),
               ),
             ),

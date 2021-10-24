@@ -130,11 +130,11 @@ class ExerciseState extends State<Exercise> {
                                             style: AlertStyle(
                                               isButtonVisible: false,
                                               backgroundColor:
-                                                  Colors.blue.shade200,
+                                                  Colors.white70,
                                               alertElevation: 10,
                                               alertPadding: EdgeInsets.all(10),
                                               overlayColor:
-                                                  Colors.blue.shade100,
+                                                  Colors.white,
                                               animationType:
                                                   AnimationType.shrink,
                                               animationDuration:
@@ -144,7 +144,7 @@ class ExerciseState extends State<Exercise> {
                                                 borderRadius: BorderRadius.all(
                                                     Radius.circular(25)),
                                                 side: BorderSide(
-                                                  color: Colors.blue.shade300,
+                                                  color: Colors.white,
                                                   width: 3,
                                                 ),
                                               ),
@@ -172,7 +172,7 @@ class ExerciseState extends State<Exercise> {
                                                     child: Card(
                                                       
                                                       color:
-                                                          Colors.blue.shade100,
+                                                          Colors.white,
                                                       shadowColor: Colors.black,
                                                       child: Padding(
                                                         //padding:  EdgeInsets.only(left:15.0,right: 15.0,top:0,bottom: 0),
@@ -199,7 +199,7 @@ class ExerciseState extends State<Exercise> {
                                                                               5),
                                                                   child: Text(
                                                                     "${data['egzersiz']} için Bilgiler",
-                                                                    style: GoogleFonts.patrickHand(
+                                                                    style: TextStyle(fontFamily : 'Roboto',
                                                                         fontSize:
                                                                             24,
                                                                         fontWeight:
@@ -213,7 +213,7 @@ class ExerciseState extends State<Exercise> {
                                                                               5),
                                                                   child: Text(
                                                                     "${data['bas']}",
-                                                                    style: GoogleFonts.patrickHand(
+                                                                    style: TextStyle(fontFamily : 'Roboto',
                                                                         fontSize:
                                                                             16,
                                                                         fontWeight:
@@ -228,12 +228,27 @@ class ExerciseState extends State<Exercise> {
                                                                     height: MediaQuery.of(context)
                                                                             .size
                                                                             .height *
-                                                                        0.3,
-                                                                    child: Image(
-                                                                        fit: BoxFit
-                                                                            .fill,
-                                                                        image: NetworkImage(
-                                                                            '${data['image']}'))),
+                                                                        0.295,
+                                                                    child: Stack(
+                                                                      children: [
+                                                                        Image(
+
+                                                                            fit: BoxFit
+                                                                                .fill,
+                                                                            image: NetworkImage(
+                                                                                '${data['image']}')),
+                                                                                Positioned(
+                                                                                  bottom:45,
+                                                                                  right:0,
+                                                                                  child:
+                                                                                Container(
+                                                                                  alignment: Alignment.bottomRight,
+                                                                                  color:Colors.white,
+                                                                                width: MediaQuery.of(context).size.width *0.12,
+                                                                                height: MediaQuery.of(context).size.height * 0.023,
+                                                                                ))
+                                                                      ],
+                                                                    )),
                                                                             SizedBox(height:10),
                                                                   Container(
                                                                   margin:
@@ -242,7 +257,7 @@ class ExerciseState extends State<Exercise> {
                                                                               5),
                                                                   child: Text(
                                                                     '${data['1.satır']}',
-                                                                    style: GoogleFonts.patrickHand(
+                                                                    style: TextStyle(fontFamily : 'Roboto',
                                                                         fontSize:
                                                                             16,
                                                                         fontWeight:
@@ -256,7 +271,7 @@ class ExerciseState extends State<Exercise> {
                                                                               5),
                                                                   child: Text(
                                                                     '${data['2.satır']}',
-                                                                    style: GoogleFonts.patrickHand(
+                                                                    style: TextStyle(fontFamily : 'Roboto',
                                                                         fontSize:
                                                                             16,
                                                                         fontWeight:
@@ -270,7 +285,7 @@ class ExerciseState extends State<Exercise> {
                                                                               5),
                                                                   child: Text(
                                                                     '${data['3.satır']}',
-                                                                    style: GoogleFonts.patrickHand(
+                                                                    style: TextStyle(fontFamily : 'Roboto',
                                                                         fontSize:
                                                                             16,
                                                                         fontWeight:
@@ -284,7 +299,7 @@ class ExerciseState extends State<Exercise> {
                                                                               5),
                                                                   child: Text(
                                                                     '${data['4.satır']}',
-                                                                    style: GoogleFonts.patrickHand(
+                                                                    style: TextStyle(fontFamily : 'Roboto',
                                                                         fontSize:
                                                                             16,
                                                                         fontWeight:
@@ -298,7 +313,7 @@ class ExerciseState extends State<Exercise> {
                                                                               5),
                                                                   child: Text(
                                                                     '${data['5.satır']}',
-                                                                    style: GoogleFonts.patrickHand(
+                                                                    style: TextStyle(fontFamily : 'Roboto',
                                                                         fontSize:
                                                                             16,
                                                                         fontWeight:
@@ -313,7 +328,7 @@ class ExerciseState extends State<Exercise> {
                                                                               5),
                                                                   child: Text(
                                                                     'Uygun Form Ve Nefes Modeli',
-                                                                    style: GoogleFonts.patrickHand(
+                                                                    style: TextStyle(fontFamily : 'Roboto',
                                                                         fontSize:
                                                                             21,
                                                                         fontWeight:
@@ -329,7 +344,7 @@ class ExerciseState extends State<Exercise> {
                                                                               5),
                                                                   child: Text(
                                                                     '${data['baslık2']}',
-                                                                    style: GoogleFonts.patrickHand(
+                                                                    style: TextStyle(fontFamily : 'Roboto',
                                                                         fontSize:
                                                                             16,
                                                                         fontWeight:
@@ -344,7 +359,7 @@ class ExerciseState extends State<Exercise> {
                                                                               5),
                                                                   child: Text(
                                                                     'Egzersiz Faydaları',
-                                                                    style: GoogleFonts.patrickHand(
+                                                                    style: TextStyle(fontFamily : 'Roboto',
                                                                         fontSize:
                                                                             21,
                                                                         fontWeight:
@@ -358,7 +373,7 @@ class ExerciseState extends State<Exercise> {
                                                                               5),
                                                                   child: Text(
                                                                     '${data['egzersizfay']}',
-                                                                    style: GoogleFonts.patrickHand(
+                                                                    style: TextStyle(fontFamily : 'Roboto',
                                                                         fontSize:
                                                                             16,
                                                                         fontWeight:

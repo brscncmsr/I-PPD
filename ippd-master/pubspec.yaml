@@ -115,6 +115,7 @@ flutter:
     - assets/img/MBMI-6.png
     - assets/img/blood.png
     - assets/img/obesite.png
+    - assets/img/diabet.png
 
 
   fonts:
