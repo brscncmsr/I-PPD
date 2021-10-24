@@ -172,7 +172,10 @@ class _DiabetRiskState extends State<DiabetRisk> {
                 Padding(padding: EdgeInsets.all(10.0)),
                 SizedBox(height: 20),
                 Text(
-                    "Genel Olarak Boş Zamanlarınızda Günde En Az 30 dakika yürüyüş yapar mısınız?"),
+                  "Genel Olarak Boş Zamanlarınızda Günde En Az 30 dakika yürüyüş yapar mısınız?",
+                  style: GoogleFonts.patrickHand(
+                      fontSize: 21, fontWeight: FontWeight.bold),
+                ),
                 GroupButton(
                   selectedTextStyle: TextStyle(
                       fontFamily: "Roboto",
@@ -188,6 +191,115 @@ class _DiabetRiskState extends State<DiabetRisk> {
                   spacing: 10,
                   buttons: const [
                     "Evet",
+                    'Hayır',
+                  ],
+                  borderRadius: BorderRadius.circular(30),
+                  onSelected: (i, selected) => select = i,
+                ),
+                Padding(padding: EdgeInsets.all(10.0)),
+                SizedBox(height: 20),
+                Text(
+                  "Hangi Sıklıkla Sebze-Meyve Tüketirsiniz ?",
+                  style: GoogleFonts.patrickHand(
+                      fontSize: 21, fontWeight: FontWeight.bold),
+                ),
+                GroupButton(
+                  selectedTextStyle: TextStyle(
+                      fontFamily: "Roboto",
+                      color: Colors.black87,
+                      fontWeight: FontWeight.bold),
+                  unselectedTextStyle:
+                      TextStyle(fontFamily: "Roboto", color: Colors.black87),
+                  isRadio: true,
+                  selectedBorderColor: Colors.blue.shade300,
+                  selectedColor: Colors.blue.shade200,
+                  unselectedColor: Colors.blue.shade100,
+                  unselectedBorderColor: Colors.blue,
+                  spacing: 10,
+                  buttons: const [
+                    "Her Gün",
+                    'Her Gün Değil',
+                  ],
+                  borderRadius: BorderRadius.circular(30),
+                  onSelected: (i, selected) => select = i,
+                ),
+                Padding(padding: EdgeInsets.all(10.0)),
+                SizedBox(height: 20),
+                Text(
+                  "Kan Basıncı Yüksekliği(Tansiyon) İçin Hiç İlaç Kullandınız Mı? Veya Sizde Yüksek Tansiyon Bulundu Mu?",
+                  style: GoogleFonts.patrickHand(
+                      fontSize: 21, fontWeight: FontWeight.bold),
+                ),
+                GroupButton(
+                  selectedTextStyle: TextStyle(
+                      fontFamily: "Roboto",
+                      color: Colors.black87,
+                      fontWeight: FontWeight.bold),
+                  unselectedTextStyle:
+                      TextStyle(fontFamily: "Roboto", color: Colors.black87),
+                  isRadio: true,
+                  selectedBorderColor: Colors.blue.shade300,
+                  selectedColor: Colors.blue.shade200,
+                  unselectedColor: Colors.blue.shade100,
+                  unselectedBorderColor: Colors.blue,
+                  spacing: 10,
+                  buttons: const [
+                    "Evet",
+                    'Hayır',
+                  ],
+                  borderRadius: BorderRadius.circular(30),
+                  onSelected: (i, selected) => select = i,
+                ),
+                Padding(padding: EdgeInsets.all(10.0)),
+                SizedBox(height: 20),
+                Text(
+                  "Daha Önce Bir Uzman Tarafından kan şekerinizin yüksek ya da sınırda olduğu söylendi mi?  ",
+                  style: GoogleFonts.patrickHand(
+                      fontSize: 21, fontWeight: FontWeight.bold),
+                ),
+                GroupButton(
+                  selectedTextStyle: TextStyle(
+                      fontFamily: "Roboto",
+                      color: Colors.black87,
+                      fontWeight: FontWeight.bold),
+                  unselectedTextStyle:
+                      TextStyle(fontFamily: "Roboto", color: Colors.black87),
+                  isRadio: true,
+                  selectedBorderColor: Colors.blue.shade300,
+                  selectedColor: Colors.blue.shade200,
+                  unselectedColor: Colors.blue.shade100,
+                  unselectedBorderColor: Colors.blue,
+                  spacing: 10,
+                  buttons: const [
+                    "Evet",
+                    'Hayır',
+                  ],
+                  borderRadius: BorderRadius.circular(30),
+                  onSelected: (i, selected) => select = i,
+                ),
+                Padding(padding: EdgeInsets.all(10.0)),
+                SizedBox(height: 20),
+                Text(
+                  "Aile Bireylerinziden Her hangi Birinde (Tip 1 Ya da Tip 2) Diyabet Tanısı Konulmuş Olanlar Var Mı ?",
+                  style: GoogleFonts.patrickHand(
+                      fontSize: 21, fontWeight: FontWeight.bold),
+                ),
+                GroupButton(
+                  selectedTextStyle: TextStyle(
+                      fontFamily: "Roboto",
+                      color: Colors.black87,
+                      fontWeight: FontWeight.bold),
+                  unselectedTextStyle:
+                      TextStyle(fontFamily: "Roboto", color: Colors.black87),
+                  isRadio: true,
+                  selectedBorderColor: Colors.blue.shade300,
+                  selectedColor: Colors.blue.shade200,
+                  unselectedColor: Colors.blue.shade100,
+                  unselectedBorderColor: Colors.blue,
+                  spacing: 10,
+                  buttons: const [
+                    "Evet 1.Dereceden Akraba",
+                    "Evet 2.Dereceden Akraba",
                     'Hayır',
                   ],
                   borderRadius: BorderRadius.circular(30),
