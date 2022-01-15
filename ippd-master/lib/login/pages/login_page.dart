@@ -127,8 +127,10 @@ class _LoginPageState extends State<LoginPage>
                 onPressed: _onSignInButtonPress,
                 child: Text(
                   'Hesap',
-                  style: GoogleFonts.patrickHand(
-                      color: left, fontSize: 16.0, fontWeight: FontWeight.bold),
+                  style: TextStyle(
+                      fontFamily: "Times New Roman",
+                      fontWeight: FontWeight.bold,
+                      color: left),
                 ),
               ),
             ),
@@ -140,10 +142,10 @@ class _LoginPageState extends State<LoginPage>
                 onPressed: _onSignUpButtonPress,
                 child: Text(
                   'Yeni Hesap',
-                  style: GoogleFonts.patrickHand(
-                      color: right,
-                      fontSize: 16.0,
-                      fontWeight: FontWeight.bold),
+                  style: TextStyle(
+                      fontFamily: "Times New Roman",
+                      fontWeight: FontWeight.bold,
+                      color: right),
                 ),
               ),
             ),

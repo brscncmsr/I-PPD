@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:ippd/home/home.dart';
+import 'package:ippd/pages/homepage.dart';
+import 'package:page_transition/page_transition.dart';
 
 class Bildirim extends StatefulWidget {
   Bildirim({Key? key}) : super(key: key);
@@ -13,6 +16,7 @@ class _BildirimState extends State<Bildirim> {
     await Future.delayed(Duration(seconds: 2));
   }
 
+  bool a = false;
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -24,13 +28,7 @@ class _BildirimState extends State<Bildirim> {
         body: Container(
           width: MediaQuery.of(context).size.width,
           height: MediaQuery.of(context).size.height,
-          decoration: BoxDecoration(
-              image: DecorationImage(
-                  image: AssetImage('assets/img/background.png'),
-                  repeat: ImageRepeat.repeat,
-                  colorFilter:
-                      ColorFilter.mode(Colors.white60, BlendMode.color),
-                  fit: BoxFit.cover)),
+          decoration: BoxDecoration(color: Colors.white),
           child: SingleChildScrollView(
             child: Column(
               children: <Widget>[
@@ -47,8 +45,26 @@ class _BildirimState extends State<Bildirim> {
                       children: [
                         ListTile(
                           contentPadding: EdgeInsets.all(10),
-                          title: Text("Egzersiz Takibi"),
-                          subtitle: Text("Egzersiz Bilgisi"),
+                          title: Text(
+                            "Egzersiz Takibi",
+                            style: TextStyle(
+                                fontFamily: "Times New Roman",
+                                fontWeight: FontWeight.bold,
+                                color: Colors.black,
+                                fontSize:
+                                    MediaQuery.of(context).textScaleFactor *
+                                        16),
+                          ),
+                          subtitle: Text(
+                            "Egzersiz Bilgisi",
+                            style: TextStyle(
+                                fontFamily: "Times New Roman",
+                                fontWeight: FontWeight.normal,
+                                color: Colors.black,
+                                fontSize:
+                                    MediaQuery.of(context).textScaleFactor *
+                                        16),
+                          ),
                           leading:
                               Icon(Icons.notifications_active), //başına ikon
                         ),

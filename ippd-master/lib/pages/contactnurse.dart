@@ -16,24 +16,29 @@ class _ContactNurseState extends State<ContactNurse> {
     return Scaffold(
         appBar: AppBar(
           title: Text('Hemşilere Ulaşın',
-              style: GoogleFonts.balooThambi(color: Colors.blue)),
+              style: TextStyle(
+                  fontFamily: "Times New Roman",
+                  fontWeight: FontWeight.bold,
+                  color: Colors.pink.shade900)),
           //centerTitle: true,
           backgroundColor: Colors.blue.shade200,
         ),
         body: Container(
-          child: SingleChildScrollView(
-            child: Center(
-                child: Container(
-              alignment: Alignment.bottomCenter,
-              child: Text(
-                "Geliştirme Aşamasındadır",
-                style: GoogleFonts.patrickHand(
-                    color: Colors.black,
-                    fontWeight: FontWeight.bold,
-                    fontSize: 40),
-              ),
-            )),
+            child: SingleChildScrollView(
+          child: Center(
+            child: Container(
+                alignment: Alignment.bottomCenter,
+                child: Center(
+                  child: Text(
+                    "Geliştirme Aşamasındadır",
+                    style: TextStyle(
+                        fontFamily: "Times New Roman",
+                        fontWeight: FontWeight.bold,
+                        color: Colors.black,
+                        fontSize: 30),
+                  ),
+                )),
           ),
-        ));
+        )));
   }
 }

@@ -1,0 +1,14 @@
+{
+    "bmi": {
+        "weight": "Weight in kg",
+        "height": "Height in cm",
+        "mass":"Body Mass\n   Index",
+        "sleep":" My Sleep \n   Time",
+        "risk":" My Disease\n      Risk",
+        "bazal":"      Basal\nMetabolism",
+        "water":" My Water \n   Need",
+        "pharmacy":"    Pharmacies\n   On Duty",
+        "homepage":"Home Page"
+        
+    }
+}

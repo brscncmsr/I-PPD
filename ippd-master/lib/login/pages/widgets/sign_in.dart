@@ -58,7 +58,7 @@ class _SignInState extends State<SignIn> {
                           controller: loginEmailController,
                           keyboardType: TextInputType.emailAddress,
                           style: TextStyle(
-                              fontFamily: 'WorkSansSemiBold',
+                              fontFamily: 'Times New Roman',
                               fontSize: 16.0,
                               color: Colors.black),
                           decoration: InputDecoration(
@@ -69,8 +69,12 @@ class _SignInState extends State<SignIn> {
                               size: 22.0,
                             ),
                             hintText: 'Email Adresi',
-                            hintStyle: GoogleFonts.patrickHand(
-                                fontSize: 17.0,fontWeight:FontWeight.bold),
+                            hintStyle: TextStyle(
+                                fontSize:
+                                    MediaQuery.of(context).textScaleFactor * 12,
+                                fontFamily: "Times New Roman",
+                                fontWeight: FontWeight.bold,
+                                color: Colors.black),
                           ),
                           onSubmitted: (_) {
                             focusNodePassword.requestFocus();
@@ -90,7 +94,7 @@ class _SignInState extends State<SignIn> {
                           controller: loginPasswordController,
                           obscureText: _obscureTextPassword,
                           style: const TextStyle(
-                              fontFamily: 'WorkSansSemiBold',
+                              fontFamily: 'Times New Roman',
                               fontSize: 16.0,
                               color: Colors.black),
                           decoration: InputDecoration(
@@ -101,8 +105,12 @@ class _SignInState extends State<SignIn> {
                               color: Colors.black,
                             ),
                             hintText: 'Şifre',
-                            hintStyle: GoogleFonts.patrickHand(
-                                fontSize: 17.0,fontWeight:FontWeight.bold),
+                            hintStyle: TextStyle(
+                                fontSize:
+                                    MediaQuery.of(context).textScaleFactor * 12,
+                                fontFamily: "Times New Roman",
+                                fontWeight: FontWeight.bold,
+                                color: Colors.black),
                             suffixIcon: GestureDetector(
                               onTap: _toggleLogin,
                               child: Icon(
@@ -125,48 +133,42 @@ class _SignInState extends State<SignIn> {
                 ),
               ),
               Container(
-                width:150,height:50,
+                width: 150,
+                height: 50,
                 margin: const EdgeInsets.only(top: 170.0),
                 child: FlatButton(
-                                            color: Colors.blue,
-                                            shape: RoundedRectangleBorder(
-                                              side: BorderSide(
-                                                  width: 3,
-                                                  color: Colors.blue.shade700),
-                                              borderRadius: BorderRadius.all(
-                                                  Radius.circular(15)),
-                                            ),
-                                            child:  Text(
-                  'Giriş Yap',
-                  style: GoogleFonts.patrickHand(
-                                              color: Colors.white60,
-                                              fontSize: 24,
-                                              fontWeight: FontWeight.bold),
-                ),
-                  onPressed: () async {
-                                            await FirebaseAuth.instance
-                                                .signInWithEmailAndPassword(
-                                                  email: loginEmailController.text,
-                                                  password:
-                                                      loginPasswordController.text,
-                                                )
-                                                .then((_) => {
-                                                      Navigator.of(context)
-                                                          .pushReplacement(
-                                                              MaterialPageRoute(
-                                                                  builder:
-                                                                      (context) =>
-                                                                          Anasayfa())),
-                                                    });
-                                            await FirebaseFirestore.instance
-                                        .collection("loggeds")
-                                        .doc(loginEmailController.text)
-                                        .set({
-                                      'email': loginEmailController.text,
-                                      'pasword': loginPasswordController.text,
-                                    });
-                          }
-                ),
+                    color: Colors.blue,
+                    shape: RoundedRectangleBorder(
+                      side: BorderSide(width: 3, color: Colors.blue.shade700),
+                      borderRadius: BorderRadius.all(Radius.circular(15)),
+                    ),
+                    child: Text(
+                      'Giriş Yap',
+                      style: TextStyle(
+                          fontSize: MediaQuery.of(context).textScaleFactor * 18,
+                          fontFamily: "Times New Roman",
+                          fontWeight: FontWeight.bold,
+                          color: Colors.pink.shade900),
+                    ),
+                    onPressed: () async {
+                      await FirebaseAuth.instance
+                          .signInWithEmailAndPassword(
+                            email: loginEmailController.text,
+                            password: loginPasswordController.text,
+                          )
+                          .then((_) => {
+                                Navigator.of(context).pushReplacement(
+                                    MaterialPageRoute(
+                                        builder: (context) => Anasayfa())),
+                              });
+                      await FirebaseFirestore.instance
+                          .collection("loggeds")
+                          .doc(loginEmailController.text)
+                          .set({
+                        'email': loginEmailController.text,
+                        'pasword': loginPasswordController.text,
+                      });
+                    }),
               )
             ],
           ),
@@ -180,7 +182,7 @@ class _SignInState extends State<SignIn> {
                       decoration: TextDecoration.underline,
                       color: Colors.white,
                       fontSize: 16.0,
-                      fontFamily: 'WorkSansMedium'),
+                      fontFamily: 'Times New Roman'),
                 )),
           ),
           Padding(
@@ -210,7 +212,7 @@ class _SignInState extends State<SignIn> {
                     style: TextStyle(
                         color: Colors.white,
                         fontSize: 16.0,
-                        fontFamily: 'WorkSansMedium'),
+                        fontFamily: 'Times New Roman'),
                   ),
                 ),
                 Container(

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:group_button/group_button.dart';
+import 'package:ippd/home/home.dart';
 import 'package:ippd/pages/bmi.dart';
 import 'package:ippd/pages/diabet.dart';
 import 'package:page_transition/page_transition.dart';
@@ -19,7 +20,14 @@ class _RiskState extends State<Risk> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Hastalık Riski Hesapla'),
+        title: Text(
+          'Hastalık Riski Hesapla',
+          style: TextStyle(
+              fontFamily: "Times New Roman",
+              fontWeight: FontWeight.bold,
+              color: Colors.pink.shade900,
+              fontSize: MediaQuery.of(context).textScaleFactor * 18),
+        ),
         centerTitle: true,
         backgroundColor: Colors.blue.shade200,
       ),
@@ -54,11 +62,15 @@ class _RiskState extends State<Risk> {
                             height: 60,
                             image: AssetImage("assets/img/blood.png")),
                         SizedBox(width: 10),
-                        Text("Kan Uyuşmazlığı\nRiskimi Hesapla",
-                            style: GoogleFonts.patrickHand(
-                                color: Colors.white,
-                                fontWeight: FontWeight.bold,
-                                fontSize: 24)),
+                        Text(
+                          "Kan Uyuşmazlığı\nRiskimi Hesapla",
+                          style: TextStyle(
+                              fontFamily: "Times New Roman",
+                              fontWeight: FontWeight.bold,
+                              color: Colors.pink.shade900,
+                              fontSize:
+                                  MediaQuery.of(context).textScaleFactor * 16),
+                        ),
                       ],
                     )),
               ),
@@ -90,11 +102,15 @@ class _RiskState extends State<Risk> {
                             height: 60,
                             image: AssetImage("assets/img/obesite.png")),
                         SizedBox(width: 5),
-                        Text("Obezite Riskimi Hesapla",
-                            style: GoogleFonts.patrickHand(
-                                color: Colors.white,
-                                fontWeight: FontWeight.bold,
-                                fontSize: 24)),
+                        Text(
+                          "Obezite Riskimi Hesapla",
+                          style: TextStyle(
+                              fontFamily: "Times New Roman",
+                              fontWeight: FontWeight.bold,
+                              color: Colors.pink.shade900,
+                              fontSize:
+                                  MediaQuery.of(context).textScaleFactor * 16),
+                        ),
                       ],
                     )),
               ),
@@ -124,11 +140,15 @@ class _RiskState extends State<Risk> {
                             height: 60,
                             image: AssetImage("assets/img/diabet.png")),
                         SizedBox(width: 10),
-                        Text("Diyabet Riskimi Hesapla",
-                            style: GoogleFonts.patrickHand(
-                                color: Colors.white,
-                                fontWeight: FontWeight.bold,
-                                fontSize: 24)),
+                        Text(
+                          "Diyabet Riskimi Hesapla",
+                          style: TextStyle(
+                              fontFamily: "Times New Roman",
+                              fontWeight: FontWeight.bold,
+                              color: Colors.pink.shade900,
+                              fontSize:
+                                  MediaQuery.of(context).textScaleFactor * 16),
+                        ),
                       ],
                     )),
               ),
@@ -155,134 +175,185 @@ class _BloodState extends State<Blood> {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
-          title: Text('Kan Uyuşmazlığı Riski',
-              style: GoogleFonts.balooThambi(color: Colors.blue)),
+          title: Text(
+            'Kan Uyuşmazlığı Riski',
+            style: TextStyle(
+                fontFamily: "Times New Roman",
+                fontWeight: FontWeight.bold,
+                color: Colors.pink.shade900,
+                fontSize: MediaQuery.of(context).textScaleFactor * 18),
+          ),
           //centerTitle: true,
           backgroundColor: Colors.blue.shade200,
         ),
         body: SingleChildScrollView(
           child: Column(
             children: [
-              Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
+              Row(mainAxisAlignment: MainAxisAlignment.center, children: <
+                  Widget>[
+                Column(
                   children: <Widget>[
-                    Column(
-                      children: <Widget>[
-                        Padding(padding: EdgeInsets.all(10.0)),
-                        SizedBox(height: 20),
-                        Text("Anne Rh Durumu",
-                            style: GoogleFonts.patrickHand(
-                                fontWeight: FontWeight.bold, fontSize: 18)),
-                        SizedBox(height: 20),
-                        GroupButton(
-                          direction: Axis.horizontal,
-                          selectedTextStyle: GoogleFonts.roboto(
-                              color: Colors.black87,
-                              fontWeight: FontWeight.bold),
-                          unselectedTextStyle:
-                              GoogleFonts.roboto(color: Colors.black87),
-                          isRadio: true,
-                          selectedBorderColor: Colors.blue.shade300,
-                          selectedColor: Colors.blue.shade200,
-                          unselectedColor: Colors.blue.shade100,
-                          unselectedBorderColor: Colors.blue,
-                          spacing: 10,
-                          buttons: const [
-                            '+',
-                            '-',
-                          ],
-                          borderRadius: BorderRadius.circular(30),
-                          onSelected: (i, selected) => mrh = i,
-                        ),
-                        Text("Anne Kan Grubu",
-                            style: GoogleFonts.patrickHand(
-                                fontWeight: FontWeight.bold, fontSize: 18)),
-                        SizedBox(height: 20),
-                        GroupButton(
-                          direction: Axis.vertical,
-                          selectedTextStyle: GoogleFonts.roboto(
-                              color: Colors.black87,
-                              fontWeight: FontWeight.bold),
-                          unselectedTextStyle:
-                              GoogleFonts.roboto(color: Colors.black87),
-                          isRadio: true,
-                          selectedBorderColor: Colors.blue.shade300,
-                          selectedColor: Colors.blue.shade200,
-                          unselectedColor: Colors.blue.shade100,
-                          unselectedBorderColor: Colors.blue,
-                          spacing: 10,
-                          buttons: const [
-                            'A',
-                            'B',
-                            'AB',
-                            '0',
-                          ],
-                          borderRadius: BorderRadius.circular(30),
-                          onSelected: (i, selected) => mselect = i,
-                        ),
+                    Padding(padding: EdgeInsets.all(10.0)),
+                    SizedBox(height: 20),
+                    Text(
+                      "Anne Rh Durumu",
+                      style: TextStyle(
+                          fontFamily: "Times New Roman",
+                          fontWeight: FontWeight.bold,
+                          color: Colors.pink.shade900,
+                          fontSize:
+                              MediaQuery.of(context).textScaleFactor * 18),
+                    ),
+                    SizedBox(height: 20),
+                    GroupButton(
+                      direction: Axis.horizontal,
+                      selectedTextStyle: TextStyle(
+                          fontFamily: "Times New Roman",
+                          fontWeight: FontWeight.bold,
+                          fontSize: MediaQuery.of(context).textScaleFactor * 14,
+                          color: Colors.pink.shade900),
+                      unselectedTextStyle: TextStyle(
+                          fontFamily: "Times New Roman",
+                          fontWeight: FontWeight.bold,
+                          fontSize: MediaQuery.of(context).textScaleFactor * 14,
+                          color: Colors.pink.shade900),
+                      isRadio: true,
+                      selectedBorderColor: Colors.blue.shade300,
+                      selectedColor: Colors.blue.shade200,
+                      unselectedColor: Colors.blue.shade100,
+                      unselectedBorderColor: Colors.blue,
+                      spacing: 10,
+                      buttons: const [
+                        '+',
+                        '-',
                       ],
+                      borderRadius: BorderRadius.circular(30),
+                      onSelected: (i, selected) => mrh = i,
                     ),
-                    SizedBox(
-                      width: 20,
+                    Text(
+                      "Anne Kan Grubu",
+                      style: TextStyle(
+                          fontFamily: "Times New Roman",
+                          fontWeight: FontWeight.bold,
+                          color: Colors.pink.shade900,
+                          fontSize:
+                              MediaQuery.of(context).textScaleFactor * 18),
                     ),
-                    Column(
-                      children: <Widget>[
-                        Padding(padding: EdgeInsets.all(10.0)),
-                        SizedBox(height: 20),
-                        Text("Baba Rh Durumu",
-                            style: GoogleFonts.patrickHand(
-                                fontWeight: FontWeight.bold, fontSize: 18)),
-                        SizedBox(height: 20),
-                        GroupButton(
-                          direction: Axis.horizontal,
-                          selectedTextStyle: GoogleFonts.roboto(
-                              color: Colors.black87,
-                              fontWeight: FontWeight.bold),
-                          unselectedTextStyle:
-                              GoogleFonts.roboto(color: Colors.black87),
-                          isRadio: true,
-                          selectedBorderColor: Colors.blue.shade300,
-                          selectedColor: Colors.blue.shade200,
-                          unselectedColor: Colors.blue.shade100,
-                          unselectedBorderColor: Colors.blue,
-                          spacing: 10,
-                          buttons: const [
-                            '+',
-                            '-',
-                          ],
-                          borderRadius: BorderRadius.circular(30),
-                          onSelected: (i, selected) => frh = i,
-                        ),
-                        Text("Baba Kan Grubu",
-                            style: GoogleFonts.patrickHand(
-                                fontWeight: FontWeight.bold, fontSize: 18)),
-                        SizedBox(height: 20),
-                        GroupButton(
-                          direction: Axis.vertical,
-                          selectedTextStyle: GoogleFonts.roboto(
-                              color: Colors.black87,
-                              fontWeight: FontWeight.bold),
-                          unselectedTextStyle:
-                              GoogleFonts.roboto(color: Colors.black87),
-                          isRadio: true,
-                          selectedBorderColor: Colors.blue.shade300,
-                          selectedColor: Colors.blue.shade200,
-                          unselectedColor: Colors.blue.shade100,
-                          unselectedBorderColor: Colors.blue,
-                          spacing: 10,
-                          buttons: const [
-                            'A',
-                            'B',
-                            'AB',
-                            '0',
-                          ],
-                          borderRadius: BorderRadius.circular(30),
-                          onSelected: (i, selected) => fselect = i,
-                        ),
-                        SizedBox(width: 20),
+                    SizedBox(height: 20),
+                    GroupButton(
+                      direction: Axis.vertical,
+                      selectedTextStyle: TextStyle(
+                          fontFamily: "Times New Roman",
+                          fontWeight: FontWeight.bold,
+                          fontSize: MediaQuery.of(context).textScaleFactor * 14,
+                          color: Colors.pink.shade900),
+                      unselectedTextStyle: TextStyle(
+                          fontFamily: "Times New Roman",
+                          fontWeight: FontWeight.bold,
+                          color: Colors.pink.shade900,
+                          fontSize:
+                              MediaQuery.of(context).textScaleFactor * 18),
+                      isRadio: true,
+                      selectedBorderColor: Colors.blue.shade300,
+                      selectedColor: Colors.blue.shade200,
+                      unselectedColor: Colors.blue.shade100,
+                      unselectedBorderColor: Colors.blue,
+                      spacing: 10,
+                      buttons: const [
+                        'A',
+                        'B',
+                        'AB',
+                        '0',
                       ],
+                      borderRadius: BorderRadius.circular(30),
+                      onSelected: (i, selected) => mselect = i,
                     ),
-                  ]),
+                  ],
+                ),
+                SizedBox(
+                  width: 20,
+                ),
+                Column(
+                  children: <Widget>[
+                    Padding(padding: EdgeInsets.all(10.0)),
+                    SizedBox(height: 20),
+                    Text(
+                      "Baba Rh Durumu",
+                      style: TextStyle(
+                          fontFamily: "Times New Roman",
+                          fontWeight: FontWeight.bold,
+                          color: Colors.pink.shade900,
+                          fontSize:
+                              MediaQuery.of(context).textScaleFactor * 18),
+                    ),
+                    SizedBox(height: 20),
+                    GroupButton(
+                      direction: Axis.horizontal,
+                      selectedTextStyle: TextStyle(
+                          fontFamily: "Times New Roman",
+                          fontWeight: FontWeight.bold,
+                          fontSize: MediaQuery.of(context).textScaleFactor * 14,
+                          color: Colors.pink.shade900),
+                      unselectedTextStyle: TextStyle(
+                          fontFamily: "Times New Roman",
+                          fontWeight: FontWeight.bold,
+                          fontSize: MediaQuery.of(context).textScaleFactor * 14,
+                          color: Colors.pink.shade900),
+                      isRadio: true,
+                      selectedBorderColor: Colors.blue.shade300,
+                      selectedColor: Colors.blue.shade200,
+                      unselectedColor: Colors.blue.shade100,
+                      unselectedBorderColor: Colors.blue,
+                      spacing: 10,
+                      buttons: const [
+                        '+',
+                        '-',
+                      ],
+                      borderRadius: BorderRadius.circular(30),
+                      onSelected: (i, selected) => frh = i,
+                    ),
+                    Text(
+                      "Baba Kan Grubu",
+                      style: TextStyle(
+                          fontFamily: "Times New Roman",
+                          fontWeight: FontWeight.bold,
+                          color: Colors.pink.shade900,
+                          fontSize:
+                              MediaQuery.of(context).textScaleFactor * 18),
+                    ),
+                    SizedBox(height: 20),
+                    GroupButton(
+                      direction: Axis.vertical,
+                      selectedTextStyle: TextStyle(
+                          fontFamily: "Times New Roman",
+                          fontWeight: FontWeight.bold,
+                          fontSize: MediaQuery.of(context).textScaleFactor * 14,
+                          color: Colors.pink.shade900),
+                      unselectedTextStyle: TextStyle(
+                          fontFamily: "Times New Roman",
+                          fontWeight: FontWeight.bold,
+                          color: Colors.pink.shade900,
+                          fontSize:
+                              MediaQuery.of(context).textScaleFactor * 18),
+                      isRadio: true,
+                      selectedBorderColor: Colors.blue.shade300,
+                      selectedColor: Colors.blue.shade200,
+                      unselectedColor: Colors.blue.shade100,
+                      unselectedBorderColor: Colors.blue,
+                      spacing: 10,
+                      buttons: const [
+                        'A',
+                        'B',
+                        'AB',
+                        '0',
+                      ],
+                      borderRadius: BorderRadius.circular(30),
+                      onSelected: (i, selected) => fselect = i,
+                    ),
+                    SizedBox(width: 20),
+                  ],
+                ),
+              ]),
               Container(
                 padding: EdgeInsets.all(10),
                 child: FlatButton(
@@ -296,25 +367,27 @@ class _BloodState extends State<Blood> {
                     ),
                     child: Text(
                       "Riski Hesapla",
-                      style: GoogleFonts.patrickHandSc(
-                          color: Colors.white60,
+                      style: TextStyle(
+                          fontFamily: "Times New Roman",
                           fontWeight: FontWeight.bold,
-                          fontSize: 21),
+                          color: Colors.pink.shade900,
+                          fontSize:
+                              MediaQuery.of(context).textScaleFactor * 18),
                     ),
                     onPressed: () {
                       calcRisk();
                     }),
               ),
               Container(
-                width: MediaQuery.of(context).size.width * 0.4,
-                height: MediaQuery.of(context).size.height * 0.1,
+                width: MediaQuery.of(context).size.width * 0.5,
+                height: MediaQuery.of(context).size.height * 0.5,
                 child: Text(
                   _rsttext,
-                  style: GoogleFonts.patrickHand(
-                    color: Colors.pink.shade900,
-                    fontSize: 15.4,
-                    fontWeight: FontWeight.w500,
-                  ),
+                  style: TextStyle(
+                      fontFamily: "Times New Roman",
+                      fontWeight: FontWeight.bold,
+                      color: Colors.pink.shade900,
+                      fontSize: MediaQuery.of(context).textScaleFactor * 18),
                 ),
               ),
             ],
@@ -338,6 +411,8 @@ class Diabet extends StatefulWidget {
   @override
   _DiabetState createState() => _DiabetState();
 }
+
+bool a = true;
 
 class _DiabetState extends State<Diabet> {
   String? _value;
@@ -369,7 +444,16 @@ class _DiabetState extends State<Diabet> {
           style: TextStyle(color: Colors.black87, fontSize: 16),
           icon: Icon(Icons.arrow_drop_down_circle),
           iconEnabledColor: Colors.blue,
-          hint: Text("Şuan Diyabet Hastası Mısınız?"),
+          hint: _isSelected
+              ? Text("$_value")
+              : Text(
+                  "Şuan Diyabet Hastası Mısınız?",
+                  style: TextStyle(
+                      fontFamily: "Times New Roman",
+                      fontWeight: FontWeight.bold,
+                      color: Colors.pink.shade900,
+                      fontSize: MediaQuery.of(context).textScaleFactor * 12),
+                ),
           items: <String>["Evet", "Hayır"]
               .map<DropdownMenuItem<String>>((String value) {
             return DropdownMenuItem<String>(
@@ -403,26 +487,26 @@ class _DiabetState extends State<Diabet> {
               : null,
           child: Text(
             "Onayla",
-            style: GoogleFonts.patrickHand(
-              fontSize: 24,
-              color: Colors.white60,
-              fontWeight: FontWeight.bold,
-            ),
+            style: TextStyle(
+                fontFamily: "Times New Roman",
+                fontWeight: FontWeight.bold,
+                color: Colors.pink.shade900,
+                fontSize: MediaQuery.of(context).textScaleFactor * 18),
           ),
         ),
-      )
+      ),
     ]));
   }
 
   void checkDiase() {
     if (_value == "Evet") {
+      Navigator.push(context,
+          PageTransition(child: Risk(), type: PageTransitionType.bottomToTop));
+    } else if (_value == "Hayır") {
       Navigator.push(
           context,
           PageTransition(
               child: DiabetRisk(), type: PageTransitionType.bottomToTop));
-    } else if (_value == "Hayır") {
-      Navigator.push(context,
-          PageTransition(child: Risk(), type: PageTransitionType.bottomToTop));
     }
   }
 }

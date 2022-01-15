@@ -1,14 +1,10 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:group_button/group_button.dart';
-import 'package:ippd/home/home.dart';
 import 'package:ippd/login/pages/widgets/sign_up2.dart';
-import 'package:ippd/login/theme.dart';
+import 'package:ippd/login/pages/widgets/whatwewant.dart';
 import 'package:ippd/login/widgets/snackbar.dart';
-import 'package:ippd/pages/bmi.dart';
 
 class SignUp extends StatefulWidget {
   const SignUp({Key? key}) : super(key: key);
@@ -79,7 +75,7 @@ class _SignUpState extends State<SignUp> {
                           controller: signupEmailController,
                           keyboardType: TextInputType.emailAddress,
                           style: TextStyle(
-                              fontFamily: 'WorkSansSemiBold',
+                              fontFamily: 'Times New Roman',
                               fontSize: 16.0,
                               color: Colors.black),
                           decoration: InputDecoration(
@@ -90,8 +86,12 @@ class _SignUpState extends State<SignUp> {
                               size: 22.0,
                             ),
                             hintText: 'Email Adresi',
-                            hintStyle: GoogleFonts.patrickHand(
-                                fontSize: 17.0, fontWeight: FontWeight.bold),
+                            hintStyle: TextStyle(
+                                fontSize:
+                                    MediaQuery.of(context).textScaleFactor * 12,
+                                fontFamily: "Times New Roman",
+                                fontWeight: FontWeight.bold,
+                                color: Colors.black),
                           ),
                           onSubmitted: (_) {
                             focusNodePassword.requestFocus();
@@ -110,7 +110,7 @@ class _SignUpState extends State<SignUp> {
                           controller: signupPasswordController,
                           obscureText: _obscureTextPassword,
                           style: const TextStyle(
-                              fontFamily: 'WorkSansSemiBold',
+                              fontFamily: 'Times New Roman',
                               fontSize: 16.0,
                               color: Colors.black),
                           decoration: InputDecoration(
@@ -121,8 +121,12 @@ class _SignUpState extends State<SignUp> {
                               color: Colors.black,
                             ),
                             hintText: 'Şifre',
-                            hintStyle: GoogleFonts.patrickHand(
-                                fontSize: 17.0, fontWeight: FontWeight.bold),
+                            hintStyle: TextStyle(
+                                fontSize:
+                                    MediaQuery.of(context).textScaleFactor * 12,
+                                fontFamily: "Times New Roman",
+                                fontWeight: FontWeight.bold,
+                                color: Colors.black),
                             suffixIcon: GestureDetector(
                               onTap: _toggleSignup,
                               child: Icon(
@@ -152,7 +156,7 @@ class _SignUpState extends State<SignUp> {
                           controller: signupConfirmPasswordController,
                           obscureText: _obscureTextPassword,
                           style: const TextStyle(
-                              fontFamily: 'WorkSansSemiBold',
+                              fontFamily: 'Times New Roman',
                               fontSize: 16.0,
                               color: Colors.black),
                           decoration: InputDecoration(
@@ -163,8 +167,12 @@ class _SignUpState extends State<SignUp> {
                               color: Colors.black,
                             ),
                             hintText: 'Şifre Tekrar',
-                            hintStyle: GoogleFonts.patrickHand(
-                                fontSize: 17.0, fontWeight: FontWeight.bold),
+                            hintStyle: TextStyle(
+                                fontSize:
+                                    MediaQuery.of(context).textScaleFactor * 12,
+                                fontFamily: "Times New Roman",
+                                fontWeight: FontWeight.bold,
+                                color: Colors.black),
                             suffixIcon: GestureDetector(
                               onTap: _toggleSignup,
                               child: Icon(
@@ -216,10 +224,11 @@ class _SignUpState extends State<SignUp> {
                   ),
                   child: Text(
                     'Kaydol',
-                    style: GoogleFonts.patrickHand(
-                        color: Colors.white60,
-                        fontSize: 24,
-                        fontWeight: FontWeight.bold),
+                    style: TextStyle(
+                        fontSize: MediaQuery.of(context).textScaleFactor * 18,
+                        fontFamily: "Times New Roman",
+                        fontWeight: FontWeight.bold,
+                        color: Colors.pink.shade900),
                   ),
                   onPressed: () async {
                     await FirebaseAuth.instance
@@ -230,7 +239,7 @@ class _SignUpState extends State<SignUp> {
                         .then((_) => {
                               Navigator.of(context).pushReplacement(
                                   MaterialPageRoute(
-                                      builder: (context) => SignUp2()))
+                                      builder: (context) => Want()))
                             });
                   },
                 ),

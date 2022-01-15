@@ -1,4 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:group_button/group_button.dart';
@@ -10,6 +11,9 @@ class BmH extends StatefulWidget {
   @override
   _BmHState createState() => _BmHState();
 }
+
+User? user = FirebaseAuth.instance.currentUser;
+dynamic data;
 
 class _BmHState extends State<BmH> {
   /*final Stream<QuerySnapshot> _usersStream = FirebaseFirestore.instance
@@ -30,14 +34,56 @@ class _BmHState extends State<BmH> {
   double _bmh = 0.0;
   String _bmhtext = "";
   String bmhtext = "";
+  String? _interest;
+  String? _interest1;
+  String as = "";
+  bool _isSelected = false;
+  bool _isSelected1 = false;
+  Future<dynamic> getData() async {
+    final DocumentReference document =
+        FirebaseFirestore.instance.collection("users").doc(user!.uid);
+
+    await document.get().then<dynamic>((DocumentSnapshot snapshot) async {
+      setState(() {
+        data = snapshot.data();
+      });
+    });
+  }
+
+  void initState() {
+    super.initState();
+    getData();
+
+    // Or call your function here
+  }
 
   @override
   Widget build(BuildContext context) {
+    final snackbar1 = SnackBar(
+      content: Text("Lütfen Bütün Bilgileri Eksiksiz Giriniz"),
+      action: SnackBarAction(
+        label: 'Tamam',
+        onPressed: () {},
+      ),
+    );
+    final snackbar2 = SnackBar(
+      content: Text("Lütfen Aktiflik Bilginizi Giriniz"),
+      action: SnackBarAction(
+        label: 'Tamam',
+        onPressed: () {},
+      ),
+    );
     return Scaffold(
         resizeToAvoidBottomInset: false,
         appBar: AppBar(
-          title: Text('Bazal Metabolizma Hızı',
-              style: GoogleFonts.balooThambi(color: Colors.blue)),
+          title: Text(
+            'Bazal Metabolizma Hızı',
+            style: TextStyle(
+                fontFamily: "Times New Roman",
+                fontWeight: FontWeight.bold,
+                color: Colors.pink.shade900,
+                fontSize: MediaQuery.of(context).textScaleFactor * 18),
+          ),
           //centerTitle: true,
           backgroundColor: Colors.blue.shade200,
         ),
@@ -58,7 +104,7 @@ class _BmHState extends State<BmH> {
                       counterText: '',
                       helperText: 'Örneğin 160 olarak girebilirsiniz',
                       helperStyle: TextStyle(
-                          fontFamily: 'Roboto',
+                          fontFamily: 'Times New Roman',
                           fontWeight: FontWeight.bold,
                           fontSize: MediaQuery.of(context).size.width * 0.04),
                       icon: Container(
@@ -68,7 +114,7 @@ class _BmHState extends State<BmH> {
                               fit: BoxFit.fill,
                               image: AssetImage('assets/img/height.png'))),
                       labelText: 'Boy cm cinsinden',
-                      labelStyle: TextStyle(fontFamily: 'Roboto'),
+                      labelStyle: TextStyle(fontFamily: 'Times New Roman'),
                       border: OutlineInputBorder(
                         borderRadius: BorderRadius.all(Radius.circular(10)),
                       ),
@@ -87,7 +133,7 @@ class _BmHState extends State<BmH> {
                       counterText: '',
                       helperText: 'Örneğin 80 olarak girebilirsiniz',
                       helperStyle: TextStyle(
-                          fontFamily: 'Roboto',
+                          fontFamily: 'Times New Roman',
                           fontWeight: FontWeight.bold,
                           fontSize: MediaQuery.of(context).size.width * 0.04),
                       icon: Container(
@@ -97,7 +143,7 @@ class _BmHState extends State<BmH> {
                               fit: BoxFit.fill,
                               image: AssetImage('assets/img/weight.png'))),
                       labelText: 'Kilo kg cinsinden',
-                      labelStyle: TextStyle(fontFamily: 'Roboto'),
+                      labelStyle: TextStyle(fontFamily: 'Times New Roman'),
                       border: OutlineInputBorder(
                         borderRadius: BorderRadius.all(Radius.circular(10)),
                       ),
@@ -116,7 +162,7 @@ class _BmHState extends State<BmH> {
                       counterText: '',
                       helperText: 'Örneğin 40 olarak girebilirsiniz',
                       helperStyle: TextStyle(
-                          fontFamily: 'Roboto',
+                          fontFamily: 'Times New Roman',
                           fontWeight: FontWeight.bold,
                           fontSize: MediaQuery.of(context).size.width * 0.04),
                       icon: Container(
@@ -126,7 +172,7 @@ class _BmHState extends State<BmH> {
                               fit: BoxFit.fill,
                               image: AssetImage('assets/img/age.png'))),
                       labelText: 'Yaşınız',
-                      labelStyle: TextStyle(fontFamily: 'Roboto'),
+                      labelStyle: TextStyle(fontFamily: 'Times New Roman'),
                       border: OutlineInputBorder(
                         borderRadius: BorderRadius.all(Radius.circular(10)),
                       ),
@@ -135,61 +181,131 @@ class _BmHState extends State<BmH> {
                 ),
                 Padding(padding: EdgeInsets.all(10.0)),
                 SizedBox(height: 20),
-                GroupButton(
-                  selectedTextStyle: TextStyle(
-                      fontFamily: 'Roboto',
-                      color: Colors.black87,
-                      fontWeight: FontWeight.bold),
-                  unselectedTextStyle:
-                      TextStyle(fontFamily: 'Roboto', color: Colors.black87),
-                  isRadio: true,
-                  selectedBorderColor: Colors.blue.shade300,
-                  selectedColor: Colors.blue.shade200,
-                  unselectedColor: Colors.blue.shade100,
-                  unselectedBorderColor: Colors.blue,
-                  spacing: 10,
-                  buttons: const [
-                    'Kadın',
-                    'Erkek',
+                DropdownButton<String>(
+                  elevation: 8,
+                  style: TextStyle(color: Colors.black87, fontSize: 16),
+                  icon: Icon(Icons.arrow_drop_down_circle),
+                  iconEnabledColor: Colors.blue,
+                  hint: _isSelected
+                      ? Text(
+                          "$_interest",
+                          style: TextStyle(
+                              fontFamily: "Times New Roman",
+                              fontWeight: FontWeight.bold,
+                              color: Colors.pink.shade900,
+                              fontSize:
+                                  MediaQuery.of(context).textScaleFactor * 18),
+                        )
+                      : Text(
+                          " Cinsiyetiniz ?",
+                          style: TextStyle(
+                              fontFamily: "Times New Roman",
+                              fontWeight: FontWeight.bold,
+                              color: Colors.pink.shade900,
+                              fontSize:
+                                  MediaQuery.of(context).textScaleFactor * 14),
+                        ),
+                  items: <String>["Kadın", "Erkek"]
+                      .map<DropdownMenuItem<String>>((String value) {
+                    return DropdownMenuItem<String>(
+                      value: value,
+                      child: Text(value),
+                    );
+                  }).toList(),
+                  onChanged: (String? newValue) {
+                    setState(() {
+                      _interest = newValue!;
+                      _isSelected = true;
+                    });
+                  },
+                ),
+                SizedBox(
+                  height: 10,
+                ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Text(
+                      "Aktiflik Seviyesi",
+                      style: TextStyle(
+                        fontFamily: 'Times New Roman',
+                      ),
+                    ),
+                    SizedBox(width: 10),
+                    IconButton(
+                        onPressed: () => _dialogalert(context),
+                        icon: Icon(Icons.info))
                   ],
-                  borderRadius: BorderRadius.circular(30),
-                  onSelected: (i, selected) => select = i,
                 ),
                 SizedBox(
                   height: 10,
                 ),
-                Text(
-                  "Aktiflik Seviyesi",
-                  style: TextStyle(
-                    fontFamily: 'Roboto',
-                  ),
-                ),
-                SizedBox(
-                  height: 10,
-                ),
-                GroupButton(
-                  selectedTextStyle: TextStyle(
-                      fontFamily: 'Roboto',
-                      color: Colors.black87,
-                      fontWeight: FontWeight.bold),
-                  unselectedTextStyle:
-                      TextStyle(fontFamily: 'Roboto', color: Colors.black87),
-                  isRadio: true,
-                  selectedBorderColor: Colors.blue.shade300,
-                  selectedColor: Colors.blue.shade200,
-                  unselectedColor: Colors.blue.shade100,
-                  unselectedBorderColor: Colors.blue,
-                  spacing: 10,
-                  buttons: const [
+                DropdownButton<String>(
+                  elevation: 8,
+                  style: TextStyle(color: Colors.black87, fontSize: 16),
+                  icon: Icon(Icons.arrow_drop_down_circle),
+                  iconEnabledColor: Colors.blue,
+                  hint: _isSelected1
+                      ? Text(
+                          "$_interest1",
+                          style: TextStyle(
+                              fontFamily: "Times New Roman",
+                              fontWeight: FontWeight.bold,
+                              color: Colors.pink.shade900,
+                              fontSize:
+                                  MediaQuery.of(context).textScaleFactor * 18),
+                        )
+                      : Text(
+                          " Aktiflik Seviyesi ?",
+                          style: TextStyle(
+                              fontFamily: "Times New Roman",
+                              fontWeight: FontWeight.bold,
+                              color: Colors.pink.shade900,
+                              fontSize:
+                                  MediaQuery.of(context).textScaleFactor * 14),
+                        ),
+                  items: <String>[
                     'Az Aktif',
                     'Hafif Düzeyde Aktif',
                     'Orta Düzeyde Aktif',
                     'Çok Aktif',
                     'Çok Çok Aktif',
-                  ],
-                  borderRadius: BorderRadius.circular(30),
-                  onSelected: (i, selected) => active = i,
+                  ].map<DropdownMenuItem<String>>((String value) {
+                    return DropdownMenuItem<String>(
+                      value: value,
+                      child: Text(value),
+                    );
+                  }).toList(),
+                  onChanged: (String? newValue) {
+                    setState(() {
+                      _interest1 = newValue!;
+                      _isSelected1 = true;
+                    });
+                  },
                 ),
+                FlatButton(
+                  color: Colors.blue.shade300,
+                  shape: RoundedRectangleBorder(
+                    side: BorderSide(
+                        width: 3, color: Colors.blue, style: BorderStyle.solid),
+                    borderRadius: BorderRadius.all(Radius.circular(10)),
+                  ),
+                  child: Text(
+                    "Bilgileri Getir",
+                    style: TextStyle(
+                        fontFamily: "Times New Roman",
+                        fontWeight: FontWeight.bold,
+                        color: Colors.pink.shade900,
+                        fontSize: MediaQuery.of(context).textScaleFactor * 14),
+                  ),
+                  onPressed: () => {
+                    if (_isSelected1 == false)
+                      {ScaffoldMessenger.of(context).showSnackBar(snackbar2)}
+                    else
+                      {calculateBMIfP()}
+                  },
+                ),
+                SizedBox(width: 10),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
@@ -204,14 +320,27 @@ class _BmHState extends State<BmH> {
                       ),
                       child: Text(
                         "Hesapla",
-                        style: GoogleFonts.patrickHand(
-                            color: Colors.white60,
+                        style: TextStyle(
+                            fontFamily: "Times New Roman",
                             fontWeight: FontWeight.bold,
-                            fontSize: 21),
+                            color: Colors.pink.shade900,
+                            fontSize:
+                                MediaQuery.of(context).textScaleFactor * 14),
                       ),
-                      onPressed: calculateBMI,
+                      onPressed: () => {
+                        if (_ageController.text == "" ||
+                            _heightController.text == "" ||
+                            _weightController.text == "" ||
+                            as == "")
+                          {
+                            ScaffoldMessenger.of(context)
+                                .showSnackBar(snackbar1)
+                          }
+                        else
+                          {calculateBMI()}
+                      },
                     ),
-                    SizedBox(width: 10),
+                    SizedBox(width: 20),
                     FlatButton(
                       color: Colors.blue.shade300,
                       shape: RoundedRectangleBorder(
@@ -223,39 +352,23 @@ class _BmHState extends State<BmH> {
                       ),
                       child: Text(
                         "Temizle",
-                        style: GoogleFonts.patrickHand(
-                            color: Colors.white60,
+                        style: TextStyle(
+                            fontFamily: "Times New Roman",
                             fontWeight: FontWeight.bold,
-                            fontSize: 21),
+                            color: Colors.pink.shade900,
+                            fontSize:
+                                MediaQuery.of(context).textScaleFactor * 14),
                       ),
                       onPressed: _clear,
                     ),
                     SizedBox(width: 10),
-                    FlatButton(
-                      color: Colors.blue.shade300,
-                      shape: RoundedRectangleBorder(
-                        side: BorderSide(
-                            width: 3,
-                            color: Colors.blue,
-                            style: BorderStyle.solid),
-                        borderRadius: BorderRadius.all(Radius.circular(10)),
-                      ),
-                      child: Text(
-                        "Aktiflik Nedir",
-                        style: GoogleFonts.patrickHand(
-                            color: Colors.white60,
-                            fontWeight: FontWeight.bold,
-                            fontSize: 21),
-                      ),
-                      onPressed: () => _dialogalert(context),
-                    ),
                   ],
                 ),
                 SizedBox(height: 10),
                 Text(
                   bmh == null ? "Değeri Gir" : _bmhtext,
                   style: TextStyle(
-                    fontFamily: 'Roboto',
+                    fontFamily: 'Times New Roman',
                     color: Colors.pink.shade900,
                     fontSize: 24,
                     fontWeight: FontWeight.bold,
@@ -265,7 +378,7 @@ class _BmHState extends State<BmH> {
                 Text(
                   bmh == null ? "Değeri Gir" : bmhtext,
                   style: TextStyle(
-                    fontFamily: 'Roboto',
+                    fontFamily: 'Times New Roman',
                     color: Colors.pink.shade900,
                     fontSize: 24,
                     fontWeight: FontWeight.bold,
@@ -277,24 +390,35 @@ class _BmHState extends State<BmH> {
         ));
   }
 
+  void calculateBMIfP() {
+    double height = double.parse(data["boy"]) / 100;
+    double weight = double.parse(data["kilo"]);
+    double age = double.parse(data["yas"]);
+    String gender = data["cinsiyet"];
+    showResult(height, weight, age, gender);
+  }
+
   void calculateBMI() {
     double height = double.parse(_heightController.text) / 100;
     double weight = double.parse(_weightController.text);
     double age = double.parse(_ageController.text);
-    //_heightController = heighta as TextEditingController;
+    String gender = _interest.toString();
+    showResult(height, weight, age, gender);
+  }
 
-    if (select == 0) {
+  void showResult(double height, double weight, double age, String gender) {
+    if (gender == "Kadın") {
       _bmh = 655.1 + (9.56 * weight) + (1.85 + height) - (4.68 * age);
       bmh = _bmh;
-      if (active == 0) {
+      if (_interest1 == "Az Aktif") {
         bmh = bmh * 1.2;
-      } else if (active == 1) {
+      } else if (_interest1 == 'Hafif Düzeyde Aktif') {
         bmh = bmh * 1.3;
-      } else if (active == 2) {
+      } else if (_interest1 == 'Orta Düzeyde Aktif') {
         bmh = bmh * 1.5;
-      } else if (active == 3) {
+      } else if (_interest1 == 'Çok Aktif') {
         bmh = bmh * 1.7;
-      } else if (active == 4) {
+      } else if (_interest1 == 'Çok Çok Aktif') {
         bmh = bmh * 1.9;
       }
       if (bmh >= 1000 && bmh <= 1400) {
@@ -309,18 +433,18 @@ class _BmHState extends State<BmH> {
       }
       bmhtext =
           "Günlük almanız gereken enerji ${bmh.toStringAsFixed(2)} kcal/g'dır";
-    } else if (select == 1) {
+    } else if (gender == "Erkek") {
       _bmh = 66.5 + (13.75 * weight) + (5.03 + height) - (6.75 * age);
       bmh = _bmh;
-      if (active == 0) {
+      if (_interest1 == "Az Aktif") {
         bmh = bmh * 1.2;
-      } else if (active == 1) {
+      } else if (_interest1 == 'Hafif Düzeyde Aktif') {
         bmh = bmh * 1.4;
-      } else if (active == 2) {
+      } else if (_interest1 == 'Orta Düzeyde Aktif') {
         bmh = bmh * 1.6;
-      } else if (active == 3) {
+      } else if (_interest1 == 'Çok Aktif') {
         bmh = bmh * 1.8;
-      } else if (active == 4) {
+      } else if (_interest1 == 'Çok Çok Aktif') {
         bmh = bmh * 2.2;
       }
       if (bmh >= 1200 && bmh <= 1600) {

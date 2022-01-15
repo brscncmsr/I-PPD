@@ -1,0 +1,18 @@
+{
+    "bmi": {
+        "weight": "Kilo kg cinsinden",
+        "height": "Boy cm cinsinden",
+        "mass":"Beden Kitle\n   Endeksi",
+        "sleep":"Uyku Sürem",
+        "risk":"Hastalık\n Riskim",
+        "bazal":"      Bazal\nMetabolizma",
+        "water":"Su İhtiyacım",
+        "pharmacy":"    Nöbetçi\n   Eczaneler",
+        "homepage":"Ana Sayfa"
+    }
+    
+    
+
+    
+}
+

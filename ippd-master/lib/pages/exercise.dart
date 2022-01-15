@@ -1,9 +1,14 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_spinkit/flutter_spinkit.dart';
+import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:ippd/home/home.dart';
+import 'package:ippd/pages/homepage.dart';
 import 'package:ippd/pages/water.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:line_icons/line_icons.dart';
+import 'package:page_transition/page_transition.dart';
 import 'package:rflutter_alert/rflutter_alert.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:path_provider/path_provider.dart';
@@ -15,16 +20,57 @@ class Exercise extends StatefulWidget {
   ExerciseState createState() => ExerciseState();
 }
 
+int age = 0;
+bool a = true;
+
 class ExerciseState extends State<Exercise> {
   Future<Null> refresh() async {
+    Navigator.push(
+        context,
+        PageTransition(
+            child: Exercise(), type: PageTransitionType.bottomToTop));
+
     await Future.delayed(Duration(seconds: 2));
+  }
+
+  bool load = false;
+
+  Future<dynamic> getData() async {
+    final DocumentReference document =
+        FirebaseFirestore.instance.collection("users").doc(user!.uid);
+
+    await document.get().then<dynamic>((DocumentSnapshot snapshot) async {
+      setState(() {
+        data = snapshot.data();
+        if (int.parse(data["yas"]) <= 18) {
+          age = 17;
+          load = true;
+        }
+        if (int.parse(data["yas"]) <= 55 || int.parse(data["yas"]) >= 19) {
+          age = 19;
+          load = true;
+        }
+        if (int.parse(data["yas"]) >= 55) {
+          age = 55;
+          load = true;
+        }
+      });
+    });
   }
 
   final Stream<QuerySnapshot> _usersStream = FirebaseFirestore.instance
       .collection('egzersizler')
+      .where("yas", isEqualTo: age)
       //.orderBy()
       //.where('yas',isGreaterThanOrEqualTo: )
       .snapshots();
+
+  void initState() {
+    super.initState();
+    getData();
+
+    // Or call your function here
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -34,24 +80,30 @@ class ExerciseState extends State<Exercise> {
           //brightness: Brightness.dark,
           ),
       home: Scaffold(
-        body: RefreshIndicator(
-          onRefresh: refresh,
-          backgroundColor: Colors.blue.shade300,
-          color: Colors.blue,
-          child: StreamBuilder<QuerySnapshot>(
-              stream: _usersStream,
-              builder: (BuildContext context,
-                  AsyncSnapshot<QuerySnapshot> snapshot) {
-                if (snapshot.hasError) {
-                  return Text('Something went wrong');
-                }
-                if (snapshot.connectionState == ConnectionState.waiting) {
-                  return Center(
-                      child: CircularProgressIndicator(
-                    color: Colors.blue,
-                    strokeWidth: 2,
-                  ));
-                }
+          body: RefreshIndicator(
+        onRefresh: refresh,
+        backgroundColor: Colors.blue.shade300,
+        color: Colors.blue,
+        child: StreamBuilder<QuerySnapshot>(
+            stream: _usersStream,
+            builder: (context, snapshot) {
+              if (!load || !snapshot.hasData) {
+                return Center(
+                    child: Column(children: [
+                  Padding(padding: EdgeInsets.all(20)),
+                  Text("Egzersizler Hesaplanıyor",
+                      style: TextStyle(
+                          fontFamily: "Times New Roman",
+                          fontWeight: FontWeight.bold,
+                          color: Colors.pink.shade900)),
+                  Padding(padding: EdgeInsets.all(20)),
+                  SpinKitPumpingHeart(
+                    color: Colors.red,
+                    size: 200,
+                    duration: Duration(milliseconds: 2400),
+                  )
+                ]));
+              } else {
                 return ListView(
                   children: snapshot.data!.docs.map(
                     (DocumentSnapshot document) {
@@ -78,17 +130,22 @@ class ExerciseState extends State<Exercise> {
                                   color: Colors.amber),*/
                                     title: Text(
                                       data['egzersiz'],
-                                      style: GoogleFonts.patrickHand(
-                                          color: Colors.blue,
+                                      style: TextStyle(
+                                          fontFamily: "Times New Roman",
                                           fontWeight: FontWeight.bold,
-                                          fontSize: 24),
+                                          color: Colors.pink.shade900,
+                                          fontSize: MediaQuery.of(context)
+                                                  .textScaleFactor *
+                                              20),
                                     ),
                                     subtitle: Text(data['günlük'],
-                                        style: GoogleFonts.patrickHand(
-                                          fontSize: 21,
-                                          color: Colors.blue.shade300,
-                                          fontWeight: FontWeight.bold,
-                                        )),
+                                        style: TextStyle(
+                                            fontFamily: "Times New Roman",
+                                            fontWeight: FontWeight.normal,
+                                            fontSize: MediaQuery.of(context)
+                                                    .textScaleFactor *
+                                                16,
+                                            color: Colors.pink.shade900)),
                                   ),
                                   ButtonTheme(
                                       child: ButtonBar(children: <Widget>[
@@ -107,10 +164,10 @@ class ExerciseState extends State<Exercise> {
                                         ),
                                         child: Text(
                                           "İncele",
-                                          style: GoogleFonts.patrickHand(
-                                              color: Colors.blue,
+                                          style: TextStyle(
+                                              fontFamily: "Times New Roman",
                                               fontWeight: FontWeight.bold,
-                                              fontSize: 24),
+                                              color: Colors.pink.shade900),
                                         ),
                                         onPressed: () {
                                           Alert(
@@ -129,12 +186,10 @@ class ExerciseState extends State<Exercise> {
                                                     color: Colors.red)),
                                             style: AlertStyle(
                                               isButtonVisible: false,
-                                              backgroundColor:
-                                                  Colors.white70,
+                                              backgroundColor: Colors.white70,
                                               alertElevation: 10,
                                               alertPadding: EdgeInsets.all(10),
-                                              overlayColor:
-                                                  Colors.white,
+                                              overlayColor: Colors.white,
                                               animationType:
                                                   AnimationType.shrink,
                                               animationDuration:
@@ -150,7 +205,6 @@ class ExerciseState extends State<Exercise> {
                                               ),
                                             ),
                                             title: data['egzersiz'],
-                                            
                                             context: context,
                                             content: Column(
                                               mainAxisAlignment:
@@ -168,11 +222,9 @@ class ExerciseState extends State<Exercise> {
                                                         MediaQuery.of(context)
                                                                 .size
                                                                 .height *
-                                                            2.25,
+                                                            2.8,
                                                     child: Card(
-                                                      
-                                                      color:
-                                                          Colors.white,
+                                                      color: Colors.white,
                                                       shadowColor: Colors.black,
                                                       child: Padding(
                                                         //padding:  EdgeInsets.only(left:15.0,right: 15.0,top:0,bottom: 0),
@@ -199,9 +251,12 @@ class ExerciseState extends State<Exercise> {
                                                                               5),
                                                                   child: Text(
                                                                     "${data['egzersiz']} için Bilgiler",
-                                                                    style: TextStyle(fontFamily : 'Roboto',
+                                                                    style: TextStyle(
+                                                                        fontFamily:
+                                                                            'Times New Roman',
                                                                         fontSize:
-                                                                            24,
+                                                                            MediaQuery.of(context).textScaleFactor *
+                                                                                24,
                                                                         fontWeight:
                                                                             FontWeight.bold),
                                                                   ),
@@ -213,9 +268,12 @@ class ExerciseState extends State<Exercise> {
                                                                               5),
                                                                   child: Text(
                                                                     "${data['bas']}",
-                                                                    style: TextStyle(fontFamily : 'Roboto',
+                                                                    style: TextStyle(
+                                                                        fontFamily:
+                                                                            'Times New Roman',
                                                                         fontSize:
-                                                                            16,
+                                                                            MediaQuery.of(context).textScaleFactor *
+                                                                                16,
                                                                         fontWeight:
                                                                             FontWeight.normal),
                                                                   ),
@@ -229,37 +287,42 @@ class ExerciseState extends State<Exercise> {
                                                                             .size
                                                                             .height *
                                                                         0.295,
-                                                                    child: Stack(
+                                                                    child:
+                                                                        Stack(
                                                                       children: [
                                                                         Image(
-
-                                                                            fit: BoxFit
-                                                                                .fill,
-                                                                            image: NetworkImage(
-                                                                                '${data['image']}')),
-                                                                                Positioned(
-                                                                                  bottom:45,
-                                                                                  right:0,
-                                                                                  child:
+                                                                            fit:
+                                                                                BoxFit.fill,
+                                                                            image: NetworkImage('${data['image']}')),
+                                                                        Positioned(
+                                                                            bottom:
+                                                                                40,
+                                                                            right:
+                                                                                0,
+                                                                            child:
                                                                                 Container(
-                                                                                  alignment: Alignment.bottomRight,
-                                                                                  color:Colors.white,
-                                                                                width: MediaQuery.of(context).size.width *0.12,
-                                                                                height: MediaQuery.of(context).size.height * 0.023,
-                                                                                ))
+                                                                              alignment: Alignment.bottomRight,
+                                                                              color: Colors.white,
+                                                                              width: MediaQuery.of(context).devicePixelRatio * 28,
+                                                                              height: MediaQuery.of(context).devicePixelRatio * 50,
+                                                                            ))
                                                                       ],
                                                                     )),
-                                                                            SizedBox(height:10),
-                                                                  Container(
+                                                                SizedBox(
+                                                                    height: 10),
+                                                                Container(
                                                                   margin:
                                                                       EdgeInsets
                                                                           .all(
                                                                               5),
                                                                   child: Text(
                                                                     '${data['1.satır']}',
-                                                                    style: TextStyle(fontFamily : 'Roboto',
+                                                                    style: TextStyle(
+                                                                        fontFamily:
+                                                                            'Times New Roman',
                                                                         fontSize:
-                                                                            16,
+                                                                            MediaQuery.of(context).textScaleFactor *
+                                                                                16,
                                                                         fontWeight:
                                                                             FontWeight.normal),
                                                                   ),
@@ -271,9 +334,12 @@ class ExerciseState extends State<Exercise> {
                                                                               5),
                                                                   child: Text(
                                                                     '${data['2.satır']}',
-                                                                    style: TextStyle(fontFamily : 'Roboto',
+                                                                    style: TextStyle(
+                                                                        fontFamily:
+                                                                            'Times New Roman',
                                                                         fontSize:
-                                                                            16,
+                                                                            MediaQuery.of(context).textScaleFactor *
+                                                                                16,
                                                                         fontWeight:
                                                                             FontWeight.normal),
                                                                   ),
@@ -285,9 +351,12 @@ class ExerciseState extends State<Exercise> {
                                                                               5),
                                                                   child: Text(
                                                                     '${data['3.satır']}',
-                                                                    style: TextStyle(fontFamily : 'Roboto',
+                                                                    style: TextStyle(
+                                                                        fontFamily:
+                                                                            'Times New Roman',
                                                                         fontSize:
-                                                                            16,
+                                                                            MediaQuery.of(context).textScaleFactor *
+                                                                                16,
                                                                         fontWeight:
                                                                             FontWeight.normal),
                                                                   ),
@@ -299,9 +368,12 @@ class ExerciseState extends State<Exercise> {
                                                                               5),
                                                                   child: Text(
                                                                     '${data['4.satır']}',
-                                                                    style: TextStyle(fontFamily : 'Roboto',
+                                                                    style: TextStyle(
+                                                                        fontFamily:
+                                                                            'Times New Roman',
                                                                         fontSize:
-                                                                            16,
+                                                                            MediaQuery.of(context).textScaleFactor *
+                                                                                16,
                                                                         fontWeight:
                                                                             FontWeight.normal),
                                                                   ),
@@ -313,69 +385,84 @@ class ExerciseState extends State<Exercise> {
                                                                               5),
                                                                   child: Text(
                                                                     '${data['5.satır']}',
-                                                                    style: TextStyle(fontFamily : 'Roboto',
+                                                                    style: TextStyle(
+                                                                        fontFamily:
+                                                                            'Times New Roman',
                                                                         fontSize:
-                                                                            16,
+                                                                            MediaQuery.of(context).textScaleFactor *
+                                                                                16,
                                                                         fontWeight:
                                                                             FontWeight.normal),
                                                                   ),
                                                                 ),
                                                                 Center(
-                                                                  child:Container(
-                                                                  margin:
-                                                                      EdgeInsets
-                                                                          .all(
-                                                                              5),
-                                                                  child: Text(
-                                                                    'Uygun Form Ve Nefes Modeli',
-                                                                    style: TextStyle(fontFamily : 'Roboto',
-                                                                        fontSize:
-                                                                            21,
-                                                                        fontWeight:
-                                                                            FontWeight.bold),
+                                                                  child:
+                                                                      Container(
+                                                                    margin: EdgeInsets
+                                                                        .all(5),
+                                                                    child: Text(
+                                                                      'Uygun Form Ve Nefes Modeli',
+                                                                      style: TextStyle(
+                                                                          fontFamily:
+                                                                              'Times New Roman',
+                                                                          fontSize: MediaQuery.of(context).textScaleFactor *
+                                                                              21,
+                                                                          fontWeight:
+                                                                              FontWeight.bold),
+                                                                    ),
                                                                   ),
                                                                 ),
-                                                                ),
-                                                                SizedBox(height:10),
-                                                                  Container(
+                                                                SizedBox(
+                                                                    height: 10),
+                                                                Container(
                                                                   margin:
                                                                       EdgeInsets
                                                                           .all(
                                                                               5),
                                                                   child: Text(
                                                                     '${data['baslık2']}',
-                                                                    style: TextStyle(fontFamily : 'Roboto',
+                                                                    style: TextStyle(
+                                                                        fontFamily:
+                                                                            'Times New Roman',
                                                                         fontSize:
-                                                                            16,
+                                                                            MediaQuery.of(context).textScaleFactor *
+                                                                                16,
                                                                         fontWeight:
                                                                             FontWeight.normal),
                                                                   ),
                                                                 ),
-                                                                SizedBox(height:10),
-                                                                  Container(
+                                                                SizedBox(
+                                                                    height: 10),
+                                                                Container(
                                                                   margin:
                                                                       EdgeInsets
                                                                           .all(
                                                                               5),
                                                                   child: Text(
                                                                     'Egzersiz Faydaları',
-                                                                    style: TextStyle(fontFamily : 'Roboto',
+                                                                    style: TextStyle(
+                                                                        fontFamily:
+                                                                            'Times New Roman',
                                                                         fontSize:
-                                                                            21,
+                                                                            MediaQuery.of(context).textScaleFactor *
+                                                                                21,
                                                                         fontWeight:
                                                                             FontWeight.bold),
                                                                   ),
                                                                 ),
-                                                                  Container(
+                                                                Container(
                                                                   margin:
                                                                       EdgeInsets
                                                                           .all(
                                                                               5),
                                                                   child: Text(
                                                                     '${data['egzersizfay']}',
-                                                                    style: TextStyle(fontFamily : 'Roboto',
+                                                                    style: TextStyle(
+                                                                        fontFamily:
+                                                                            'Times New Roman',
                                                                         fontSize:
-                                                                            16,
+                                                                            MediaQuery.of(context).textScaleFactor *
+                                                                                16,
                                                                         fontWeight:
                                                                             FontWeight.normal),
                                                                   ),
@@ -398,9 +485,9 @@ class ExerciseState extends State<Exercise> {
                     },
                   ).toList(),
                 );
-              }),
-        ),
-      ),
+              }
+            }),
+      )),
     );
   }
 }

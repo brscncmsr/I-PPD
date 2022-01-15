@@ -38,6 +38,8 @@ class _PageviewingState extends State<Pageviewing> {
         image: "assets/img/MBMI-0.png"),
   ];
 
+  get sharedPreferences => null;
+
   _onchanged(int index) {
     setState(() {
       _currentPage = index;
@@ -97,10 +99,13 @@ class _PageviewingState extends State<Pageviewing> {
                           onPressed: () => checkSign(),
                           child: Text(
                             "Başla",
-                            style: GoogleFonts.patrickHand(
-                                color: Colors.white60,
-                                fontSize: 30,
-                                fontWeight: FontWeight.bold),
+                            style: TextStyle(
+                                fontFamily: "Times New Roman",
+                                fontWeight: FontWeight.bold,
+                                color: Colors.pink.shade900,
+                                fontSize:
+                                    MediaQuery.of(context).textScaleFactor *
+                                        20),
                           ),
                         )
                       : Icon(
@@ -121,15 +126,19 @@ class _PageviewingState extends State<Pageviewing> {
   }
 
   void checkSign() async {
+    var sharedPreferences = await SharedPreferences.getInstance();
+    sharedPreferences.setInt("count", 0);
     FirebaseAuth.instance.idTokenChanges().listen((User? user) {
       if (user != null) {
-        Navigator.push(
+        Navigator.pushAndRemoveUntil(
             context,
             PageTransition(
               type: PageTransitionType.rightToLeft,
               duration: Duration(milliseconds: 500),
               child: Anasayfa(),
-            ));
+            ),
+            ModalRoute.withName('/'));
+        sharedPreferences.setInt("count", 1);
       } else {
         Navigator.push(
             context,

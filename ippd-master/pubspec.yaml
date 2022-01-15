@@ -2,7 +2,7 @@ name: ippd
 description: A new Flutter project.
 
 publish_to: 'none' 
-version: 1.0.0+1
+version: 1.0.0+3
 
 environment:
   sdk: ">=2.12.0 <3.0.0"
@@ -21,6 +21,7 @@ dependencies:
   country_code_picker: ^2.0.2
   cupertino_icons: ^1.0.2
   cupertino_radio_choice: ^1.0.1+1
+  easy_localization: ^3.0.0
   firebase_auth: ^3.1.0
   firebase_core: ^1.6.0
 
@@ -30,6 +31,8 @@ dependencies:
   flutter:
     sdk: flutter
   flutter_launcher_icons: 
+  flutter_screenutil: ^5.0.0+2
+  flutter_spinkit: ^5.1.0
   flutter_svg: ^0.22.0
   font_awesome_flutter:
   get: ^4.3.8
@@ -55,68 +58,10 @@ flutter:
  
 
   assets:
-    - assets/img/exercise/dag_durusu.png
-    - assets/img/exercise/duvarkay.png
-    - assets/img/exercise/comelme.png
-    - assets/img/exercise/dambılbukle.png
-    - assets/img/exercise/dizcok.png
-    - assets/img/exercise/olubocek.png
-    - assets/img/exercise/triceps.png
-    - assets/img/exercise/duvarit.png
-    - assets/img/exercise/avkopegi.png
-    - assets/img/exercise/kahraman.png
-    - assets/img/exercise/duvarotur.png
-    - assets/img/exercise/yanyat.png
-    - assets/img/exercise/gogusomuz.png
-    - assets/img/exercise/oturmusruh.png
-    - assets/img/exercise/ileriakciger.png
-    - assets/img/exercise/kopekpozu.png
-    - assets/img/exercise/kopru.png
-    - assets/img/exercise/ayaktadort.png
-    - assets/img/exercise/kolcember.png
-    - assets/img/exercise/cocukpozu.png
-    - assets/img/exercise/tekbacak.png
-    - assets/img/exercise/yalanci.png
-    - assets/img/exercise/treepose.png
-    - assets/img/exercise/catcow.png
-    - assets/img/exercise/seatedneck.png
-    - assets/img/exercise/sfenks.png
-    - assets/img/exercise/seatedneck.png
-    - assets/img/exercise/oturyanviraj.png
-    - assets/img/exercise/duvarcomelmesi.png
-    - assets/img/exercise/cesetpozu.png
-
-    - assets/img/nurse.png
-    - assets/img/kid.png
-    - assets/img/nurse2.png
-    - assets/img/nurse3.png
-    - assets/img/ippd.png
-    - assets/img/ippd2.png
-    - assets/img/age.png
-    - assets/img/bel.png
-    - assets/img/bmi.png
-    - assets/img/body.png
-    - assets/img/background.png
-    - assets/img/drugstore.png
-    - assets/img/gender.png
-    - assets/img/weight.png
-    - assets/img/height.png
-    - assets/img/no-smoking.png
-    - assets/img/heart-disease.png
-    - assets/img/check-up.png
-    - assets/img/night.png
-    - assets/img/water.png
-    - assets/img/MBMI-0.png
-    - assets/img/MBMI-1.png
-    - assets/img/MBMI-2.png
-    - assets/img/MBMI-3.png
-    - assets/img/MBMI-4.png
-    - assets/img/MBMI-5.png
-    - assets/img/MBMI-6.png
-    - assets/img/blood.png
-    - assets/img/obesite.png
-    - assets/img/diabet.png
-
+    - assets/img/exercise/
+    - assets/img/
+    - assets/lang/
+    
 
   fonts:
     - family: WorkSansSemiBold

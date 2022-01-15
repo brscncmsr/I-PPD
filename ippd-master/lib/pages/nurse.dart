@@ -16,24 +16,35 @@ class _NurseState extends State<Nurse> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('IPPD Hemşirelerinden Tavsiyeler'),
+        title: Text(
+          'IPPD Hemşirelerinden Tavsiyeler',
+          style: TextStyle(
+              fontFamily: "Times New Roman",
+              fontWeight: FontWeight.bold,
+              fontSize: MediaQuery.of(context).textScaleFactor * 14,
+              color: Colors.pink.shade900),
+        ),
         centerTitle: true,
         backgroundColor: Colors.blue.shade200,
       ),
       body: Container(
           padding: EdgeInsets.symmetric(horizontal: 10.0),
           child: ListView(
+            shrinkWrap: true,
             padding: const EdgeInsets.all(8),
             children: <Widget>[
               Row(mainAxisAlignment: MainAxisAlignment.center, children: [
                 Text(
-                    "Merhabalar Ben Asistan Hemşireniz \n Size Nasıl Yardımcı Olabilirim ?",
-                    style: GoogleFonts.patrickHand(
-                        color: Colors.grey.shade500,
-                        fontWeight: FontWeight.bold,
-                        fontSize: 16)),
+                  "Merhabalar Ben Hemşireniz \n Size Nasıl Yardımcı Olabilirim ?",
+                  style: TextStyle(
+                      fontFamily: "Times New Roman",
+                      fontWeight: FontWeight.bold,
+                      color: Colors.grey,
+                      fontSize: MediaQuery.of(context).textScaleFactor * 14),
+                ),
                 Image(image: AssetImage("assets/img/nurse2.png"))
               ]),
+              SizedBox(width: 20),
               FlatButton(
                   color: Colors.grey.shade500,
                   shape: RoundedRectangleBorder(
@@ -46,14 +57,20 @@ class _NurseState extends State<Nurse> {
                   onPressed: () => _dialogalert1(context),
                   child: Row(
                     children: [
-                      Text("Yeterli Ve Dengeli Beslenme Önerileri",
-                          style: GoogleFonts.patrickHand(
-                              color: Colors.white,
-                              fontWeight: FontWeight.bold,
-                              fontSize: 14)),
+                      Text(
+                        "Yeterli Ve Dengeli Beslenme Önerileri Nelerdir ?",
+                        style: TextStyle(
+                            fontFamily: "Times New Roman",
+                            fontWeight: FontWeight.bold,
+                            color: Colors.white,
+                            fontSize:
+                                MediaQuery.of(context).textScaleFactor * 11),
+                      ),
                     ],
                   )),
+              SizedBox(width: 20),
               FlatButton(
+                  height: MediaQuery.of(context).size.height * 0.07,
                   color: Colors.grey.shade500,
                   shape: RoundedRectangleBorder(
                     side: BorderSide(
@@ -66,14 +83,19 @@ class _NurseState extends State<Nurse> {
                   child: Row(
                     children: [
                       Text(
-                          "Aileler ve Toplum için Ergenlikte Obeziteden Korunmayı Sağlayan İpuçları",
-                          style: GoogleFonts.patrickHand(
-                              color: Colors.white,
-                              fontWeight: FontWeight.bold,
-                              fontSize: 12)),
+                        "Aileler ve Toplum için Ergenlikte \nObeziteden Korunmayı Sağlayan İpuçları Nedir?",
+                        style: TextStyle(
+                            fontFamily: "Times New Roman",
+                            fontWeight: FontWeight.bold,
+                            color: Colors.white,
+                            fontSize:
+                                MediaQuery.of(context).textScaleFactor * 11),
+                      )
                     ],
                   )),
+              SizedBox(width: 20),
               FlatButton(
+                  height: MediaQuery.of(context).size.height * 0.07,
                   color: Colors.grey.shade500,
                   shape: RoundedRectangleBorder(
                     side: BorderSide(
@@ -87,15 +109,20 @@ class _NurseState extends State<Nurse> {
                     children: [
                       Center(
                         child: Text(
-                            "Fazla Kilolu ve Obez Bireyler İçin Sağlıklı Beslenme Önerileri",
-                            style: GoogleFonts.patrickHand(
-                                color: Colors.white,
-                                fontWeight: FontWeight.bold,
-                                fontSize: 14)),
+                          "Fazla Kilolu ve Obez Bireyler \nİçin Sağlıklı Beslenme Önerileri Nedir?",
+                          style: TextStyle(
+                              fontFamily: "Times New Roman",
+                              fontWeight: FontWeight.bold,
+                              color: Colors.white,
+                              fontSize:
+                                  MediaQuery.of(context).textScaleFactor * 12),
+                        ),
                       )
                     ],
                   )),
+              SizedBox(width: 20),
               FlatButton(
+                  height: MediaQuery.of(context).size.height * 0.07,
                   color: Colors.grey.shade500,
                   shape: RoundedRectangleBorder(
                     side: BorderSide(
@@ -108,14 +135,19 @@ class _NurseState extends State<Nurse> {
                   child: Row(
                     children: [
                       Text(
-                          "Obeziteden Kurtulmak İçin Hangi Düşüncelerden Uzak Durmalıyım ?",
-                          style: GoogleFonts.patrickHand(
-                              color: Colors.white,
-                              fontWeight: FontWeight.bold,
-                              fontSize: 14)),
+                        "Obeziteden Kurtulmak İçin \nHangi Düşüncelerden Uzak Durmalıyım ?",
+                        style: TextStyle(
+                            fontFamily: "Times New Roman",
+                            fontWeight: FontWeight.bold,
+                            color: Colors.white,
+                            fontSize:
+                                MediaQuery.of(context).textScaleFactor * 13),
+                      ),
                     ],
                   )),
+              SizedBox(width: 20),
               FlatButton(
+                  height: MediaQuery.of(context).size.height * 0.09,
                   color: Colors.grey.shade500,
                   shape: RoundedRectangleBorder(
                     side: BorderSide(
@@ -128,13 +160,17 @@ class _NurseState extends State<Nurse> {
                   child: Row(
                     children: [
                       Text(
-                          "Obezim! Diyetisyenden destek almaz beslenmeme dikkat etmez\negzersiz planıma uymazsam hangi hastalıklar için riskli durumdayım?",
-                          style: GoogleFonts.patrickHand(
-                              color: Colors.white,
-                              fontWeight: FontWeight.bold,
-                              fontSize: 12)),
+                        "Obezim! Diyetisyenden destek almaz beslenmeme \ndikkat etmez egzersiz planıma uymazsam \nhangi hastalıklar için riskli durumdayım?",
+                        style: TextStyle(
+                            fontFamily: "Times New Roman",
+                            fontWeight: FontWeight.bold,
+                            color: Colors.white,
+                            fontSize:
+                                MediaQuery.of(context).textScaleFactor * 11),
+                      ),
                     ],
                   )),
+              SizedBox(width: 20),
               FlatButton(
                   color: Colors.grey.shade500,
                   shape: RoundedRectangleBorder(
@@ -152,11 +188,15 @@ class _NurseState extends State<Nurse> {
                   child: Row(
                     children: [
                       Center(
-                        child: Text("Hemşilere Ulaşın",
-                            style: GoogleFonts.patrickHand(
-                                color: Colors.white,
-                                fontWeight: FontWeight.bold,
-                                fontSize: 14)),
+                        child: Text(
+                          "Hemşirelere Ulaşın",
+                          style: TextStyle(
+                              fontFamily: "Times New Roman",
+                              fontWeight: FontWeight.bold,
+                              color: Colors.white,
+                              fontSize:
+                                  MediaQuery.of(context).textScaleFactor * 14),
+                        ),
                       )
                     ],
                   ))
@@ -228,16 +268,26 @@ _dialogalert1(context) {
                           margin: EdgeInsets.all(5),
                           child: Text(
                             "Yeterli ve Dengeli Beslenme Önerileri",
-                            style: GoogleFonts.patrickHand(
-                                fontSize: 24, fontWeight: FontWeight.bold),
+                            style: TextStyle(
+                                fontFamily: "Times New Roman",
+                                fontWeight: FontWeight.bold,
+                                color: Colors.black,
+                                fontSize:
+                                    MediaQuery.of(context).textScaleFactor *
+                                        18),
                           ),
                         ),
                         Container(
                           margin: EdgeInsets.all(5),
                           child: Text(
                             " Yeterli ve dengeli beslenme için 5 temel besin grubunda yer alan besinler, her bireye özgü miktarlarda tüketilmelidir. Temel besin grupları:\nA. Süt ve ürünleri\nB. Et, et ürünleri, yumurta, kuru baklagiller ve yağlı tohumlar\nC. Sebze\nD. Meyve\nE. Ekmek ve diğer tahıl ürünleridir.",
-                            style: GoogleFonts.patrickHand(
-                                fontSize: 18, fontWeight: FontWeight.normal),
+                            style: TextStyle(
+                                fontFamily: "Times New Roman",
+                                fontWeight: FontWeight.normal,
+                                color: Colors.black,
+                                fontSize:
+                                    MediaQuery.of(context).textScaleFactor *
+                                        18),
                           ),
                         ),
                       ],
@@ -311,16 +361,26 @@ _dialogalert2(context) {
                           margin: EdgeInsets.all(5),
                           child: Text(
                             "Fazla Kilolu ve Obez Bireyler İçin Sağlıklı Beslenme Önerileri",
-                            style: GoogleFonts.patrickHand(
-                                fontSize: 21, fontWeight: FontWeight.bold),
+                            style: TextStyle(
+                                fontFamily: "Times New Roman",
+                                fontWeight: FontWeight.bold,
+                                color: Colors.black,
+                                fontSize:
+                                    MediaQuery.of(context).textScaleFactor *
+                                        18),
                           ),
                         ),
                         Container(
                           margin: EdgeInsets.all(5),
                           child: Text(
                             "Yağ ve/veya şeker miktarı azaltılmış (diyet/light) ürünler, her zaman düşük enerji içermez. Bu ürünlerin tüketiminde dikkatli olunmalıdır.\nHazır meyve suları, gazlı içecekler vb. yerine sağlıklı içecekler tercih edilmelidir.\nKızartma yerine ızgara, haşlama, buharda ve fırında pişirme yöntemleri seçilmelidir. \nGün boyu aktif olunmalıdır.\nHızlı vücut ağırlık kaybına neden olan popüler diyetler ve kontrolsüz zayıflama ilaçları kesinlikle uygulanmamalıdır.",
-                            style: GoogleFonts.patrickHand(
-                                fontSize: 16, fontWeight: FontWeight.w500),
+                            style: TextStyle(
+                                fontFamily: "Times New Roman",
+                                fontWeight: FontWeight.normal,
+                                color: Colors.black,
+                                fontSize:
+                                    MediaQuery.of(context).textScaleFactor *
+                                        18),
                           ),
                         ),
                       ],
@@ -393,17 +453,27 @@ _dialogalert3(context) {
                         Container(
                           margin: EdgeInsets.all(5),
                           child: Text(
-                            "Aileler ve Toplum için \NErgenlikte Obeziteden Korunmayı Sağlayan İpuçları",
-                            style: GoogleFonts.patrickHand(
-                                fontSize: 21, fontWeight: FontWeight.bold),
+                            "Aileler ve Toplum için \nErgenlikte Obeziteden Korunmayı Sağlayan İpuçları",
+                            style: TextStyle(
+                                fontFamily: "Times New Roman",
+                                fontWeight: FontWeight.bold,
+                                color: Colors.black,
+                                fontSize:
+                                    MediaQuery.of(context).textScaleFactor *
+                                        18),
                           ),
                         ),
                         Container(
                           margin: EdgeInsets.all(5),
                           child: Text(
                             " 1. Evde fast-food ve şekerli içecekler kısıtlanmalıdır (Yemek yeme modifikasyonu).\n2. TV, sinema ve video oyunları : Günde 2 saatin altına indirilmelidir.\n3. Çocukların günlük ev işlerini yapmasına izin verilmelidir.\n4. Güvenli olan ve mümkün olan her şartta yürüyüş tercih edilmelidir.\n5. Okul beden eğitimi ve beslenme programları desteklenmelidir.\n6. Okul spor oyunlarına çocuğun katılımı cesaretlendirilmeli ve destek￾lenmelidir.\n7. Çocuklar ev ödevinden önce, okuldan sonra dışarıda aktif bir işe cesaretlendirilmelidir.\n8. Şehir rekreasyonel olanaklarını araştırılmalıdır.\n9. Fitnes içerikli hediyeleri seçilmelidir (paten, ip atlama, bisiklet).\n10. Tatil veya dışarıda aile ile birlikte plan yapılmalıdır.",
-                            style: GoogleFonts.patrickHand(
-                                fontSize: 16, fontWeight: FontWeight.w500),
+                            style: TextStyle(
+                                fontFamily: "Times New Roman",
+                                fontWeight: FontWeight.normal,
+                                color: Colors.black,
+                                fontSize:
+                                    MediaQuery.of(context).textScaleFactor *
+                                        18),
                           ),
                         ),
                       ],
@@ -477,16 +547,26 @@ _dialogalert4(context) {
                           margin: EdgeInsets.all(5),
                           child: Text(
                             "Obeziteden Kurtulmak İçin \nHangi Düşüncelerden Uzak Durmalıyım ?",
-                            style: GoogleFonts.patrickHand(
-                                fontSize: 21, fontWeight: FontWeight.bold),
+                            style: TextStyle(
+                                fontFamily: "Times New Roman",
+                                fontWeight: FontWeight.bold,
+                                color: Colors.black,
+                                fontSize:
+                                    MediaQuery.of(context).textScaleFactor *
+                                        18),
                           ),
                         ),
                         Container(
                           margin: EdgeInsets.all(5),
                           child: Text(
                             " 1.) Ya Hep Ya Hiç : Örneğin - Ya diyete bütün kuralları ile uymalıyım ya da en ufak bir kaçamakta diyeti tümüyle bırakabilirim.\nBu tarz düşünme biçimi hem kilo sorununun sürmesine hem de kilo vermeye yönelik davranışların engellenmesine yol açabilir\n2.) Olumluyu Azımsama : Örneğin - Sadece 3 kilo verdim o kadar çaba hiçbir işe yaramadı.\nBu tarz düşünme biçimi elde edinilmiş kazanımların önemsenmemesine yol açabilir; diyete ve fiziksel aktivite programlarına uyumu bozabilir.\n3.) Mutlak Kurallar Koymak : Örneğin - Diyet süresince ağzıma hiç tatlı sokmamalıyım, günde en az 5 km yol yürümeliyim.\nUlaşılması güç hedefler koymaya neden olabilir ve nihayetinde bu hedeflere ulaşamamanın getirdiği hayal kırıklarına yol açabilir.\n4.) Aşırı Genelleme : Örneğin - Hiçbir zaman kilo vermeyi başaramayacağım, şimdiye kadar bu kaçıncı denemem.\nKişide olumsuz duygular yaratarak diyet ve fiziksel aktivite programlarına uyumu zorlaştırır.\n5.) Etiketleme: Örneğin - Çok şişmanım, işe yaramaz birisiyim, iradesizin tekiyim.\nKişide olumsuz duygular yaratarak diyet ve fiziksel aktivite programlarına uyumu zorlaştırır.",
-                            style: GoogleFonts.patrickHand(
-                                fontSize: 16, fontWeight: FontWeight.w500),
+                            style: TextStyle(
+                                fontFamily: "Times New Roman",
+                                fontWeight: FontWeight.normal,
+                                color: Colors.black,
+                                fontSize:
+                                    MediaQuery.of(context).textScaleFactor *
+                                        18),
                           ),
                         ),
                       ],
@@ -560,16 +640,26 @@ _dialogalert5(context) {
                           margin: EdgeInsets.all(5),
                           child: Text(
                             "Hangi Hastalıklar İçin Riskli Durumdayım?",
-                            style: GoogleFonts.patrickHand(
-                                fontSize: 21, fontWeight: FontWeight.bold),
+                            style: TextStyle(
+                                fontFamily: "Times New Roman",
+                                fontWeight: FontWeight.bold,
+                                color: Colors.black,
+                                fontSize:
+                                    MediaQuery.of(context).textScaleFactor *
+                                        18),
                           ),
                         ),
                         Container(
                           margin: EdgeInsets.all(5),
                           child: Text(
                             " -İnsulin Direnci-Hiperinsülinemi\n-Tip 2 Diabetes Mellitus(Şeker Hastalığı)\n-Hipertansiyon(Yüksek Tansiyon)\n-Koroner Arter Hastalığı\n-Hiperlipidemi-Hipertrigliseridemi(Kan Yağlarının Yükselmesi)\n-Metabolik Sendrom\n-Safra Kesesi Hastalıkları\n-Bazı Kanser Türleri\n-Ostreoartrit\n-Felç\n-Uyku Apnesi\n-Karaciğer Yağlanması\n-Astım\n-Solunum Zorluğu\n-Gebelik Komplikasyonları\n-Menstruasyon Düzensizlikleri\n-Aşırı Kıllanma\n-Ameliyat Risklerini Artması\n-Ruhsal Sorunlar\n-Toplumsal Uyumsuzluklar\n-Kas-İskelet Problemleri",
-                            style: GoogleFonts.patrickHand(
-                                fontSize: 16, fontWeight: FontWeight.w500),
+                            style: TextStyle(
+                                fontFamily: "Times New Roman",
+                                fontWeight: FontWeight.normal,
+                                color: Colors.black,
+                                fontSize:
+                                    MediaQuery.of(context).textScaleFactor *
+                                        18),
                           ),
                         ),
                       ],
